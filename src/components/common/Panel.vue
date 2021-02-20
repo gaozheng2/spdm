@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-1 mt-2">
+  <v-card class="flex-grow-1 pa-1 mt-2">
     <div class="d-flex align-center card-title" @click="$emit('update-fold', !isFold)">
       <v-icon :color="titleColor" class="mx-1 icon" size="22">{{ icon }}</v-icon>
       <h1 :class="`subtitle-1 ${titleColor}--text`">
@@ -10,10 +10,12 @@
         <v-icon>{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
       </v-btn>
     </div>
-    <div v-if="!isFold" :style="`height: ${height}`">
-      <v-divider class="my-1"/>
-      <slot/>
-    </div>
+    <v-expand-transition>
+      <div v-if="!isFold" :style="`height: ${height}`">
+        <v-divider class="my-1"/>
+        <slot/>
+      </div>
+    </v-expand-transition>
   </v-card>
 </template>
 

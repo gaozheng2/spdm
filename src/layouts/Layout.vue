@@ -7,7 +7,7 @@
     <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
 
     <v-container fluid class="px-2 pt-0 pb-2">
-      <v-tabs background-color="transparent" class="pr-1 mb-n2">
+      <v-tabs v-if="true" background-color="transparent" class="pr-1 mb-n2">
         <v-tab class="text-subtitle-1">驾驶舱</v-tab>
         <v-tab class="text-subtitle-1">系统管理</v-tab>
         <v-tab class="text-subtitle-1">人员配置</v-tab>
