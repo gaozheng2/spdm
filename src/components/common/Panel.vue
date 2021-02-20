@@ -2,7 +2,7 @@
   <v-card class="pa-1 mt-2">
     <div class="d-flex align-center card-title" @click="$emit('update-fold', !isFold)">
       <v-icon color="primary" class="mx-1 icon" size="22">{{ icon }}</v-icon>
-      <h1 class="subtitle-1 font-weight-bold primary--text">
+      <h1 class="subtitle-1 primary--text">
         {{ title }}
       </h1>
       <v-spacer/>

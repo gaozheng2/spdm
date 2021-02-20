@@ -11,7 +11,7 @@
         <img src="/images/v-logo-small.png" height="30" alt="logo" class="mr-1">
         <div>
           <div class="title font-weight-bold primary--text">{{ config.product.name }}</div>
-          <div class="overline grey--text">{{ config.product.version }}</div>
+          <!--          <div class="overline grey&#45;&#45;text">{{ config.product.version }}</div>-->
         </div>
       </div>
     </template>
