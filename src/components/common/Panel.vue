@@ -1,8 +1,8 @@
 <template>
   <v-card class="pa-1 mt-2">
     <div class="d-flex align-center card-title" @click="$emit('update-fold', !isFold)">
-      <v-icon color="primary" class="mx-1 icon" size="22">{{ icon }}</v-icon>
-      <h1 class="subtitle-1 primary--text">
+      <v-icon :color="titleColor" class="mx-1 icon" size="22">{{ icon }}</v-icon>
+      <h1 :class="`subtitle-1 ${titleColor}--text`">
         {{ title }}
       </h1>
       <v-spacer/>
@@ -55,6 +55,15 @@ export default {
         const h = 120 + 68 * parseInt(this.panelNum) - 64 * (this.$store.state.app.fullScreen) + fh
 
         return `calc(100vh - ${h}px)`
+      }
+    },
+    titleColor() { // 标题图标和文字颜色
+      if (this.noFolder) {
+        return 'primary'
+      } else if (this.isFold) {
+        return 'secondary'
+      } else {
+        return 'primary'
       }
     }
   }
