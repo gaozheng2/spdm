@@ -2,12 +2,18 @@
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
       <v-badge
+        v-if="hasAlert"
+        color="error"
+        dot
         bordered
-        content="6"
-        offset-x="22"
-        offset-y="22"
+        offset-x="20"
+        offset-y="18"
       >
-        <v-btn icon v-on="on">
+        <v-btn
+          icon
+          title="我的任务"
+          v-on="on"
+        >
           <v-icon>mdi-bell-outline</v-icon>
         </v-btn>
       </v-badge>
@@ -55,6 +61,7 @@
 export default {
   data() {
     return {
+      hasAlert: true,
       items: [
         {
           title: 'Brunch this weekend?',

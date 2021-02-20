@@ -10,12 +10,12 @@ import router from './router'
 // PLUGINS
 import vuetify from './plugins/vuetify'
 import './plugins/vue-head'
-import './plugins/vue-gtag'
+// import './plugins/vue-gtag'
 
 // FILTERS
-import './filters/capitalize'
-import './filters/lowercase'
-import './filters/uppercase'
+// import './filters/capitalize'
+// import './filters/lowercase'
+// import './filters/uppercase'
 
 // STYLES
 // Main Theme SCSS

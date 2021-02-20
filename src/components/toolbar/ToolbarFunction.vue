@@ -1,11 +1,13 @@
 <template>
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on">
-        <v-avatar size="32" class="ml-n1 mr-1">
-          <v-img src="/images/avatars/avatar1.svg"></v-img>
-        </v-avatar>
-        管理员
+      <v-btn
+        icon
+        title="功能菜单"
+        color="primary"
+        v-on="on"
+      >
+        <v-icon>mdi-view-grid-outline</v-icon>
       </v-btn>
     </template>
 
@@ -25,30 +27,11 @@
           <v-list-item-title>{{ item.text }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-      <v-divider class="my-1"></v-divider>
-
-      <v-list-item link>
-        <v-list-item-icon>
-          <v-icon small>mdi-logout-variant</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>Logout</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
     </v-list>
   </v-menu>
 </template>
 
 <script>
-/*
-|---------------------------------------------------------------------
-| Toolbar User Component
-|---------------------------------------------------------------------
-|
-| Quickmenu for user menu shortcuts on the toolbar
-|
-*/
 export default {
   data() {
     return {

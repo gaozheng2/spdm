@@ -5,7 +5,7 @@ import analytics from './analytics'
 export default {
   // product display information
   product: {
-    name: 'Carbon UI',
+    name: '宇航产品数据中心',
     version: 'v1.0.1'
   },
 

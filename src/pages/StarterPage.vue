@@ -19,7 +19,7 @@
 // import Footer4 from '@/components/ui/landing/footer/Footer4.vue'
 // import Team6 from '@/components/ui/landing/team/Team6.vue'
 // import Application1 from '@/components/ui/examples/application/Application1'
-import Layout1 from '@/layouts/Layout1'
+import Layout1 from '@/layouts/Layout'
 
 export default {
   components: {

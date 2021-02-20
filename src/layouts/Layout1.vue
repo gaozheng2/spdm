@@ -30,7 +30,7 @@
       color="surface"
       class="app-bar-full"
       clipped-left
-      dense
+      height="30"
     >
       <v-card
         class="flex-grow-1 d-flex pa-1"
@@ -43,7 +43,7 @@
             <img src="/images/v-logo-small.png" height="48" alt="logo" class="mr-1">
             <div>
               <div class="title font-weight-bold text-uppercase primary--text">{{ config.product.name }}</div>
-              <div class="overline grey--text">{{ config.product.version }}</div>
+              <!--              <div class="overline grey&#45;&#45;text">{{ config.product.version }}</div>-->
             </div>
           </div>
 
