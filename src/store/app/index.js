@@ -1,7 +1,7 @@
 import configs from '../../configs'
 import mutations from './mutations'
 
-const { product, theme  } = configs
+const { product, theme } = configs
 const { isRTL, globalTheme } = theme
 
 // state initial values
@@ -12,7 +12,10 @@ const state = {
   globalTheme,
 
   // themes and layout configurations
-  isRTL
+  isRTL,
+
+  // 是否全屏
+  fullScreen: false
 }
 
 export default {

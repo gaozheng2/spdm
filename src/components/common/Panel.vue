@@ -1,12 +1,12 @@
 <template>
   <v-card class="pa-1 mt-2">
-    <div class="d-flex align-center">
-      <v-icon color="primary" class="mx-1" style="margin-top: -2px">{{ icon }}</v-icon>
-      <h1 class="text-h6 font-weight-bold primary--text">
+    <div class="d-flex align-center card-title" @click="$emit('update-fold', !isFold)">
+      <v-icon color="primary" class="mx-1 icon" size="22">{{ icon }}</v-icon>
+      <h1 class="subtitle-1 font-weight-bold primary--text">
         {{ title }}
       </h1>
       <v-spacer/>
-      <v-btn v-if="!noFolder" icon @click="$emit('update-fold', !isFold)">
+      <v-btn v-if="!noFolder" icon>
         <v-icon>{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
       </v-btn>
     </div>
@@ -40,14 +40,29 @@ export default {
     panelNum: { // 共几个 Panel
       type: String,
       default: '1'
+    },
+    fixedHeight: { // 固定 Panel 的高度
+      type: String,
+      default: '0'
     }
   },
   computed: {
     height() { // 自动计算 Panel 高度
-      const h = 146 + 68 * parseInt(this.panelNum)
+      if (this.noFolder) { // 如果不用折叠，则 fixedHeight 为本 Panel 的高度
+        return this.fixedHeight + 'px'
+      } else { // 如果需要折叠，则 fixedHeight 为其他固定 Panel 的高度
+        const fh = this.fixedHeight ? parseInt(this.fixedHeight) + 4 : 0
+        const h = 120 + 68 * parseInt(this.panelNum) - 64 * (this.$store.state.app.fullScreen) + fh
 
-      return `calc(100vh - ${h}px)`
+        return `calc(100vh - ${h}px)`
+      }
     }
   }
 }
 </script>
+
+<style lang="scss">
+.card-title {
+  cursor: pointer;
+}
+</style>

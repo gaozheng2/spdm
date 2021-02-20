@@ -11,5 +11,8 @@ export default {
   setRTL: (state, isRTL) => {
     Vuetify.framework.rtl = isRTL
     state.isRTL = isRTL
+  },
+  setFullScreen: (state) => {
+    state.fullScreen = !state.fullScreen
   }
 }
