@@ -6,7 +6,7 @@
     <!-- 顶部工具条 -->
     <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
 
-    <v-container fluid class="px-2 pt-0 pb-2">
+    <v-container fluid class="px-2 pt-0 pb-2 container" :style="{height: containerHeight}">
       <v-tabs v-if="true" background-color="transparent" class="pr-1 mb-n2">
         <v-tab class="text-subtitle-1">驾驶舱</v-tab>
         <v-tab class="text-subtitle-1">系统管理</v-tab>
@@ -51,6 +51,11 @@
         <div>是是是</div>
       </Panel>
 
+      <!--      <v-img-->
+      <!--        src="@/assets/images/background01.png"-->
+      <!--        class="backImg"-->
+      <!--      ></v-img>-->
+
     </v-container>
   </v-layout>
 </template>
@@ -79,6 +84,15 @@ export default {
   computed: {
     fullScreen() {
       return this.$store.state.app.fullScreen
+    },
+    containerHeight() {
+      let h = 64
+
+      if (this.fullScreen) {
+        h = 0
+      }
+
+      return `calc(100vh - ${h}px)`
     }
   },
   // 监听导航树展开按键
@@ -119,3 +133,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.backImg {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-300px, -300px);
+  z-index: 0;
+}
+
+.container {
+  background-image: url("~@/assets/images/background01.png");
+  background-size: 500px 500px;
+  background-position: center center;
+}
+</style>

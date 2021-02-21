@@ -34,7 +34,7 @@
         <toolbar-user/>
 
         <!-- 【切换主题按钮】 -->
-        <v-btn icon style="margin-right: -6px" @click="$vuetify.theme.dark=!$vuetify.theme.dark">
+        <v-btn v-if="false" icon style="margin-right: -6px" @click="$vuetify.theme.dark=!$vuetify.theme.dark">
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
         </v-btn>
 
