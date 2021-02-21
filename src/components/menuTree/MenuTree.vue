@@ -3,8 +3,7 @@
     <v-navigation-drawer
       v-if="drawer && !fullScreen"
       app
-      permanent
-      stateless
+      mobile-breakpoint="800"
       width="260"
       class="elevation-1"
     >

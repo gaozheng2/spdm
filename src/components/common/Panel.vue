@@ -1,6 +1,7 @@
 <template>
   <v-card class="flex-grow-1 pa-1 mt-2">
-    <div class="d-flex align-center" role="button" @click="$emit('update-fold', !isFold)">
+    <!--  Panel 标题行  -->
+    <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
       <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
       <h1 :class="`subtitle-1 text--${titleColor}--text`">
         {{ title }}
@@ -10,6 +11,8 @@
         <v-icon>{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
       </v-btn>
     </div>
+
+    <!--  Panel 主体内容  -->
     <v-expand-transition>
       <div v-if="!isFold" :style="`height: ${height}`">
         <v-divider class="my-1"/>
@@ -40,8 +43,8 @@ export default {
       default: false
     },
     panelNum: { // 共几个 Panel
-      type: String,
-      default: '1'
+      type: Number,
+      default: 1
     },
     fixedHeight: { // 固定 Panel 的高度
       type: String,
@@ -50,11 +53,20 @@ export default {
   },
   computed: {
     height() { // 自动计算 Panel 高度
+      let h
+
       if (this.noFolder) { // 如果不用折叠，则 fixedHeight 为本 Panel 的高度
-        return this.fixedHeight + 'px'
+        if (this.fixedHeight > 0) {
+          return this.fixedHeight + 'px'
+        } else {
+          h = 180 - 64 * (this.$store.state.app.fullScreen)
+
+          return `calc(100vh - ${h}px)`
+        }
       } else { // 如果需要折叠，则 fixedHeight 为其他固定 Panel 的高度
         const fh = this.fixedHeight ? parseInt(this.fixedHeight) + 4 : 0
-        const h = 120 + 68 * parseInt(this.panelNum) - 64 * (this.$store.state.app.fullScreen) + fh
+
+        h = 112 + 68 * this.panelNum - 64 * (this.$store.state.app.fullScreen) + fh
 
         return `calc(100vh - ${h}px)`
       }

@@ -9,12 +9,14 @@
           @click.stop="$emit('update:drawer', !drawer)"
         />
 
-        <!-- 【面包屑】 -->
-        <v-icon size="18" class="ml-2 mr-1">mdi-map-marker-radius</v-icon>
-        <div
-          class="body-2 grey--text"
-          v-html="`根节点&ensp;>&ensp;父节点&ensp;>&ensp;子节点`"
-        >
+        <!-- 【面包屑】 屏幕过小时隐藏  -->
+        <div class="d-none d-md-flex">
+          <v-icon size="18" class="ml-2 mr-1">mdi-map-marker-radius</v-icon>
+          <div
+            class="body-2 grey--text"
+            v-html="`主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点`"
+          >
+          </div>
         </div>
 
         <v-spacer></v-spacer>

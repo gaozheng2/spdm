@@ -8,9 +8,9 @@
 
     <v-container fluid class="px-2 pt-0 pb-2 container" :style="{height: containerHeight}">
       <v-tabs v-if="true" background-color="transparent" class="pr-1 mb-n2">
-        <v-tab class="text-subtitle-1">驾驶舱</v-tab>
-        <v-tab class="text-subtitle-1">系统管理</v-tab>
-        <v-tab class="text-subtitle-1">人员配置</v-tab>
+        <v-tab class="text-subtitle-2">驾驶舱</v-tab>
+        <v-tab class="text-subtitle-2">系统管理</v-tab>
+        <v-tab class="text-subtitle-2">人员配置</v-tab>
         <v-spacer></v-spacer>
         <v-btn
           icon
@@ -21,64 +21,27 @@
           <v-icon>{{ `mdi-${fullScreen ? 'fullscreen-exit' : 'pan'}` }}</v-icon>
         </v-btn>
       </v-tabs>
-      <Panel
-        title="人员管理"
-        icon="mdi-account-circle"
-        panel-num="3"
-        :is-fold="isFold[0]"
-        @update-fold="onUpdateFold(0)"
-      >
-        <div>ddd</div>
-      </Panel>
 
-      <Panel
-        title="系统管理"
-        icon="mdi-account"
-        panel-num="3"
-        :is-fold="isFold[1]"
-        @update-fold="onUpdateFold(1)"
-      >
-        <div>是是是</div>
-      </Panel>
-
-      <Panel
-        title="配置管理"
-        icon="mdi-account"
-        panel-num="3"
-        :is-fold="isFold[2]"
-        @update-fold="onUpdateFold(2)"
-      >
-        <div>是是是</div>
-      </Panel>
-
-      <!--      <v-img-->
-      <!--        src="@/assets/images/background01.png"-->
-      <!--        class="backImg"-->
-      <!--      ></v-img>-->
+      <DefaultPage/>
 
     </v-container>
   </v-layout>
 </template>
 
 <script>
-import Panel from '@/components/common/Panel'
 import Toolbar from '@/components/toolbar/Toolbar'
 import MenuTree from '@/components/menuTree/MenuTree'
+import DefaultPage from '@/pages/DefaultPage'
 
 export default {
   components: {
+    DefaultPage,
     MenuTree,
-    Toolbar,
-    Panel
+    Toolbar
   },
   data() {
     return {
-      drawer: true,
-      isFold: [
-        false,
-        true,
-        true
-      ]
+      drawer: true
     }
   },
   computed: {
@@ -121,30 +84,11 @@ export default {
         _this.$store.commit('app/setFullScreen')
       }
     }
-  },
-  methods: {
-    // 展开一个 Panel 时，折叠其他 Panel
-    onUpdateFold(index) {
-      const temp = !this.isFold[index]
-
-      this.isFold = this.isFold.map(() => true)
-      this.isFold[index] = temp
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.backImg {
-  width: 600px;
-  height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-300px, -300px);
-  z-index: 0;
-}
-
 .container {
   background-image: url("~@/assets/images/background01.png");
   background-size: 500px 500px;
