@@ -37,39 +37,9 @@
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
         </v-btn>
 
-        <v-dialog
-          v-model="dialogUserInfo"
-          width="500"
-        >
-          <v-card>
-            <v-card-title class="headline grey lighten-2">
-              Privacy Policy
-            </v-card-title>
-
-            <v-card-text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-              id
-              est laborum.
-            </v-card-text>
-
-            <v-divider></v-divider>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                color="primary"
-                text
-                @click="dialogUserInfo = false"
-              >
-                I accept
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+        <!--  【用户信息对话框】  -->
+        <v-dialog v-model="dialogUserInfo" width="500">
+          <UserInfoDialog/>
         </v-dialog>
       </v-card>
     </v-app-bar>
@@ -80,9 +50,11 @@
 import ToolbarFunction from '@/components/toolbar/ToolbarFunction'
 import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 import ToolbarUser from '@/components/toolbar/ToolbarUser'
+import UserInfoDialog from '@/components/dialog/UserInfoDialog'
 
 export default {
   components: {
+    UserInfoDialog,
     ToolbarFunction,
     ToolbarNotifications,
     ToolbarUser
