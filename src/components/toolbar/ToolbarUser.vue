@@ -1,7 +1,7 @@
 <template>
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on" class="pr-1 mr-n1">
+      <v-btn text class="pr-1 mr-n1" v-on="on">
         <v-avatar size="32" class="ml-n1 mr-1">
           <v-img src="/images/avatars/avatar1.svg"></v-img>
         </v-avatar>

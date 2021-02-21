@@ -1,17 +1,10 @@
 <template>
   <v-slide-y-transition>
-    <v-app-bar
-      v-if="!fullScreen"
-      app
-      flat
-      hide-on-scroll
-      color="surface"
-    >
+    <v-app-bar v-if="!fullScreen" app flat color="surface">
       <v-card class="flex-grow-1 d-flex align-center px-1 mt-1" height="50">
 
         <!-- 【导航树切换按钮】 -->
         <v-app-bar-nav-icon
-
           :title="`${drawer ? '折叠' : '展开'}导航树（Ctrl+Q）`"
           @click.stop="$emit('update:drawer', !drawer)"
         />
@@ -31,7 +24,7 @@
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
-        <!-- 【功能按钮】 -->
+        <!-- 【功能菜单按钮】 -->
         <toolbar-function/>
 
         <!-- 【任务按钮】 -->
@@ -41,9 +34,10 @@
         <toolbar-user/>
 
         <!-- 【切换主题按钮】 -->
-        <v-btn icon @click="$vuetify.theme.dark=!$vuetify.theme.dark">
+        <v-btn icon style="margin-right: -6px" @click="$vuetify.theme.dark=!$vuetify.theme.dark">
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
         </v-btn>
+
       </v-card>
     </v-app-bar>
   </v-slide-y-transition>

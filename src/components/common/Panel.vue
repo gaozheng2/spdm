@@ -2,7 +2,7 @@
   <v-card class="flex-grow-1 pa-1 mt-2">
     <div class="d-flex align-center" role="button" @click="$emit('update-fold', !isFold)">
       <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
-      <h1 :class="`subtitle-1 ${titleColor}--text`">
+      <h1 :class="`subtitle-1 text--${titleColor}--text`">
         {{ title }}
       </h1>
       <v-spacer/>
@@ -61,11 +61,11 @@ export default {
     },
     titleColor() { // 标题图标和文字颜色
       if (this.noFolder) {
-        return 'primary'
+        return this.$vuetify.theme.dark ? '' : ' primary'
       } else if (this.isFold) {
-        return 'secondary'
+        return this.$vuetify.theme.dark ? ' grey' : 'darken-2 grey'
       } else {
-        return 'primary'
+        return this.$vuetify.theme.dark ? '' : ' primary'
       }
     }
   }
