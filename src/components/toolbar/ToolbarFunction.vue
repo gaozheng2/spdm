@@ -11,35 +11,19 @@
       </v-btn>
     </template>
 
-    <!-- user menu list -->
-    <v-list dense nav>
-      <v-list-item
-        v-for="(item, index) in menu"
-        :key="index"
-        :exact="item.exact"
-        :disabled="item.disabled"
-        link
-      >
-        <v-list-item-icon>
-          <v-icon small :class="{ 'grey--text': item.disabled }">{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.text }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+    <Menu :menu="menu"/>
   </v-menu>
 </template>
 
 <script>
+import Menu from '@/components/common/Menu'
+import configs from '@/configs'
+
 export default {
+  components: { Menu },
   data() {
     return {
-      menu: [
-        { icon: 'mdi-account-box-outline', text: 'Profile' },
-        { icon: 'mdi-cog-outline', text: 'Settings' },
-        { icon: 'mdi-chat-outline', text: 'Chat' }
-      ]
+      menu: configs.menu.func
     }
   }
 }

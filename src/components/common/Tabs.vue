@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tabs v-if="true" v-model="tab" background-color="transparent" class="pr-1 mb-n2">
+    <v-tabs v-if="true" v-model="tab" background-color="transparent" class="px-1 mb-n2">
       <v-tab v-for="(item,index) in items[nodeType]" :key="index" class="text-subtitle-2">
         {{ item.name }}
       </v-tab>
@@ -29,13 +29,14 @@
 </template>
 
 <script>
-import DefaultPage from '@/pages/DefaultPage'
-import Page2 from '@/pages/Page2'
-import Page3 from '@/pages/Page3'
 import configs from '@/configs'
 
 export default {
-  components: { Page3, Page2, DefaultPage },
+  components: {
+    DefaultPage: () => import('@/pages/DefaultPage'),
+    Page2: () => import('@/pages/Page2'),
+    Page3: () => import('@/pages/Page3')
+  },
   props: {
     nodeType: { // 导航树点击的节点类型
       type: String,

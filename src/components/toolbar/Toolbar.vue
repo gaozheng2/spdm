@@ -12,17 +12,14 @@
         <!-- 【面包屑】 屏幕过小时隐藏  -->
         <div class="d-none d-md-flex">
           <v-icon size="18" class="ml-2 mr-1">mdi-map-marker-radius</v-icon>
-          <div
-            class="body-2 grey--text"
-            v-html="`主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点`"
-          >
+          <div class="body-2 grey--text" v-html="path">
           </div>
         </div>
 
         <v-spacer></v-spacer>
 
         <!-- 【搜索按钮】 -->
-        <v-btn icon title="综合查询">
+        <v-btn icon title="综合查询" href="/" target="spdm_single">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
@@ -65,6 +62,11 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  data() {
+    return {
+      path: '主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点' // 面包屑路径
+    }
   }
 }
 </script>
@@ -75,9 +77,6 @@ export default {
 }
 
 .fade-enter, .fade-leave-to {
-  //top: 260px;
   opacity: 0;
-  //transform: translateY(100px);
-  //margin-top: -100px;
 }
 </style>

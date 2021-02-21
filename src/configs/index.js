@@ -1,5 +1,6 @@
 import theme from './theme'
 import nodeTabs from './nodeTabs'
+import menu from './menu'
 
 export default {
   // product display information
@@ -9,5 +10,6 @@ export default {
   },
 
   theme,
+  menu,
   nodeTabs // 树节点类型对应的 Tabs 和 Components
 }
