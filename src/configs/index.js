@@ -1,4 +1,5 @@
 import theme from './theme'
+import nodeTabs from './nodeTabs'
 
 export default {
   // product display information
@@ -7,5 +8,6 @@ export default {
     version: 'v1.0.1'
   },
 
-  theme
+  theme,
+  nodeTabs // 树节点类型对应的 Tabs 和 Components
 }

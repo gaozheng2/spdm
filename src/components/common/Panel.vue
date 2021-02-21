@@ -46,30 +46,26 @@ export default {
       type: Number,
       default: 1
     },
-    fixedHeight: { // 固定 Panel 的高度
-      type: String,
-      default: '0'
+    fixHeight: { // 固定 Panel 的高度
+      type: Number,
+      default: 0
     }
   },
   computed: {
     height() { // 自动计算 Panel 高度
-      let h
+      let h = 0
 
-      if (this.noFolder) { // 如果不用折叠，则 fixedHeight 为本 Panel 的高度
-        if (this.fixedHeight > 0) {
-          return this.fixedHeight + 'px'
-        } else {
-          h = 180 - 64 * (this.$store.state.app.fullScreen)
-
-          return `calc(100vh - ${h}px)`
+      if (this.noFolder) { // 如果不用折叠，则 fixHeight 为本 Panel 的高度
+        if (this.fixHeight > 0) {
+          return this.fixHeight + 'px'
+        } else { // 如果不指定 fixHeight，则占满全屏
+          h = 176 - 64 * (this.$store.state.app.fullScreen)
         }
-      } else { // 如果需要折叠，则 fixedHeight 为其他固定 Panel 的高度
-        const fh = this.fixedHeight ? parseInt(this.fixedHeight) + 4 : 0
-
-        h = 112 + 68 * this.panelNum - 64 * (this.$store.state.app.fullScreen) + fh
-
-        return `calc(100vh - ${h}px)`
+      } else { // 如果需要折叠，则 fixHeight 为其他固定 Panel 的高度
+        h = 116 + 68 * this.panelNum - 64 * (this.$store.state.app.fullScreen) + this.fixHeight
       }
+
+      return `calc(100vh - ${h}px)`
     },
     titleColor() { // 标题图标和文字颜色
       if (this.noFolder) {

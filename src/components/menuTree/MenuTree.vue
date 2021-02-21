@@ -22,6 +22,8 @@
 
       <!-- 导航菜单 -->
       <main-menu :menu="menu"/>
+      <button @click="$emit('update:node-type','root')">root1</button>
+      <button @click="$emit('update:node-type','root2')">root2</button>
     </v-navigation-drawer>
   </transition>
 </template>
@@ -43,6 +45,10 @@ export default {
     drawer: {
       type: Boolean,
       default: true
+    },
+    nodeType: {
+      type: String,
+      default: 'root'
     }
   },
   data() {

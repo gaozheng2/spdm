@@ -1,29 +1,14 @@
 <template>
-  <v-layout class="fill-height">
-    <!-- 左侧导航树 -->
-    <MenuTree :full-screen="fullScreen" :drawer="drawer"/>
-
+  <v-layout>
     <!-- 顶部工具条 -->
     <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
 
+    <!-- 左侧导航树 -->
+    <MenuTree :full-screen="fullScreen" :drawer="drawer" :node-type.sync="nodeType"/>
+
+    <!-- 页面主体 选项卡 -->
     <v-container fluid class="px-2 pt-0 pb-2 container" :style="{height: containerHeight}">
-      <v-tabs v-if="true" background-color="transparent" class="pr-1 mb-n2">
-        <v-tab class="text-subtitle-2">驾驶舱</v-tab>
-        <v-tab class="text-subtitle-2">系统管理</v-tab>
-        <v-tab class="text-subtitle-2">人员配置</v-tab>
-        <v-spacer></v-spacer>
-        <v-btn
-          icon
-          class="mt-1"
-          :title="`${fullScreen ? '退出' : ''}全屏（Alt+Q）`"
-          @click="$store.commit('app/setFullScreen')"
-        >
-          <v-icon>{{ `mdi-${fullScreen ? 'fullscreen-exit' : 'pan'}` }}</v-icon>
-        </v-btn>
-      </v-tabs>
-
-      <DefaultPage/>
-
+      <Tabs :node-type="nodeType"/>
     </v-container>
   </v-layout>
 </template>
@@ -31,17 +16,18 @@
 <script>
 import Toolbar from '@/components/toolbar/Toolbar'
 import MenuTree from '@/components/menuTree/MenuTree'
-import DefaultPage from '@/pages/DefaultPage'
+import Tabs from '@/components/common/Tabs'
 
 export default {
   components: {
-    DefaultPage,
+    Tabs,
     MenuTree,
     Toolbar
   },
   data() {
     return {
-      drawer: true
+      drawer: true, // 是否显示导航树
+      nodeType: 'root' // 导航树点击的节点类型
     }
   },
   computed: {
@@ -89,9 +75,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  background-image: url("~@/assets/images/background01.png");
-  background-size: 500px 500px;
-  background-position: center center;
-}
+//.container {
+//  background-image: url("~@/assets/images/background01.png");
+//  background-size: 500px 500px;
+//  background-position: center center;
+//}
 </style>
