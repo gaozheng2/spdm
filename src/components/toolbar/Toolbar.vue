@@ -17,9 +17,10 @@
         />
 
         <!-- 【面包屑】 -->
-        <v-icon size="18" class="ml-3 mr-1 icon">mdi-map-marker-radius</v-icon>
+        <v-icon size="18" class="ml-3 mr-1">mdi-map-marker-radius</v-icon>
         <div class="body-2 grey--text">根节点&nbsp;&nbsp;>&nbsp;&nbsp;父节点&nbsp;&nbsp;>&nbsp;&nbsp;子节点</div>
 
+        <v-btn @click="$vuetify.theme.dark=!$vuetify.theme.dark">切换主题</v-btn>
         <v-spacer></v-spacer>
 
         <!-- 【搜索按钮】 -->

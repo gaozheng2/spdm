@@ -1,6 +1,4 @@
-import icons from './icons'
 import theme from './theme'
-import analytics from './analytics'
 
 export default {
   // product display information
@@ -9,12 +7,5 @@ export default {
     version: 'v1.0.1'
   },
 
-  // icon libraries
-  icons,
-
-  // theme configs
-  theme,
-
-  // analytics configs
-  analytics
+  theme
 }

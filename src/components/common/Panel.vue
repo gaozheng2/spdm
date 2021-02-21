@@ -1,7 +1,7 @@
 <template>
   <v-card class="flex-grow-1 pa-1 mt-2">
     <div class="d-flex align-center card-title" @click="$emit('update-fold', !isFold)">
-      <v-icon :color="titleColor" class="mx-1 icon" size="22">{{ icon }}</v-icon>
+      <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
       <h1 :class="`subtitle-1 ${titleColor}--text`">
         {{ title }}
       </h1>

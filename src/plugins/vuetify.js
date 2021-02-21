@@ -1,3 +1,4 @@
+import '@mdi/font/css/materialdesignicons.css' // 图标字体文件
 import Vue from 'vue'
 
 // For full framework
@@ -8,13 +9,6 @@ import Vuetify from 'vuetify/lib'
 import * as directives from 'vuetify/lib/directives'
 import config from '../configs'
 
-/**
- * Vuetify Plugin
- * Main components library
- *
- * https://vuetifyjs.com/
- *
- */
 Vue.use(Vuetify, {
   directives
 })

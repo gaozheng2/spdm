@@ -119,9 +119,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.icon {
-  margin-top: -3px
-}
-</style>
