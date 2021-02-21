@@ -1,7 +1,7 @@
 <template>
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on">
+      <v-btn text v-on="on" class="pr-1 mr-n1">
         <v-avatar size="32" class="ml-n1 mr-1">
           <v-img src="/images/avatars/avatar1.svg"></v-img>
         </v-avatar>
@@ -9,7 +9,7 @@
       </v-btn>
     </template>
 
-    <!-- user menu list -->
+    <!-- 用户下拉菜单 -->
     <v-list dense nav>
       <v-list-item
         v-for="(item, index) in menu"
@@ -41,14 +41,7 @@
 </template>
 
 <script>
-/*
-|---------------------------------------------------------------------
-| Toolbar User Component
-|---------------------------------------------------------------------
-|
-| Quickmenu for user menu shortcuts on the toolbar
-|
-*/
+
 export default {
   data() {
     return {
