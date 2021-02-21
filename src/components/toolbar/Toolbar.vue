@@ -1,5 +1,5 @@
 <template>
-  <v-slide-y-transition>
+  <transition name="fade">
     <v-app-bar v-if="!fullScreen" app flat color="surface">
       <v-card class="flex-grow-1 d-flex align-center px-1 mt-1" height="50">
 
@@ -10,7 +10,7 @@
         />
 
         <!-- 【面包屑】 -->
-        <v-icon size="18" class="ml-3 mr-1">mdi-map-marker-radius</v-icon>
+        <v-icon size="18" class="ml-2 mr-1">mdi-map-marker-radius</v-icon>
         <div
           class="body-2 grey--text"
           v-html="`根节点&ensp;>&ensp;父节点&ensp;>&ensp;子节点`"
@@ -40,7 +40,7 @@
 
       </v-card>
     </v-app-bar>
-  </v-slide-y-transition>
+  </transition>
 </template>
 
 <script>
@@ -66,3 +66,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+
+.fade-enter, .fade-leave-to {
+  //top: 260px;
+  opacity: 0;
+  //transform: translateY(100px);
+  //margin-top: -100px;
+}
+</style>

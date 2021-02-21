@@ -1,8 +1,10 @@
 <template>
-  <v-slide-x-transition>
+  <transition name="fade" mode="out-in">
     <v-navigation-drawer
       v-if="drawer && !fullScreen"
       app
+      permanent
+      stateless
       width="260"
       class="elevation-1"
     >
@@ -22,7 +24,7 @@
       <!-- 导航菜单 -->
       <main-menu :menu="menu"/>
     </v-navigation-drawer>
-  </v-slide-x-transition>
+  </transition>
 </template>
 
 <script>
@@ -52,3 +54,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.3s;
+}
+
+.fade-enter, .fade-leave-to {
+  left: -300px;
+}
+</style>
