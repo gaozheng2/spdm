@@ -30,13 +30,47 @@
         <toolbar-notifications/>
 
         <!-- 【用户菜单】 -->
-        <toolbar-user/>
+        <toolbar-user @userInfo="dialogUserInfo=true" @logOut="logOut"/>
 
         <!-- 【切换主题按钮】 -->
         <v-btn v-if="false" icon style="margin-right: -6px" @click="$vuetify.theme.dark=!$vuetify.theme.dark">
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
         </v-btn>
 
+        <v-dialog
+          v-model="dialogUserInfo"
+          width="500"
+        >
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Privacy Policy
+            </v-card-title>
+
+            <v-card-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.
+            </v-card-text>
+
+            <v-divider></v-divider>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                color="primary"
+                text
+                @click="dialogUserInfo = false"
+              >
+                I accept
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-card>
     </v-app-bar>
   </transition>
@@ -65,7 +99,14 @@ export default {
   },
   data() {
     return {
-      path: '主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点' // 面包屑路径
+      path: '主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点', // 面包屑路径
+      dialogUserInfo: false // 打开用户信息对话框
+    }
+  },
+  methods: {
+    logOut() {
+      // TODO
+      alert('退出系统')
     }
   }
 }

@@ -9,7 +9,8 @@
       </v-btn>
     </template>
 
-    <Menu :menu="menu"/>
+    <Menu :menu="menu" @userInfo="$emit('userInfo')" @logOut="$emit('logOut')"/>
+
   </v-menu>
 </template>
 

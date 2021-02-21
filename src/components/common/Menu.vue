@@ -6,9 +6,10 @@
         v-else
         :key="index"
         link
+        :disabled="item.disabled"
         :href="item.href"
         target="spdm_single"
-        :disabled="item.disabled"
+        @click="$emit(item.emit)"
       >
         <v-list-item-icon>
           <v-icon :class="{ 'grey--text': item.disabled }">{{ item.icon }}</v-icon>

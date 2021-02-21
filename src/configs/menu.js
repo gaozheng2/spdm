@@ -8,9 +8,9 @@ export default {
     { icon: 'mdi-text-recognition', text: '字典管理', href: '/' }
   ],
   user: [
-    { icon: 'mdi-account-box-outline', text: '用户信息', href: '/' },
+    { icon: 'mdi-account-box-outline', text: '用户信息', emit: 'userInfo' },
     { icon: 'mdi-help-circle-outline', text: '系统帮助', href: '/' },
     { divider: true },
-    { icon: 'mdi-logout-variant', text: '退出系统', href: '/' }
+    { icon: 'mdi-logout-variant', text: '退出系统', emit: 'logOut' }
   ]
 }
