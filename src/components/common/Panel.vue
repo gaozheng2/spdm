@@ -1,5 +1,5 @@
 <template>
-  <v-card class="flex-grow-1 pa-1 mt-2">
+  <v-card class="flex-grow-1 pa-1 mt-2" :outlined="!layout.panelElevation">
     <!--  Panel 标题行  -->
     <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
       <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import config from '@/configs'
+
 export default {
   name: 'Panel',
   props: {
@@ -59,15 +61,15 @@ export default {
         if (this.fixHeight > 0) {
           return this.fixHeight + 'px'
         } else { // 如果不指定 fixHeight，则占满全屏
-          h = 176 - 64 * (this.$store.state.app.fullScreen)
+          h = 176 - (this.layout.titleHeight - 8 * this.layout.panelUp) * (this.$store.state.app.fullScreen) - 12 * (this.layout.cardColor === 'surface')
         }
       } else { // 如果需要折叠，则 fixHeight 为其他固定 Panel 的高度
-        h = 116 + 68 * this.panelNum - 64 * (this.$store.state.app.fullScreen) + this.fixHeight
+        h = 116 + 68 * this.panelNum - (this.layout.titleHeight - 8 * this.layout.panelUp) * (this.$store.state.app.fullScreen) - 12 * (this.layout.cardColor === 'surface') + this.fixHeight
       }
 
       return `calc(100vh - ${h}px)`
     },
-    titleColor() { // 标题图标和文字颜色
+    titleColor() { // 根据主题，更换标题图标和文字颜色
       if (this.noFolder) {
         return this.$vuetify.theme.dark ? '' : ' primary'
       } else if (this.isFold) {
@@ -75,6 +77,9 @@ export default {
       } else {
         return this.$vuetify.theme.dark ? '' : ' primary'
       }
+    },
+    layout() {
+      return config.layout[this.$store.state.app.layout]
     }
   }
 }

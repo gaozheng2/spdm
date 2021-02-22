@@ -92,7 +92,7 @@ import ToolbarUser from '@/components/toolbar/ToolbarUser'
 import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 
 // Demo menu content
-import menu from './menu'
+import menu from '../components/tree/menu'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
 
 export default {

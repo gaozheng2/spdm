@@ -1,6 +1,7 @@
 import theme from './theme'
 import nodeTabs from './nodeTabs'
 import menu from './menu'
+import layout from '@/configs/layout'
 
 export default {
   // product display information
@@ -10,6 +11,7 @@ export default {
   },
 
   theme,
+  layout, // 布局方案的参数
   menu,
   nodeTabs // 树节点类型对应的 Tabs 和 Components
 }

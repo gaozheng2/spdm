@@ -21,7 +21,7 @@
 <script>
 import Toolbar from '@/components/toolbar/Toolbar'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
-import MenuTree from '@/components/menuTree/MenuTree'
+import MenuTree from '@/components/tree/Tree'
 import Tabs from '@/components/common/Tabs'
 
 export default {

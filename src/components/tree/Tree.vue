@@ -5,22 +5,12 @@
       app
       mobile-breakpoint="800"
       width="260"
-      class="elevation-1"
+      :class="{'elevation-1' : layout.treeElevation}"
+      :clipped="layout.treeClip"
     >
-      <!-- 系统信息 -->
-      <template v-slot:prepend>
-        <div class="d-flex pa-2 align-center">
-          <!--          <img src="/images/v-logo-small.png" height="40" alt="logo" class="mr-1">-->
-          <img :src="require('@/assets/images/logo.png')" height="30" alt="logo" class="mr-1">
-          <div>
-            <!--            <div class="text-h6 primary&#45;&#45;text">{{ config.product.name }}</div>-->
-            <div class="text-h6" style="color: #005bac">{{ config.product.name }}</div>
-            <!--            <div class="overline grey&#45;&#45;text">{{ config.product.version }}</div>-->
-          </div>
-        </div>
-      </template>
-
-      <v-divider></v-divider>
+      <!-- 系统 Logo -->
+      <TreeLogo v-if="!layout.treeClip"/>
+      <v-divider v-if="!layout.treeClip"/>
 
       <!-- 导航菜单 -->
       <main-menu :menu="menu"/>
@@ -33,10 +23,12 @@
 <script>
 import MainMenu from '@/components/navigation/MainMenu'
 import config from '@/configs/'
-import menu from '@/layouts/menu'
+import menu from '@/components/tree/menu'
+import TreeLogo from '@/components/tree/TreeLogo'
 
 export default {
   components: {
+    TreeLogo,
     MainMenu
   },
   props: {
@@ -57,6 +49,11 @@ export default {
     return {
       config,
       menu
+    }
+  },
+  computed: {
+    layout() {
+      return config.layout[this.$store.state.app.layout]
     }
   }
 }
