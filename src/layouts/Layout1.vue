@@ -1,124 +1,73 @@
 <template>
-  <v-layout class="fill-height">
-    <!-- Navigation -->
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      floating
-      clipped
-      width="260"
-    >
-      <!-- Navigation menu info -->
-      <template v-slot:prepend>
-        <div class="d-flex pa-2 align-center">
-          <img src="/images/v-logo-small.png" height="48" alt="logo" class="mr-1">
-          <div>
-            <div class="title font-weight-bold text-uppercase primary--text">{{ config.product.name }}</div>
-            <div class="overline grey--text">{{ config.product.version }}</div>
-          </div>
-        </div>
-      </template>
+  <v-app>
+    <!-- 顶部工具条 -->
+    <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
 
-      <!-- Navigation menu -->
-      <main-menu :menu="menu"/>
-    </v-navigation-drawer>
+    <!-- 【系统 ... 按钮】全屏时浮动显示在右上角 -->
+    <ToolbarDot v-if="$store.state.app.fullScreen" fab/>
 
-    <!-- Toolbar -->
-    <v-app-bar
-      app
-      flat
-      color="surface"
-      class="app-bar-full"
-      clipped-left
-      height="30"
-    >
-      <v-card
-        class="flex-grow-1 d-flex pa-1"
-        tile
-      >
-        <div class="d-flex flex-grow-1 align-center">
-          <v-app-bar-nav-icon class="d-lg-none" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    <!-- 左侧导航树 -->
+    <MenuTree :full-screen="fullScreen" :drawer="drawer" :node-type.sync="nodeType"/>
 
-          <div class="d-flex px-1 align-center">
-            <img src="/images/v-logo-small.png" height="48" alt="logo" class="mr-1">
-            <div>
-              <div class="title font-weight-bold text-uppercase primary--text">{{ config.product.name }}</div>
-              <!--              <div class="overline grey&#45;&#45;text">{{ config.product.version }}</div>-->
-            </div>
-          </div>
-
-          <v-spacer></v-spacer>
-
-          <div :class="[$vuetify.rtl ? 'ml-1' : 'mr-1']">
-            <toolbar-notifications/>
-          </div>
-
-          <toolbar-user/>
-
-          <!-- 【系统 ... 按钮】全屏时浮动显示在右上角 -->
-          <toolbar-dot/>
-        </div>
-      </v-card>
-    </v-app-bar>
-
-    <v-container fluid class="pt-3">
-
-      <!-- <router-view></router-view> -->
-
-      <!-- DEMO PURPOSES DEFAULT ROUTER VIEW -->
-      <router-view v-if="!$route.name.includes('application-layout-layout')" class="fill-height"/>
-      <div v-else class="py-1 fill-height">
-        <h1 class="text-h4">Dashboard</h1>
-        <v-divider class="my-2"></v-divider>
-        <v-row dense>
-          <v-col
-            v-for="i in 8"
-            :key="i"
-            cols="12"
-            md="6"
-            lg="3"
-          >
-            <v-card class="pa-2 secondary--text overline">Example Content {{ i }}</v-card>
-          </v-col>
-        </v-row>
-      </div>
-    </v-container>
-  </v-layout>
+    <!-- 页面主体 选项卡 -->
+    <v-main>
+      <v-container fluid class="px-2 pt-0 pb-2">
+        <Tabs :node-type="nodeType"/>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import config from '@/configs'
-import MainMenu from '@/components/navigation/MainMenu'
-import ToolbarUser from '@/components/toolbar/ToolbarUser'
-import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
-
-// Demo menu content
-import menu from './menu'
+import Toolbar from '@/components/toolbar/Toolbar'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
+import MenuTree from '@/components/menuTree/MenuTree'
+import Tabs from '@/components/common/Tabs'
 
 export default {
   components: {
     ToolbarDot,
-    MainMenu,
-    ToolbarUser,
-    ToolbarNotifications
+    Tabs,
+    MenuTree,
+    Toolbar
   },
   data() {
     return {
-      menu,
-      config,
-      drawer: null,
-      showSearch: false
+      drawer: true, // 是否显示导航树
+      nodeType: 'root' // 导航树点击的节点类型
+    }
+  },
+  computed: {
+    fullScreen() {
+      return this.$store.state.app.fullScreen
+    }
+  },
+  // 监听导航树展开按键
+  mounted() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const _this = this
+    let method = ''
+
+    document.onkeydown = function (e) {
+      if (e.key && e.key === 'q' && e.ctrlKey) {
+        method = 'drawer'
+      } else if (e.keyCode === 81 && e.ctrlKey) {
+        method = 'drawer'
+      } else if (e.key && e.key === 'q' && e.altKey) {
+        method = 'fullScreen'
+      } else if (e.keyCode === 81 && e.altKey) {
+        method = 'fullScreen'
+      } else {
+        method = ''
+      }
+      if (method === 'drawer') {
+        e.preventDefault() // 屏蔽浏览器快捷键
+        _this.drawer = !_this.drawer
+      } else if (method === 'fullScreen') {
+        e.preventDefault()
+        _this.$store.commit('app/setFullScreen')
+      }
     }
   }
 }
 </script>
-
-<style lang="scss">
-.app-bar-full {
-  .v-toolbar__content,
-  .v-toolbar__extension {
-    padding: 0;
-  }
-}
-</style>

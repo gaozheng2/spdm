@@ -10,7 +10,10 @@ const state = {
   fullScreen: false,
 
   // 布局方案
-  layout: (localConfigs && localConfigs.layout) || 1
+  layout: (localConfigs && localConfigs.layout) || 1,
+
+  // 面包屑路径
+  path: ['根节点1', '父节点2', '子节点3']
 }
 
 export default {

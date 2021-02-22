@@ -5,12 +5,7 @@ Vue.use(Router)
 
 export const routes = [{
   path: '/',
-  component: () => import(/* webpackChunkName: "layout-default" */ '@/layouts/DefaultLayout.vue'),
-  children: [{
-    path: '',
-    name: 'starter-page',
-    component: () => import(/* webpackChunkName: "starter-page" */ '@/pages/StarterPage.vue')
-  }]
+  component: () => import(/* webpackChunkName: "layout-default" */ '@/layouts/DefaultLayout.vue')
 }, {
   path: '*',
   component: () => import(/* webpackChunkName: "layout-error" */ '@/layouts/ErrorLayout.vue'),

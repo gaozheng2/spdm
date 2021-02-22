@@ -10,11 +10,7 @@
         />
 
         <!-- 【面包屑】 屏幕过小时隐藏  -->
-        <div class="d-none d-md-flex">
-          <v-icon size="18" class="ml-2 mr-1">mdi-map-marker-radius</v-icon>
-          <div class="body-2 grey--text" v-html="path">
-          </div>
-        </div>
+        <ToolbarPath/>
 
         <v-spacer></v-spacer>
 
@@ -50,14 +46,16 @@ import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 import ToolbarUser from '@/components/toolbar/ToolbarUser'
 import UserInfoDialog from '@/components/dialog/UserInfoDialog'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
+import ToolbarPath from '@/components/toolbar/ToolbarPath'
 
 export default {
   components: {
+    ToolbarPath,
     ToolbarDot,
-    UserInfoDialog,
     ToolbarModule,
     ToolbarNotifications,
-    ToolbarUser
+    ToolbarUser,
+    UserInfoDialog
   },
   props: {
     fullScreen: {
@@ -71,7 +69,6 @@ export default {
   },
   data() {
     return {
-      path: '主页&ensp;>&ensp;父节点&ensp;>&ensp;子节点', // 面包屑路径
       dialogUserInfo: false // 打开用户信息对话框
     }
   },
