@@ -17,40 +17,49 @@
         :height="layout.cardHeight"
       >
 
-        <!-- 【导航树切换按钮】 -->
+        <!-- 【导航树切换】按钮 -->
         <v-app-bar-nav-icon
           :title="`${drawer ? '折叠' : '展开'}导航树（Ctrl+Q）`"
           @click.stop="$emit('update:drawer', !drawer)"
         />
 
-        <!-- 系统 Logo -->
+        <!-- 【系统 Logo】 -->
         <TreeLogo v-if="layout.treeClip"/>
 
-        <!-- 【面包屑】 屏幕过小时隐藏  -->
+        <!-- 【面包屑】屏幕过小时隐藏  -->
         <ToolbarPath/>
 
         <v-spacer></v-spacer>
 
-        <!-- 【搜索按钮】 -->
+        <!-- 【综合查询】按钮 -->
         <v-btn icon title="综合查询" href="/" target="spdm_single">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
-        <!-- 【功能菜单按钮】 -->
+        <!-- 【功能菜单】按钮 -->
         <toolbar-module/>
 
-        <!-- 【任务按钮】 -->
+        <!-- 【我的任务】按钮 -->
         <toolbar-notifications/>
 
-        <!-- 【用户菜单】 -->
+        <!-- 【用户菜单】按钮 -->
         <toolbar-user @userInfo="dialogUserInfo=true" @logOut="logOut"/>
 
-        <!-- 【系统 ... 按钮】 -->
+        <!-- 【系统 ...】按钮 -->
         <toolbar-dot/>
 
-        <!--  【用户信息对话框】  -->
-        <v-dialog v-model="dialogUserInfo" width="500">
-          <UserInfoDialog/>
+        <!--  【用户信息】对话框  -->
+        <v-dialog v-model="dialogUserInfo" width="400">
+          <DialogUserInfo/>
+        </v-dialog>
+
+        <!--  【确定退出】对话框  -->
+        <v-dialog v-model="dialogLogout" width="250">
+          <DialogConfirm
+            content="是否确定退出系统？"
+            @cancel="dialogLogout = false"
+            @ok="confirmLogout"
+          />
         </v-dialog>
       </v-card>
     </v-app-bar>
@@ -58,24 +67,26 @@
 </template>
 
 <script>
+import TreeLogo from '@/components/tree/TreeLogo'
+import ToolbarPath from '@/components/toolbar/ToolbarPath'
 import ToolbarModule from '@/components/toolbar/ToolbarModule'
 import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 import ToolbarUser from '@/components/toolbar/ToolbarUser'
-import UserInfoDialog from '@/components/dialog/UserInfoDialog'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
-import ToolbarPath from '@/components/toolbar/ToolbarPath'
 import config from '@/configs'
-import TreeLogo from '@/components/tree/TreeLogo'
+import DialogUserInfo from '@/components/dialog/DialogUserInfo'
+import DialogConfirm from '@/components/dialog/DialogConfirm'
 
 export default {
   components: {
+    DialogConfirm,
     TreeLogo,
     ToolbarPath,
-    ToolbarDot,
     ToolbarModule,
     ToolbarNotifications,
     ToolbarUser,
-    UserInfoDialog
+    ToolbarDot,
+    DialogUserInfo
   },
   props: {
     fullScreen: {
@@ -89,7 +100,8 @@ export default {
   },
   data() {
     return {
-      dialogUserInfo: false // 打开用户信息对话框
+      dialogUserInfo: false, // 打开用户信息对话框
+      dialogLogout: false // 打开确认退出对话框
     }
   },
   computed: {
@@ -100,6 +112,11 @@ export default {
   methods: {
     logOut() {
       // TODO
+      this.dialogLogout = true
+    },
+    confirmLogout() {
+      // TODO
+      this.dialogLogout = false
       alert('退出系统')
     }
   }
