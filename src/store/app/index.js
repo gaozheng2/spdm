@@ -1,21 +1,16 @@
 import configs from '../../configs'
 import mutations from './mutations'
 
-const { product, theme } = configs
-const { isRTL, globalTheme } = theme
+const localConfigs = JSON.parse(localStorage.getItem('configs'))
 
-// state initial values
 const state = {
-  product,
-
-  // app theme dark or light
-  globalTheme,
-
-  // themes and layout configurations
-  isRTL,
+  globalTheme: 'light',
 
   // 是否全屏
-  fullScreen: false
+  fullScreen: false,
+
+  // 布局方案
+  layout: (localConfigs && localConfigs.layout) || 1
 }
 
 export default {

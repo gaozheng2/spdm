@@ -19,11 +19,7 @@
     <v-card width="130" height="134" class="pa-2">
       <div class="d-flex justify-space-between" style="padding: 0 6px">
         <!-- 【切换主题按钮】 -->
-        <v-btn
-          icon
-          :title="`${$vuetify.theme.dark ? 'light' : 'dark'} 模式`"
-          @click="$vuetify.theme.dark=!$vuetify.theme.dark"
-        >
+        <v-btn icon :title="`${$vuetify.theme.dark ? 'light' : 'dark'} 模式`" @click="setTheme">
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
         </v-btn>
         <v-divider vertical/>
@@ -43,10 +39,10 @@
           group
           color="primary"
         >
-          <v-btn text title="布局 1" class="mx-0">
+          <v-btn text title="布局 1" class="mx-0" @click="setLayout(1)">
             <v-icon>mdi-dock-top</v-icon>
           </v-btn>
-          <v-btn text title="布局 2" class="mx-0">
+          <v-btn text title="布局 2" class="mx-0" @click="setLayout(2)">
             <v-icon>mdi-dock-left</v-icon>
           </v-btn>
         </v-btn-toggle>
@@ -57,6 +53,8 @@
 </template>
 
 <script>
+import setLocalConfig from '@/assets/libs/setLocalConfig'
+
 export default {
   props: {
     fab: { // 按钮是否浮动
@@ -64,14 +62,25 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      layout: 1
-    }
-  },
   computed: {
     fullScreen() {
       return this.$store.state.app.fullScreen
+    },
+    layout: {
+      get() {
+        return this.$store.state.app.layout - 1
+      },
+      set() { }
+    }
+  },
+  methods: {
+    setTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      setLocalConfig('themeDark', this.$vuetify.theme.dark)
+    },
+    setLayout(index) {
+      this.$store.commit('app/setLayout', index)
+      setLocalConfig('layout', index)
     }
   }
 }

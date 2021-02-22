@@ -54,11 +54,14 @@
           </div>
 
           <toolbar-user/>
+
+          <!-- 【系统 ... 按钮】全屏时浮动显示在右上角 -->
+          <toolbar-dot/>
         </div>
       </v-card>
     </v-app-bar>
 
-    <v-container :fluid="!isContentBoxed" class="pt-3">
+    <v-container fluid class="pt-3">
 
       <!-- <router-view></router-view> -->
 
@@ -91,9 +94,11 @@ import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 
 // Demo menu content
 import menu from './menu'
+import ToolbarDot from '@/components/toolbar/ToolbarDot'
 
 export default {
   components: {
+    ToolbarDot,
     MainMenu,
     ToolbarUser,
     ToolbarNotifications

@@ -9,13 +9,15 @@ import Vuetify from 'vuetify/lib'
 import * as directives from 'vuetify/lib/directives'
 import config from '../configs'
 
+const localConfig = JSON.parse(localStorage.getItem('configs'))
+
 Vue.use(Vuetify, {
   directives
 })
 
 export default new Vuetify({
   theme: {
-    dark: config.theme.globalTheme === 'dark',
+    dark: (localConfig && localConfig.themeDark) || false,
     options: {
       customProperties: true
     },
