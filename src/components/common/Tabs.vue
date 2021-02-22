@@ -5,16 +5,6 @@
         {{ item.name }}
       </v-tab>
       <v-spacer></v-spacer>
-
-      <!--  全屏按钮  -->
-      <v-btn
-        icon
-        class="mt-1"
-        :title="`${fullScreen ? '退出' : ''}全屏（Alt+Q）`"
-        @click="$store.commit('app/setFullScreen')"
-      >
-        <v-icon>{{ `mdi-${fullScreen ? 'fullscreen-exit' : 'pan'}` }}</v-icon>
-      </v-btn>
     </v-tabs>
 
     <!--  动态读取 Pages 组件  -->
@@ -45,13 +35,8 @@ export default {
   },
   data() {
     return {
-      tab: 0,
-      items: configs.nodeTabs
-    }
-  },
-  computed: {
-    fullScreen() {
-      return this.$store.state.app.fullScreen
+      tab: 0, // 选项卡选择第几项
+      items: configs.nodeTabs // 选项卡数据
     }
   },
   watch: {

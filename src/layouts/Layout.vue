@@ -3,6 +3,9 @@
     <!-- 顶部工具条 -->
     <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
 
+    <!-- 【系统 ... 按钮】全屏时浮动显示在右上角 -->
+    <toolbar-dot v-if="$store.state.app.fullScreen" fab/>
+
     <!-- 左侧导航树 -->
     <MenuTree :full-screen="fullScreen" :drawer="drawer" :node-type.sync="nodeType"/>
 
@@ -17,9 +20,11 @@
 import Toolbar from '@/components/toolbar/Toolbar'
 import MenuTree from '@/components/menuTree/MenuTree'
 import Tabs from '@/components/common/Tabs'
+import ToolbarDot from '@/components/toolbar/ToolbarDot'
 
 export default {
   components: {
+    ToolbarDot,
     Tabs,
     MenuTree,
     Toolbar

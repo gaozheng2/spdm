@@ -1,5 +1,5 @@
 export default {
-  func: [
+  moduleMenu: [
     { icon: 'mdi-file-document-multiple-outline', text: '模板管理', href: '/' },
     { icon: 'mdi-bank-outline', text: '研制单位管理', href: '/' },
     { divider: true },
@@ -7,7 +7,7 @@ export default {
     { icon: 'mdi-account-check', text: '权限管理', href: '/' },
     { icon: 'mdi-text-recognition', text: '字典管理', href: '/' }
   ],
-  user: [
+  userMenu: [
     { icon: 'mdi-account-box-outline', text: '用户信息', emit: 'userInfo' },
     { icon: 'mdi-help-circle-outline', text: '系统帮助', href: '/' },
     { divider: true },

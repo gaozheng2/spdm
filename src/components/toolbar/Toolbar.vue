@@ -24,7 +24,7 @@
         </v-btn>
 
         <!-- 【功能菜单按钮】 -->
-        <toolbar-function/>
+        <toolbar-module/>
 
         <!-- 【任务按钮】 -->
         <toolbar-notifications/>
@@ -32,10 +32,8 @@
         <!-- 【用户菜单】 -->
         <toolbar-user @userInfo="dialogUserInfo=true" @logOut="logOut"/>
 
-        <!-- 【切换主题按钮】 -->
-        <v-btn v-if="false" icon style="margin-right: -6px" @click="$vuetify.theme.dark=!$vuetify.theme.dark">
-          <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
-        </v-btn>
+        <!-- 【系统 ... 按钮】 -->
+        <toolbar-dot/>
 
         <!--  【用户信息对话框】  -->
         <v-dialog v-model="dialogUserInfo" width="500">
@@ -47,15 +45,17 @@
 </template>
 
 <script>
-import ToolbarFunction from '@/components/toolbar/ToolbarFunction'
+import ToolbarModule from '@/components/toolbar/ToolbarModule'
 import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 import ToolbarUser from '@/components/toolbar/ToolbarUser'
 import UserInfoDialog from '@/components/dialog/UserInfoDialog'
+import ToolbarDot from '@/components/toolbar/ToolbarDot'
 
 export default {
   components: {
+    ToolbarDot,
     UserInfoDialog,
-    ToolbarFunction,
+    ToolbarModule,
     ToolbarNotifications,
     ToolbarUser
   },
