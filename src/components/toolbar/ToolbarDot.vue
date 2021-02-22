@@ -1,6 +1,7 @@
 <template>
   <v-menu offset-y left transition="slide-y-transition">
     <template v-slot:activator="{ on }">
+      <!--  根据 fab 参数选择浮动或固定  -->
       <v-btn
         :fab="fab"
         :small="fab"
@@ -15,12 +16,12 @@
       </v-btn>
     </template>
 
-    <v-card width="120" height="120" class="pa-2">
-      <div class="d-flex justify-space-between">
+    <v-card width="130" height="134" class="pa-2">
+      <div class="d-flex justify-space-between" style="padding: 0 6px">
         <!-- 【切换主题按钮】 -->
         <v-btn
           icon
-          :title="`${$vuetify.theme.dark ? 'light' : 'dark'}模式`"
+          :title="`${$vuetify.theme.dark ? 'light' : 'dark'} 模式`"
           @click="$vuetify.theme.dark=!$vuetify.theme.dark"
         >
           <v-icon>{{ $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-brightness-2' }}</v-icon>
@@ -33,13 +34,22 @@
         </v-btn>
       </div>
       <v-divider class="my-1"/>
-      <div class="d-flex justify-space-between">
-        <v-btn icon>
-          <v-icon>mdi-white-balance-sunny</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-white-balance-sunny</v-icon>
-        </v-btn>
+
+      <!--  布局按钮组  -->
+      <div class="d-flex justify-center">
+        <v-btn-toggle
+          v-model="layout"
+          mandatory
+          group
+          color="primary"
+        >
+          <v-btn text title="布局 1" class="mx-0">
+            <v-icon>mdi-dock-top</v-icon>
+          </v-btn>
+          <v-btn text title="布局 2" class="mx-0">
+            <v-icon>mdi-dock-left</v-icon>
+          </v-btn>
+        </v-btn-toggle>
       </div>
     </v-card>
 
@@ -55,7 +65,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      layout: 1
+    }
   },
   computed: {
     fullScreen() {
