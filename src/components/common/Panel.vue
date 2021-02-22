@@ -1,7 +1,12 @@
 <template>
   <v-card class="flex-grow-1 pa-1 mt-2" :outlined="!layout.panelElevation">
     <!--  Panel 标题行  -->
-    <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
+    <div
+      v-if="title!==''"
+      class="d-flex align-center"
+      :role="noFolder ? '' : 'button'"
+      @click="$emit('update-fold', !isFold)"
+    >
       <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
       <h1 :class="`subtitle-1 text--${titleColor}--text`">
         {{ title }}
@@ -15,7 +20,7 @@
     <!--  Panel 主体内容  -->
     <v-expand-transition>
       <div v-if="!isFold" :style="`height: ${height}`">
-        <v-divider class="my-1"/>
+        <v-divider v-if="title!==''" class="my-1"/>
         <slot/>
       </div>
     </v-expand-transition>
@@ -30,11 +35,11 @@ export default {
   props: {
     title: { // 标题
       type: String,
-      required: true
+      default: ''
     },
     icon: { // 标题图标
       type: String,
-      required: true
+      default: ''
     },
     isFold: { // 是否折叠
       type: Boolean,
