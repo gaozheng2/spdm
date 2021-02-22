@@ -1,7 +1,8 @@
 import theme from './theme'
-import nodeTabs from './nodeTabs'
+import layout from './layout'
 import menu from './menu'
-import layout from '@/configs/layout'
+import nodeTabs from './nodeTabs'
+import btns from './btns'
 
 export default {
   // product display information
@@ -13,5 +14,6 @@ export default {
   theme,
   layout, // 布局方案的参数
   menu,
-  nodeTabs // 树节点类型对应的 Tabs 和 Components
+  nodeTabs, // 树节点类型对应的 Tabs 和 Components
+  btns
 }

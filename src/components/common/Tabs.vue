@@ -23,7 +23,7 @@ import configs from '@/configs'
 
 export default {
   components: {
-    DefaultPage: () => import('@/pages/DefaultPage'),
+    DefaultPage: () => import('@/pages/Root'),
     Page2: () => import('@/pages/Page2'),
     Page3: () => import('@/pages/Page3')
   },

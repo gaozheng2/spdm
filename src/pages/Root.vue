@@ -7,7 +7,21 @@
       :is-fold="isFold[0]"
       @update-fold="onUpdateFold(0)"
     >
-      <div>ddd</div>
+      <BtnsPanel>
+        <Btn type="new" @click="new2">新建型号</Btn>
+        <Btn type="new">新建型号集</Btn>
+        <Btn type="edit"/>
+        <Btn type="save"/>
+        <Btn type="lock"/>
+        <Btn type="del"/>
+
+        <template v-slot:right>
+          <Btn type="refresh"/>
+          <Btn type="out"/>
+        </template>
+      </BtnsPanel>
+
+      <div style="height: 300px;border: 1px solid blue"></div>
     </Panel>
 
     <Panel
@@ -35,15 +49,24 @@
 <script>
 import Panel from '@/components/common/Panel'
 import PageMixin from '@/mixins/PageMixin'
+import BtnsPanel from '@/components/common/BtnsPanel'
+import Btn from '@/components/common/Btn'
 
 export default {
   components: {
-    Panel
+    Panel,
+    BtnsPanel,
+    Btn
   },
   mixins: [PageMixin],
   data() {
     return {
       panelNum: 3 // Panel 数量
+    }
+  },
+  methods: {
+    new2() {
+      alert(22)
     }
   }
 }

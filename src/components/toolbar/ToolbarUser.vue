@@ -5,7 +5,7 @@
         <v-avatar size="30" class="mr-1">
           <v-img src="/images/avatars/avatar1.svg"></v-img>
         </v-avatar>
-        <span class="text-body-2">管理员</span>
+        <span class="text-body-2 font-weight-bold">管理员</span>
       </v-btn>
     </template>
 
