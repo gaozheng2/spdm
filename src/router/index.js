@@ -34,6 +34,8 @@ const router = new Router({
  * Before each route update
  */
 router.beforeEach((to, from, next) => {
+  document.title = '宇航产品数据中心'
+
   return next()
 })
 

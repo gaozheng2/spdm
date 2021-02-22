@@ -8,7 +8,8 @@
 export default {
   components: {
     Layout1: () => import('@/layouts/Layout'),
-    Layout2: () => import('@/layouts/Layout1')
+    Layout2: () => import('@/layouts/Layout1'),
+    Layout3: () => import('@/layouts/Layout1')
   },
   computed: {
     layout() {

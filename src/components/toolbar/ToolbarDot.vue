@@ -16,7 +16,7 @@
       </v-btn>
     </template>
 
-    <v-card width="130" height="134" class="pa-2">
+    <v-card width="136" height="120" class="pa-2">
       <div class="d-flex justify-space-between" style="padding: 0 6px">
         <!-- 【切换主题按钮】 -->
         <v-btn icon :title="`${$vuetify.theme.dark ? 'light' : 'dark'} 模式`" @click="setTheme">
@@ -32,20 +32,17 @@
       <v-divider class="my-1"/>
 
       <!--  布局按钮组  -->
-      <div class="d-flex justify-center">
-        <v-btn-toggle
-          v-model="layout"
-          mandatory
-          group
-          color="primary"
+      <div class="d-flex justify-space-between">
+        <v-btn
+          v-for="btn of btnGroup"
+          :key="btn.id"
+          :color="layout === btn.id ? 'primary' : ''"
+          :title="`布局 ${btn.id}`"
+          icon
+          @click="setLayout(btn.id)"
         >
-          <v-btn text title="布局 1" class="mx-0" @click="setLayout(1)">
-            <v-icon>mdi-dock-top</v-icon>
-          </v-btn>
-          <v-btn text title="布局 2" class="mx-0" @click="setLayout(2)">
-            <v-icon>mdi-dock-left</v-icon>
-          </v-btn>
-        </v-btn-toggle>
+          <v-icon>{{ btn.icon }}</v-icon>
+        </v-btn>
       </div>
     </v-card>
 
@@ -62,15 +59,34 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      btnGroup: [ // 布局按钮组
+        {
+          id: 1,
+          icon: 'mdi-dock-left'
+        },
+        {
+          id: 2,
+          icon: 'mdi-dock-top'
+        },
+        {
+          id: 3,
+          icon: 'mdi-dock-right'
+        }
+      ]
+    }
+  },
   computed: {
     fullScreen() {
       return this.$store.state.app.fullScreen
     },
     layout: {
       get() {
-        return this.$store.state.app.layout - 1
+        return this.$store.state.app.layout
       },
-      set() { }
+      set() {
+      }
     }
   },
   methods: {
