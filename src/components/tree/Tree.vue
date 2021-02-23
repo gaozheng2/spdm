@@ -12,18 +12,48 @@
       <TreeLogo v-if="!layout.treeClip"/>
       <v-divider v-if="!layout.treeClip"/>
 
+      <!-- 收藏夹按钮和搜索框 -->
+      <div class="d-flex align-center px-1" style="height: 48px">
+        <v-btn icon large style="z-index: 1" @click="isStar = !isStar">
+          <v-icon :color="isStar ? 'primary' : ''">
+            {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
+          </v-icon>
+        </v-btn>
+        <div class="text-subtitle-2 ml-1">{{ isStar ? '收藏夹' : '' }}</div>
+
+        <v-text-field
+          v-if="!isStar"
+          ref="search"
+          class="ml-n2"
+          placeholder="Search"
+          prepend-inner-icon="mdi-magnify"
+          hide-details
+          solo
+          flat
+          clearable
+          clear-icon="mdi-close"
+        />
+      </div>
+      <v-divider/>
+
+      <!-- 收藏夹 -->
+      <div v-if="isStar">
+
+      </div>
+
       <!-- 导航菜单 -->
-      <main-menu :menu="menu"/>
-      <button @click="$emit('update:node-type','root')">root1</button>
-      <button @click="$emit('update:node-type','root2')">root2</button>
+      <template v-if="!isStar">
+        <main-menu/>
+        <button @click="$store.commit('app/setNodeType','root')">root1</button>
+        <button @click="$store.commit('app/setNodeType','root2')">root2</button>
+      </template>
     </v-navigation-drawer>
   </transition>
 </template>
 
 <script>
-import MainMenu from '@/components/navigation/MainMenu'
-import menu from '@/components/tree/menu'
 import TreeLogo from '@/components/tree/TreeLogo'
+import MainMenu from '@/components/navigation/MainMenu'
 
 export default {
   components: {
@@ -38,15 +68,11 @@ export default {
     drawer: {
       type: Boolean,
       default: true
-    },
-    nodeType: {
-      type: String,
-      default: 'root'
     }
   },
   data() {
     return {
-      menu
+      isStar: false // 是否打开收藏夹
     }
   },
   computed: {

@@ -25,16 +25,15 @@ export default {
     Page2: () => import('@/pages/Page2'),
     Page3: () => import('@/pages/Page3')
   },
-  props: {
-    nodeType: { // 导航树点击的节点类型
-      type: String,
-      default: 'root'
-    }
-  },
   data() {
     return {
       tab: 0, // 选项卡选择第几项
       items: this.$configs.nodeTabs // 选项卡数据
+    }
+  },
+  computed: {
+    nodeType() {
+      return this.$store.state.app.nodeType
     }
   },
   watch: {
