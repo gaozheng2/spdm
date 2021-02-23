@@ -3,6 +3,7 @@ import layout from './layout'
 import menu from './menu'
 import nodeTabs from './nodeTabs'
 import btns from './btns'
+import status from './status'
 
 export default {
   // product display information
@@ -15,5 +16,6 @@ export default {
   layout, // 布局方案的参数
   menu,
   nodeTabs, // 树节点类型对应的 Tabs 和 Components
-  btns
+  btns,
+  status // 状态码对应的图标颜色
 }

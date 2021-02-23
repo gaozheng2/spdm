@@ -32,7 +32,7 @@ export default {
   },
   out: {
     title: '导出',
-    icon: 'mdi-upload',
+    icon: 'mdi-export-variant',
     color: 'secondary',
     iconBtn: true
   }

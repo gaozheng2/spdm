@@ -40,7 +40,7 @@
     <v-divider/>
 
     <!-- 收藏夹 -->
-    <div v-if="isStar" class="scroller" :style="`height: ${starHeight};overflow-y:scroll`">
+    <div v-if="isStar" class="scroller" :style="`height: ${starHeight}`">
       <v-list nav dense>
         <v-list-item-group
           v-model="selectedItem"
@@ -48,10 +48,15 @@
           mandatory
         >
           <div v-for="(item, index) in starData" :key="index">
-            <div class="pa-1 text-overline">{{ item.text }}</div>
+            <v-divider v-if="index!==0" class="mb-1"/>
+            <div class="pa-1 text-body-2 align-end">
+              {{ item.text }}
+              <span class="text-caption grey--text" style="margin-left: 4px">{{ item.type }}</span>
+            </div>
+
             <v-list-item v-for="(item2, i) in item.items" :key="i" class="my-0">
               <v-list-item-icon>
-                <v-icon size="18">mdi-satellite-variant</v-icon>
+                <v-icon size="16" :color="getStatusColor(item2)" v-text="item.icon"></v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -91,6 +96,15 @@ export default {
       const h = 114 - this.$configs.layout[layout].treeClip * 15
 
       return `calc(100vh - ${h}px)`
+    }
+  },
+  methods: {
+    getStatusColor(item) {
+      if (item.status) {
+        return this.$configs.status[item.type][item.status].color
+      } else {
+        return ''
+      }
     }
   }
 }
