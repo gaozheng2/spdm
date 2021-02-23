@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <slot :is-fold="isFold" :on-update-fold="onUpdateFold"/>
+  </div>
+</template>
+
 <script>
 export default {
   data() {

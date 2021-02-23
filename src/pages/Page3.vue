@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <Page v-slot="{isFold, onUpdateFold}">
     <Panel
       title="人员管理"
       icon="mdi-account-circle"
@@ -30,18 +30,18 @@
     >
       <div>是是是</div>
     </Panel>
-  </div>
+  </Page>
 </template>
 
 <script>
+import Page from '@/components/common/Page'
 import Panel from '@/components/common/Panel'
-import PageMixin from '@/mixins/PageMixin'
 
 export default {
   components: {
+    Page,
     Panel
   },
-  mixins: [PageMixin],
   data() {
     return {
       panelNum: 3, // Panel 数量
