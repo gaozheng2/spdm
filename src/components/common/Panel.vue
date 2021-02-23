@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import config from '@/configs'
-
 export default {
   name: 'Panel',
   props: {
@@ -84,7 +82,7 @@ export default {
       }
     },
     layout() {
-      return config.layout[this.$store.state.app.layout]
+      return this.$configs.layout[this.$store.state.app.layout]
     }
   }
 }

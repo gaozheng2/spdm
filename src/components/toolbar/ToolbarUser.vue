@@ -16,13 +16,12 @@
 
 <script>
 import Menu from '@/components/common/Menu'
-import configs from '@/configs'
 
 export default {
   components: { Menu },
   data() {
     return {
-      menu: configs.menu.userMenu
+      menu: this.$configs.menu.userMenu
     }
   }
 }

@@ -23,7 +23,6 @@ import Toolbar from '@/components/toolbar/Toolbar'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
 import MenuTree from '@/components/tree/Tree'
 import Tabs from '@/components/common/Tabs'
-import config from '@/configs'
 
 export default {
   components: {
@@ -43,7 +42,7 @@ export default {
       return this.$store.state.app.fullScreen
     },
     layout() {
-      return config.layout[this.$store.state.app.layout]
+      return this.$configs.layout[this.$store.state.app.layout]
     }
   },
   // 监听导航树展开按键

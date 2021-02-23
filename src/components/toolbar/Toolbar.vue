@@ -81,7 +81,6 @@ import ToolbarModule from '@/components/toolbar/ToolbarModule'
 import ToolbarNotifications from '@/components/toolbar/ToolbarNotifications'
 import ToolbarUser from '@/components/toolbar/ToolbarUser'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
-import config from '@/configs'
 import DialogUserInfo from '@/components/dialog/DialogUserInfo'
 import DialogConfirm from '@/components/dialog/DialogConfirm'
 
@@ -114,7 +113,7 @@ export default {
   },
   computed: {
     layout() {
-      return config.layout[this.$store.state.app.layout]
+      return this.$configs.layout[this.$store.state.app.layout]
     }
   },
   methods: {

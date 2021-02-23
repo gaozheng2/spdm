@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import configs from '@/configs'
-
 export default {
   props: {
     type: {
@@ -29,7 +27,7 @@ export default {
   },
   data() {
     return {
-      typeData: configs.btns[this.type]
+      typeData: this.$configs.btns[this.type]
     }
   }
 }

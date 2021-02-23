@@ -22,7 +22,6 @@
 
 <script>
 import MainMenu from '@/components/navigation/MainMenu'
-import config from '@/configs/'
 import menu from '@/components/tree/menu'
 import TreeLogo from '@/components/tree/TreeLogo'
 
@@ -47,13 +46,12 @@ export default {
   },
   data() {
     return {
-      config,
       menu
     }
   },
   computed: {
     layout() {
-      return config.layout[this.$store.state.app.layout]
+      return this.$configs.layout[this.$store.state.app.layout]
     }
   }
 }

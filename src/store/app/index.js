@@ -1,4 +1,3 @@
-import configs from '../../configs'
 import mutations from './mutations'
 
 const localConfigs = JSON.parse(localStorage.getItem('configs'))

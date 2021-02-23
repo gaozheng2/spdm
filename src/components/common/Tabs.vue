@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import configs from '@/configs'
-
 export default {
   components: {
     DefaultPage: () => import('@/pages/Root'),
@@ -36,7 +34,7 @@ export default {
   data() {
     return {
       tab: 0, // 选项卡选择第几项
-      items: configs.nodeTabs // 选项卡数据
+      items: this.$configs.nodeTabs // 选项卡数据
     }
   },
   watch: {
