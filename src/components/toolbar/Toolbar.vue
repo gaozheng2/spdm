@@ -4,7 +4,7 @@
       v-if="!fullScreen"
       app
       flat
-      :class="{'app-bar-full' : !layout.titleFloat, line: layout.titleLine}"
+      :class="{'app-bar-full' : !layout.titleFloat, 'line': layout.titleLine}"
       :color="layout.titleColor"
       :clipped-left="layout.treeClip"
       :height="layout.titleHeight"
@@ -16,7 +16,6 @@
         :color="layout.cardColor"
         :height="layout.cardHeight"
       >
-
         <!-- 【导航树切换】按钮 -->
         <v-app-bar-nav-icon
           :title="`${drawer ? '折叠' : '展开'}导航树（Ctrl+Q）`"
@@ -147,10 +146,9 @@ export default {
 }
 
 .line {
-  margin-bottom: 0;
 
   .v-toolbar__content {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   }
 }
 </style>
