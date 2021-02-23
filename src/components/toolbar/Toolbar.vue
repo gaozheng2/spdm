@@ -69,6 +69,7 @@
           />
         </v-dialog>
       </v-card>
+      <v-divider v-if="layout.titleLine"/>
     </v-app-bar>
   </transition>
 </template>
@@ -145,9 +146,9 @@ export default {
   }
 }
 
-.line {
+.line { // title 占满顶部时，显示下边框的细线
   .v-toolbar__content {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: block;
   }
 }
 </style>

@@ -14,6 +14,13 @@
         </v-icon>
       </v-btn>
       <div class="text-subtitle-2 ml-1">{{ isStar ? '收藏夹' : '' }}</div>
+      <!--  关闭收藏夹按钮  -->
+      <template v-if="isStar">
+        <v-spacer/>
+        <v-btn icon title="关闭收藏夹" @click="$emit('update:is-star', !isStar)">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
 
       <!--  搜索框  -->
       <v-text-field
