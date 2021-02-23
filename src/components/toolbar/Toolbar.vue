@@ -32,9 +32,17 @@
         <v-spacer></v-spacer>
 
         <!-- 【综合查询】按钮 -->
-        <v-btn icon title="综合查询" href="/" target="spdm_single">
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+        <v-hover v-slot="{ hover }">
+          <v-btn
+            icon
+            title="综合查询"
+            :color="hover ? 'primary' : ''"
+            href="/"
+            target="spdm_single"
+          >
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
+        </v-hover>
 
         <!-- 【功能菜单】按钮 -->
         <toolbar-module/>

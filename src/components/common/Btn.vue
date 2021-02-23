@@ -6,6 +6,7 @@
       :icon="typeData.iconBtn"
       class="pa-1 text-body-2 font-weight-bold"
       :color="hover ? typeData.color : ''"
+      :title="typeData.iconBtn && typeData.title"
       @click="$emit('click')"
     >
       <v-icon size="18" :class="{textBtn:!typeData.iconBtn}">

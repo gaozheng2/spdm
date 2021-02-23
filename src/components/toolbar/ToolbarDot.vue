@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import setLocalConfig from '@/assets/libs/setLocalConfig'
+import setLocalConfig from '@/libs/setLocalConfig'
 
 export default {
   props: {

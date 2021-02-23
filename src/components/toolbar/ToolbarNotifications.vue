@@ -9,13 +9,16 @@
         offset-x="20"
         offset-y="18"
       >
-        <v-btn
-          icon
-          title="我的任务"
-          v-on="on"
-        >
-          <v-icon>mdi-bell-outline</v-icon>
-        </v-btn>
+        <v-hover v-slot="{ hover }">
+          <v-btn
+            icon
+            title="我的任务"
+            :color="hover ? 'primary' : ''"
+            v-on="on"
+          >
+            <v-icon>mdi-bell-outline</v-icon>
+          </v-btn>
+        </v-hover>
       </v-badge>
     </template>
 
@@ -50,14 +53,6 @@
 </template>
 
 <script>
-/*
-|---------------------------------------------------------------------
-| Toolbar Notifications Component
-|---------------------------------------------------------------------
-|
-| Quickmenu to check out notifications
-|
-*/
 export default {
   data() {
     return {

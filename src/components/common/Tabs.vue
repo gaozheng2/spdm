@@ -9,7 +9,7 @@
 
     <!--  动态读取 Pages 组件  -->
     <v-tabs-items v-model="tab">
-      <v-tab-item v-for="item in items[nodeType]" :key="item.component">
+      <v-tab-item v-for="(item,index) in items[nodeType]" :key="index">
         <keep-alive>
           <component :is="item.component"></component>
         </keep-alive>
