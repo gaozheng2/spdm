@@ -1,9 +1,10 @@
 <template>
   <v-card>
-    <v-card-title class="headline grey lighten-2">
+    <v-card-title class="headline">
       Privacy Policy
     </v-card-title>
 
+    <v-divider class="mb-2"/>
     <v-card-text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore
@@ -14,11 +15,10 @@
       id
       est laborum.
     </v-card-text>
-
-    <v-divider></v-divider>
+    <v-divider/>
 
     <v-card-actions>
-      <v-spacer></v-spacer>
+      <v-spacer/>
       <v-btn
         color="primary"
         text

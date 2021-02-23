@@ -5,6 +5,7 @@
     </v-card-title>
 
     <v-card-text></v-card-text>
+    <v-divider></v-divider>
 
     <v-card-actions>
       <v-spacer></v-spacer>

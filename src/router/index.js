@@ -5,10 +5,10 @@ Vue.use(Router)
 
 export const routes = [{
   path: '/',
-  component: () => import(/* webpackChunkName: "layout-default" */ '@/layouts/DefaultLayout.vue')
+  component: () => import(/* webpackChunkName: "layout-default" */ '@/layouts/LayoutDefault.vue')
 }, {
   path: '*',
-  component: () => import(/* webpackChunkName: "layout-error" */ '@/layouts/ErrorLayout.vue'),
+  component: () => import(/* webpackChunkName: "layout-error" */ '@/layouts/LayoutError.vue'),
   children: [{
     path: '',
     name: 'error',
@@ -17,7 +17,7 @@ export const routes = [{
 }]
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL || '/',
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }
@@ -25,18 +25,12 @@ const router = new Router({
   routes
 })
 
-/**
- * Before each route update
- */
 router.beforeEach((to, from, next) => {
-  document.title = '宇航产品数据中心'
+  document.title = '宇航产品数据中心' + to.meta.title
 
   return next()
 })
 
-/**
- * After each route update
- */
 router.afterEach((to, from) => {
 })
 
