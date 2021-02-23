@@ -1,18 +1,25 @@
 <template>
   <v-card class="flex-grow-1 pa-1 mt-2" :outlined="!layout.panelElevation">
     <!--  Panel 标题行  -->
-    <div
-      v-if="title!==''"
-      class="d-flex align-center"
-      :role="noFolder ? '' : 'button'"
-      @click="$emit('update-fold', !isFold)"
-    >
-      <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
-      <h1 :class="`subtitle-1 text--${titleColor}--text`">
-        {{ title }}
-      </h1>
+    <div v-if="title!==''" class="d-flex align-center">
+      <!--  标题图标和文字  -->
+      <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
+        <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
+        <h1 :class="`subtitle-1 text--${titleColor}--text`">
+          {{ title }}
+        </h1>
+      </div>
       <v-spacer/>
-      <v-btn v-if="!noFolder" icon>
+
+      <!--  收藏按钮  -->
+      <v-btn v-if="star" icon :title="`${isStar ? '取消' : ''}收藏`" @click="onStar">
+        <v-icon :color="isStar ? 'warning' : ''">
+          {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
+        </v-icon>
+      </v-btn>
+
+      <!--  折叠按钮  -->
+      <v-btn v-if="!noFolder" icon @click="$emit('update-fold', !isFold)">
         <v-icon>{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
       </v-btn>
     </div>
@@ -54,8 +61,15 @@ export default {
     fixHeight: { // 固定 Panel 的高度
       type: Number,
       default: 0
+    },
+    star: { // 是否有收藏按钮
+      type: Boolean,
+      default: false
     }
   },
+  data: () => ({
+    isStar: false // 是否收藏
+  }),
   computed: {
     height() { // 自动计算 Panel 高度
       let h = 0
@@ -83,6 +97,11 @@ export default {
     },
     layout() {
       return this.$configs.layout[this.$store.state.app.layout]
+    }
+  },
+  methods: {
+    onStar() { // 点击收藏按钮
+      this.isStar = !this.isStar
     }
   }
 }

@@ -3,6 +3,7 @@
     <Panel
       title="人员管理"
       icon="mdi-account-circle"
+      star
       :panel-num="panelNum"
       :is-fold="isFold[0]"
       @update-fold="onUpdateFold(0)"

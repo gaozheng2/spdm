@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-list-item
+      v-model="selectedItem"
       v-if="!menuItem.items"
       :input-value="menuItem.value"
       :to="menuItem.link"
@@ -60,7 +61,8 @@ export default {
   props: {
     menuItem: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     },
     subgroup: {
       type: Boolean,
@@ -69,6 +71,11 @@ export default {
     small: {
       type: Boolean,
       default: false
+    }
+  },
+  data() {
+    return {
+      selectedItem: 0
     }
   }
 }

@@ -12,41 +12,15 @@
       <TreeLogo v-if="!layout.treeClip"/>
       <v-divider v-if="!layout.treeClip"/>
 
-      <!-- 收藏夹按钮和搜索框 -->
-      <div class="d-flex align-center px-1" style="height: 48px">
-        <v-btn icon large style="z-index: 1" @click="isStar = !isStar">
-          <v-icon :color="isStar ? 'primary' : ''">
-            {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
-          </v-icon>
-        </v-btn>
-        <div class="text-subtitle-2 ml-1">{{ isStar ? '收藏夹' : '' }}</div>
-
-        <v-text-field
-          v-if="!isStar"
-          ref="search"
-          class="ml-n2"
-          placeholder="Search"
-          prepend-inner-icon="mdi-magnify"
-          hide-details
-          solo
-          flat
-          clearable
-          clear-icon="mdi-close"
-        />
-      </div>
-      <v-divider/>
-
-      <!-- 收藏夹 -->
-      <div v-if="isStar">
-
-      </div>
+      <!-- 收藏夹和搜索框 -->
+      <TreeStar :is-star.sync="isStar" :search-value.sync="searchValue"/>
 
       <!-- 导航菜单 -->
-      <template v-if="!isStar">
+      <div v-if="!isStar">
         <main-menu/>
         <button @click="$store.commit('app/setNodeType','root')">root1</button>
         <button @click="$store.commit('app/setNodeType','root2')">root2</button>
-      </template>
+      </div>
     </v-navigation-drawer>
   </transition>
 </template>
@@ -54,9 +28,11 @@
 <script>
 import TreeLogo from '@/components/tree/TreeLogo'
 import MainMenu from '@/components/navigation/MainMenu'
+import TreeStar from '@/components/tree/TreeStar'
 
 export default {
   components: {
+    TreeStar,
     TreeLogo,
     MainMenu
   },
@@ -72,7 +48,8 @@ export default {
   },
   data() {
     return {
-      isStar: false // 是否打开收藏夹
+      isStar: false, // 是否打开收藏夹
+      searchValue: '' // 搜索内容
     }
   },
   computed: {

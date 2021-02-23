@@ -1,17 +1,19 @@
 export default [{
-  text: '',
+  text: '型号',
   items: [
-    { icon: 'mdi-view-dashboard-outline', key: 'menu.dashboard', text: 'Dashboard', link: '#'  }
+    { icon: 'mdi-view-dashboard-outline', key: 'menu.dashboard', text: 'Dashboard', link: '#' }
   ]
 }, {
   text: 'Other',
   key: 'menu.others',
   items: [
     { icon: 'mdi-file-outline', key: 'menu.blank', text: 'Blank Page', link: '' },
-    { key: 'menu.levels', text: 'Menu Levels',
+    {
+      key: 'menu.levels', text: 'Menu Levels',
       items: [
         { text: 'Menu Levels 2.1' },
-        { text: 'Menu Levels 2.2',
+        {
+          text: 'Menu Levels 2.2',
           items: [
             { text: 'Menu Levels 3.1' },
             { text: 'Menu Levels 3.2' }
@@ -19,6 +21,33 @@ export default [{
         }
       ]
     },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disableddddddddddddddddddddd', disabled: true },
+    { key: 'menu.disabled', text: 'Menu Disabled', disabled: true },
     { key: 'menu.disabled', text: 'Menu Disabled', disabled: true }
   ]
 }]

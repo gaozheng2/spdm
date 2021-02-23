@@ -24,19 +24,19 @@
 
 <script>
 export default {
-  data: () => ({ fab: false }),
+  data: () => ({ fab: true }),
 
   methods: {
-    onScroll () {
+    onScroll() {
       const top = (
         window.pageYOffset ||
-          document.documentElement.offsetTop ||
-          0
+        document.documentElement.offsetTop ||
+        0
       )
 
       this.fab = top > 300
     },
-    toTop () {
+    toTop() {
       if (this.$route.hash) {
         this.$router.push({ hash: '' })
       }
