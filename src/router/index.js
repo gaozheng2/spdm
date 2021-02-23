@@ -5,10 +5,10 @@ Vue.use(Router)
 
 export const routes = [{
   path: '/',
-  component: () => import(/* webpackChunkName: "layout-default" */ '@/layouts/LayoutDefault.vue')
+  component: () => import(/* webpackChunkName: "layout-default" */ '@/components/layouts/LayoutDefault.vue')
 }, {
   path: '*',
-  component: () => import(/* webpackChunkName: "layout-error" */ '@/layouts/LayoutError.vue'),
+  component: () => import(/* webpackChunkName: "layout-error" */ '@/components/layouts/LayoutError.vue'),
   children: [{
     path: '',
     name: 'error',

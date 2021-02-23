@@ -1,5 +1,3 @@
-import Vuetify from '../../plugins/vuetify'
-
 export default {
   setFullScreen: (state) => {
     state.fullScreen = !state.fullScreen
