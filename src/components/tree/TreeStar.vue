@@ -1,61 +1,86 @@
 <template>
-  <div v-if="isStar" class="scroller flex-grow-1">
-    <v-list nav dense>
-      <v-list-item-group
-        v-model="selectedItem"
-        color="primary"
-        mandatory
-      >
-        <div v-for="(item, index) in starData" :key="index">
-          <v-divider v-if="index!==0" class="mb-1"/>
-          <div class="pa-1 text-body-2 align-end">
-            {{ item.text }}
-            <span class="text-caption grey--text" style="margin-left: 4px">{{ item.type }}</span>
-          </div>
-
-          <v-list-item v-for="(item2, i) in item.items" :key="i" class="my-0">
-            <v-list-item-icon>
-              <v-icon
-                size="14"
-                :color="getStatus(item2).color"
-                :title="getStatus(item2).text"
-                v-text="item.icon"
-              />
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title :title="item2.code" class="text-body-2">
-                {{ item2.text + `（${item2.code}）` }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+  <v-list nav dense class="scroller flex-grow-1">
+    <v-list-item-group v-model="selectedItem" color="primary" :mandatory="selectedItem!==-1">
+      <div v-for="(item, index) in starData" :key="index">
+        <!--  分类标题（型号、产品）  -->
+        <v-divider v-if="index!==0" class="mb-1"/>
+        <div class="pa-1 text-body-2 align-end">
+          {{ item.text }}
+          <span class="text-caption grey--text" style="margin-left: 4px">{{ item.eName }}</span>
         </div>
-      </v-list-item-group>
-    </v-list>
-  </div>
+
+        <!--  收藏夹内容列表  -->
+        <template v-for="(item2, i) in item.items">
+          <v-hover v-slot="{hover}" :key="i">
+            <v-list-item class="my-0" @click="clickItem(item2)">
+              <!--  列表图标  -->
+              <v-list-item-icon>
+                <v-icon
+                  size="14"
+                  style="margin-top: -1px"
+                  :color="getStatus(item2).color"
+                  :title="getStatus(item2).text"
+                  v-text="item.icon"
+                />
+              </v-list-item-icon>
+
+              <!--  列表文字  -->
+              <v-list-item-content>
+                <v-list-item-title :title="item2.code" class="text-body-2">
+                  {{ item2.text + `（${item2.code}）` }}
+                </v-list-item-title>
+              </v-list-item-content>
+
+              <!--  删除按钮，鼠标悬浮出现  -->
+              <v-list-item-icon v-if="hover">
+                <v-hover v-slot="{hover:hover2}">
+                  <v-btn icon small style="margin-top: -2px" @click.stop="delItem(item2)">
+                    <v-icon size="16" :color="hover2 ? 'n_red' : ''">mdi-trash-can-outline</v-icon>
+                  </v-btn>
+                </v-hover>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-hover>
+        </template>
+      </div>
+    </v-list-item-group>
+  </v-list>
 </template>
 
 <script>
 import starData from '@/mocks/star'
 
 export default {
-  props: {
-    isStar: {
-      type: Boolean,
-      default: false
-    }
-  },
   data: () => ({
     starData,
-    selectedItem: 999
+    selectedItem: -1,
+    currentId: -1 // 当前选中的列表项的 id
   }),
   methods: {
+    // 根据状态码，返回状态对应的图标颜色和文字
     getStatus(item) {
       if (item.status) {
         return this.$configs.status[item.type][item.status]
       } else {
         return ''
       }
+    },
+    clickItem(item) {
+      console.log(item)
+      this.currentId = item.id
+    },
+    delItem(item) {
+      const data = this.starData
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].items.length; j++) {
+          if (data[i].items[j].id === item.id.toString()) {
+            data[i].items.splice(j, 1)
+          }
+        }
+      }
+      // 如果删除了当前选中项，则没有项目被选中
+      if (this.currentId === item.id) this.selectedItem = -1
     }
   }
 }

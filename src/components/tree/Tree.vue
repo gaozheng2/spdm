@@ -18,7 +18,7 @@
       <v-divider/>
 
       <!-- 收藏夹 -->
-      <TreeStar :is-star="isStar"/>
+      <TreeStar v-if="isStar"/>
 
       <!-- 型号树 -->
       <div v-if="!isStar" class="flex-grow-1" style="border: 1px solid red"></div>
