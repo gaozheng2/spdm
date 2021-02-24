@@ -1,14 +1,13 @@
 <template>
-  <div class="d-flex align-center px-1" style="min-height: 50px">
+  <div class="d-flex align-center px-1" style="min-height: 40px">
     <!--  收藏夹按钮  -->
     <v-btn
       icon
-      large
       :title="`${isStar ? '关闭' : ''}收藏夹`"
       style="z-index: 1"
       @click="$emit('update:is-star', !isStar)"
     >
-      <v-icon :color="isStar ? 'warning' : ''">
+      <v-icon :color="isStar ? 'warning' : ''" size="22">
         {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
       </v-icon>
     </v-btn>
@@ -33,6 +32,7 @@
       flat
       clearable
       clear-icon="mdi-close"
+      height="40"
       @change="$emit('update-serach-value', _searchValue)"
     />
   </div>

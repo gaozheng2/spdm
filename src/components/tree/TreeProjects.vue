@@ -67,12 +67,17 @@ export default {
   }
 
   .v-treeview-node__toggle {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    margin-right: 0;
   }
 
   .v-treeview-node__level {
-    width: 12px;
+    width: 16px;
+  }
+
+  .v-treeview-node__content {
+    margin-left: 6px;
   }
 
   .v-treeview-node__label {
