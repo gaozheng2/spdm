@@ -9,7 +9,7 @@
     <div v-if="title!==''" class="d-flex align-center">
       <!--  标题图标和文字  -->
       <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
-        <v-icon :color="'c_title' + (isFold?'_fold':'')" class="mx-1" size="18">{{ icon }}</v-icon>
+        <v-icon :color="'c_title' + (isFold?'_fold':'')" class="mx-1" size="20">{{ icon }}</v-icon>
         <span :class="'subtitle-1 c_title' + (isFold?'_fold':'') + '--text'">
           {{ title }}
         </span>

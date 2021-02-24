@@ -38,7 +38,7 @@ export default {
     },
     color: { // “确定”按钮颜色
       type: String,
-      default: 'error'
+      default: 'n_red'
     }
   }
 }

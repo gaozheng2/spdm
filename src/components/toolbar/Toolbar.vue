@@ -63,7 +63,7 @@
         <!--  【确定退出】对话框  -->
         <v-dialog v-model="dialogLogout" width="250">
           <DialogConfirm
-            content="是否确定退出系统？"
+            content="确定退出系统？"
             @cancel="dialogLogout = false"
             @ok="confirmLogout"
           />

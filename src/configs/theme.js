@@ -12,10 +12,6 @@ const notion_color = {
 }
 
 export default {
-  // global theme for the app
-  globalTheme: 'light', // light | dark
-
-  // dark theme colors
   dark: {
     ...notion_color,
     textbase: '#edf0f2',
@@ -32,7 +28,6 @@ export default {
     c_title_fold: '#9E9E9E' // panel 标题折叠后颜色
   },
 
-  // light theme colors
   light: {
     ...notion_color,
     textbase: '#222222',
