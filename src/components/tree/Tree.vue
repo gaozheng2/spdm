@@ -21,7 +21,8 @@
       <TreeStar v-if="isStar"/>
 
       <!-- 型号树 -->
-      <div v-if="!isStar" class="flex-grow-1" style="border: 1px solid red"></div>
+      <TreeProjects v-if="!isStar"/>
+      <!--      <div v-if="!isStar" class="flex-grow-1" style="border: 1px solid red"></div>-->
 
       <!-- 产品树 -->
       <div v-if="!isStar" style="height: 400px;border: 1px solid blue"/>
@@ -40,9 +41,11 @@ import TreeLogo from '@/components/tree/TreeLogo'
 import MainMenu from '@/components/navigation/MainMenu'
 import TreeStar from '@/components/tree/TreeStar'
 import TreeSearch from '@/components/tree/TreeSearch'
+import TreeProjects from '@/components/tree/TreeProjects'
 
 export default {
   components: {
+    TreeProjects,
     TreeSearch,
     TreeStar,
     TreeLogo,

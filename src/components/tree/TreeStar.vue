@@ -5,7 +5,7 @@
         <!--  分类标题（型号、产品）  -->
         <v-divider v-if="index!==0" class="mb-1"/>
         <div class="pa-1 text-body-2 align-end">
-          {{ item.text }}
+          {{ item.name }}
           <span class="text-caption grey--text" style="margin-left: 4px">{{ item.eName }}</span>
         </div>
 
@@ -19,7 +19,7 @@
                   size="14"
                   style="margin-top: -1px"
                   :color="getStatus(item2).color"
-                  :title="getStatus(item2).text"
+                  :title="getStatus(item2).name"
                   v-text="item.icon"
                 />
               </v-list-item-icon>
@@ -27,7 +27,7 @@
               <!--  列表文字  -->
               <v-list-item-content>
                 <v-list-item-title :title="item2.code" class="text-body-2">
-                  {{ item2.text + `（${item2.code}）` }}
+                  {{ item2.name + `（${item2.code}）` }}
                 </v-list-item-title>
               </v-list-item-content>
 
