@@ -7,33 +7,33 @@ export default {
   edit: {
     title: '编辑',
     icon: 'mdi-square-edit-outline',
-    color: 'accent'
+    color: 'n_blue'
   },
   save: {
     title: '保存',
     icon: 'mdi-floppy',
-    color: 'success'
+    color: 'n_green'
   },
   lock: {
     title: '锁定',
     icon: 'mdi-lock-outline',
-    color: 'warning'
+    color: 'n_orange'
   },
   del: {
     title: '删除',
     icon: 'mdi-trash-can-outline',
-    color: 'error'
+    color: 'n_red'
   },
   refresh: {
     title: '刷新',
     icon: 'mdi-refresh',
-    color: 'secondary',
+    color: 'n_blue',
     iconBtn: true
   },
   out: {
     title: '导出',
     icon: 'mdi-export-variant',
-    color: 'secondary',
+    color: 'n_blue',
     iconBtn: true
   }
 }
