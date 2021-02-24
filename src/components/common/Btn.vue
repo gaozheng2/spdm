@@ -12,7 +12,9 @@
       <v-icon size="18" :class="{textBtn:!typeData.iconBtn}">
         {{ typeData.icon }}
       </v-icon>
-      <slot>{{ typeData.iconBtn ? '' : typeData.title }}</slot>
+      <span class="text-h2">
+        <slot>{{ typeData.iconBtn ? '' : typeData.title }}</slot>
+      </span>
     </v-btn>
   </v-hover>
 </template>
