@@ -28,6 +28,7 @@ export default {
     PageSetInfo: () => import('@/pages/set/PageSetInfo'),
     PageProjectInfo: () => import('@/pages/project/PageProjectInfo'),
     PageProjectConfig: () => import('@/pages/project/PageProjectConfig'),
+    PageProjectStageInfo: () => import('@/pages/projectStage/PageProjectStageInfo'),
     PageStageInfo: () => import('@/pages/stage/PageStageInfo'),
     PageListConfig: () => import('@/pages/stage/PageListConfig'),
     PageProjectData: () => import('@/pages/stage/PageProjectData'),

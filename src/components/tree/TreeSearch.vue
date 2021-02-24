@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-center px-1" style="height: 48px">
+  <div class="d-flex align-center px-1" style="min-height: 50px">
     <!--  收藏夹按钮  -->
     <v-btn
       icon

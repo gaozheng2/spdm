@@ -79,6 +79,28 @@ export default {
       }
     ]
   },
+  projectStage: {
+    text: '型号+阶段',
+    icon: 'mdi-android-auto',
+    items: [
+      {
+        text: '型号阶段信息',
+        component: 'PageProjectStageInfo'
+      },
+      {
+        text: '型号配置',
+        component: 'PageProjectConfig'
+      },
+      {
+        text: '配套管理',
+        component: 'PageListConfig'
+      },
+      {
+        text: '总体数据包',
+        component: 'PageProjectData'
+      }
+    ]
+  },
   part: {
     text: '分系统',
     icon: 'mdi-pan',

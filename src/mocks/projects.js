@@ -1,19 +1,30 @@
 export default [
   {
-    name: '.git'
+    name: '.git',
+    type: 'projectStage'
   },
   {
     name: 'node_modules'
   },
   {
-    name: 'public',
+    name: '总体单位',
     children: [
       {
-        name: 'static',
+        name: '领域',
         children: [{
-          name: 'logo.png',
+          name: '型号集',
           file: 'png',
-          type: 'root'
+          type: 'root',
+          children: [{
+            name: '型号',
+            file: 'png',
+            type: 'root',
+            children: [{
+              name: 'Z',
+              file: 'pnfg',
+              type: 'root'
+            }]
+          }]
         }]
       },
       {
@@ -49,7 +60,7 @@ export default [
     type: 'part'
   },
   {
-    name: 'vue.config.js',
+    name: 'vue.config.jssadfasdfasfsafsdfsadfasfas',
     file: 'js',
     type: 'sing'
   },
