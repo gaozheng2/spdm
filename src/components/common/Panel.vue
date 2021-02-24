@@ -1,5 +1,10 @@
 <template>
-  <v-card class="flex-grow-1 pa-1 mt-2" :outlined="!layout.panelElevation">
+  <v-card
+    class="pa-1 mb-2"
+    :class="{'fill-screen' : !isFold && fixHeight==='' }"
+    :outlined="!layout.panelElevation"
+    :height="fixHeight ? fixHeight : ''"
+  >
     <!--  Panel 标题行  -->
     <div v-if="title!==''" class="d-flex align-center">
       <!--  标题图标和文字  -->
@@ -26,7 +31,7 @@
 
     <!--  Panel 主体内容  -->
     <v-expand-transition>
-      <div v-if="!isFold" :style="`height: ${height}`">
+      <div v-if="!isFold" class="fill-screen">
         <v-divider v-if="title!==''" class="my-1"/>
         <slot/>
       </div>
@@ -54,13 +59,9 @@ export default {
       type: Boolean,
       default: false
     },
-    panelNum: { // 共几个 Panel
-      type: Number,
-      default: 1
-    },
     fixHeight: { // 固定 Panel 的高度
-      type: Number,
-      default: 0
+      type: String,
+      default: ''
     },
     star: { // 是否有收藏按钮
       type: Boolean,
@@ -71,21 +72,6 @@ export default {
     isStar: false // 是否收藏
   }),
   computed: {
-    height() { // 自动计算 Panel 高度
-      let h = 0
-
-      if (this.noFolder) { // 如果不用折叠，则 fixHeight 为本 Panel 的高度
-        if (this.fixHeight > 0) {
-          return this.fixHeight + 'px'
-        } else { // 如果不指定 fixHeight，则占满全屏
-          h = 176 - (this.layout.titleHeight - 8 * this.layout.panelUp) * (this.$store.state.app.fullScreen) - 12 * (this.layout.cardColor === 'surface')
-        }
-      } else { // 如果需要折叠，则 fixHeight 为其他固定 Panel 的高度
-        h = 116 + 68 * this.panelNum - (this.layout.titleHeight - 8 * this.layout.panelUp) * (this.$store.state.app.fullScreen) - 12 * (this.layout.cardColor === 'surface') + this.fixHeight
-      }
-
-      return `calc(100vh - ${h}px)`
-    },
     titleColor() { // 根据主题，更换标题图标和文字颜色
       if (this.noFolder) {
         return this.$vuetify.theme.dark ? '' : ' primary'

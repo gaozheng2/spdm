@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fill-screen">
     <slot :is-fold="isFold" :on-update-fold="onUpdateFold"/>
   </div>
 </template>

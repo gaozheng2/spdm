@@ -3,7 +3,7 @@
     <Panel
       title="人员管理"
       icon="mdi-account-circle"
-      :fix-height="fixHeight"
+      fix-height="300"
       no-folder
     >
       <div>ddd</div>
@@ -13,7 +13,6 @@
       title="系统管理"
       icon="mdi-account"
       :panel-num="panelNum"
-      :fix-height="fixHeight"
       :is-fold="isFold[0]"
       @update-fold="onUpdateFold(0)"
     >
@@ -24,7 +23,6 @@
       title="配置管理"
       icon="mdi-account"
       :panel-num="panelNum"
-      :fix-height="fixHeight"
       :is-fold="isFold[1]"
       @update-fold="onUpdateFold(1)"
     >

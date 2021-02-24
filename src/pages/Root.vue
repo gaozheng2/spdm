@@ -22,7 +22,7 @@
         </template>
       </BtnsPanel>
 
-      <div style="height: 300px;border: 1px solid blue"></div>
+      <div class="flex-grow-1" style="border: 1px solid blue"></div>
     </Panel>
 
     <Panel

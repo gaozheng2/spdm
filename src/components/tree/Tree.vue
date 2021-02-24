@@ -5,6 +5,7 @@
       app
       mobile-breakpoint="800"
       width="260"
+      class="panel"
       :class="{'elevation-1' : layout.treeElevation}"
       :clipped="layout.treeClip"
     >
@@ -12,11 +13,20 @@
       <TreeLogo v-if="!layout.treeClip"/>
       <v-divider v-if="!layout.treeClip"/>
 
-      <!-- 收藏夹和搜索框 -->
-      <TreeStar :is-star.sync="isStar" :search-value.sync="searchValue"/>
+      <!-- 收藏夹按钮和搜索框 -->
+      <TreeSearch :is-star.sync="isStar" :search-value.sync="searchValue"/>
+      <v-divider/>
 
-      <!-- 导航菜单 -->
-      <div v-if="!isStar">
+      <!-- 收藏夹 -->
+      <TreeStar :is-star="isStar"/>
+
+      <!-- 型号树 -->
+      <div v-if="!isStar" class="flex-grow-1" style="border: 1px solid red"></div>
+
+      <!-- 产品树 -->
+      <div v-if="!isStar" style="height: 400px;border: 1px solid blue"/>
+
+      <div v-if="false">
         <main-menu/>
         <button @click="$store.commit('app/setNodeType','root')">root1</button>
         <button @click="$store.commit('app/setNodeType','root2')">root2</button>
@@ -29,9 +39,11 @@
 import TreeLogo from '@/components/tree/TreeLogo'
 import MainMenu from '@/components/navigation/MainMenu'
 import TreeStar from '@/components/tree/TreeStar'
+import TreeSearch from '@/components/tree/TreeSearch'
 
 export default {
   components: {
+    TreeSearch,
     TreeStar,
     TreeLogo,
     MainMenu
