@@ -1,13 +1,13 @@
 <template>
   <v-app>
     <!-- 顶部工具条 -->
-    <Toolbar :full-screen="fullScreen" :drawer.sync="drawer"/>
+    <Toolbar :drawer.sync="drawer"/>
 
     <!-- 【系统 ... 按钮】全屏时浮动显示在右上角 -->
-    <ToolbarDot v-if="$store.state.app.fullScreen" fab/>
+    <ToolbarDot v-if="fullScreen" fab/>
 
     <!-- 左侧导航树 -->
-    <MenuTree :full-screen="fullScreen" :drawer="drawer" :node-type.sync="nodeType"/>
+    <MenuTree :drawer="drawer"/>
 
     <!-- 页面主体 选项卡 -->
     <v-main>
@@ -26,15 +26,14 @@ import Tabs from '@/components/common/Tabs'
 
 export default {
   components: {
+    Toolbar,
     ToolbarDot,
-    Tabs,
     MenuTree,
-    Toolbar
+    Tabs
   },
   data() {
     return {
-      drawer: true, // 是否显示导航树
-      nodeType: 'root' // 导航树点击的节点类型
+      drawer: true // 是否显示导航树
     }
   },
   computed: {

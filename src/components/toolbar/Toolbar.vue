@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <v-app-bar
-      v-if="!fullScreen"
+      v-if="!$store.state.app.fullScreen"
       app
       flat
       :class="{'app-bar-full' : !layout.titleFloat, 'line': layout.titleLine}"
@@ -96,10 +96,6 @@ export default {
     DialogUserInfo
   },
   props: {
-    fullScreen: {
-      type: Boolean,
-      default: false
-    },
     drawer: {
       type: Boolean,
       default: true

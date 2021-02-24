@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" mode="out-in">
     <v-navigation-drawer
-      v-if="drawer && !fullScreen"
+      v-if="drawer && !$store.state.app.fullScreen"
       app
       mobile-breakpoint="800"
       width="260"
@@ -37,10 +37,6 @@ export default {
     MainMenu
   },
   props: {
-    fullScreen: {
-      type: Boolean,
-      default: false
-    },
     drawer: {
       type: Boolean,
       default: true
