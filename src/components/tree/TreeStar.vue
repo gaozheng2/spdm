@@ -40,7 +40,7 @@
     <v-divider/>
 
     <!-- 收藏夹 -->
-    <div v-if="isStar" class="scroller" :style="`height: ${starHeight}`">
+    <div v-if="isStar" class="scroller" :style="`max-height: ${starHeight}`">
       <v-list nav dense>
         <v-list-item-group
           v-model="selectedItem"
