@@ -5,49 +5,58 @@ export default [
     icon: 'mdi-android-auto',
     items: [
       {
-        text: '飞天一号', // 节点名称
-        code: 'FT-11', // 节点代号
-        type: 'project' // 节点类型
+        text: '飞天一号',
+        code: 'FT-11',
+        type: 'project',
+        status: '1'
       },
       {
         text: '天宫二号',
         code: 'TG-2',
-        type: 'project'
+        type: 'project',
+        status: '1'
       },
       {
-        text: '飞天一号', // 节点名称
-        code: 'FT-11', // 节点代号
-        type: 'project' // 节点类型
-      },
-      {
-        text: '天宫二号',
-        code: 'TG-2',
-        type: 'project'
-      },
-      {
-        text: '飞天一号', // 节点名称
-        code: 'FT-11', // 节点代号
-        type: 'project' // 节点类型
+        text: '飞天一号',
+        code: 'FT-11',
+        type: 'project',
+        status: '1'
       },
       {
         text: '天宫二号',
         code: 'TG-2',
-        type: 'project'
+        type: 'project',
+        status: '2'
       },
       {
-        text: '飞天一号', // 节点名称
-        code: 'FT-11', // 节点代号
-        type: 'project' // 节点类型
+        text: '飞天一号',
+        code: 'FT-11',
+        type: 'project',
+        status: '1'
       },
       {
         text: '天宫二号',
         code: 'TG-2',
-        type: 'project'
+        type: 'project',
+        status: '3'
+      },
+      {
+        text: '飞天一号',
+        code: 'FT-11',
+        type: 'project',
+        status: '2'
+      },
+      {
+        text: '天宫二号',
+        code: 'TG-2',
+        type: 'project',
+        status: '1'
       },
       {
         text: '织女四号B',
         code: 'ZN-4B',
-        type: 'project'
+        type: 'project',
+        status: '1'
       }
     ]
   },
@@ -69,8 +78,8 @@ export default [
         status: '6'
       },
       {
-        text: '频率放大器', // 节点名称
-        code: 'FT-11', // 节点代号
+        text: '频率放大器',
+        code: 'FT-11',
         type: 'product',
         status: '2'
       },
@@ -81,19 +90,19 @@ export default [
         status: '2'
       },
       {
-        text: '频率放大器', // 节点名称
-        code: 'FT-11', // 节点代号
+        text: '频率放大器',
+        code: 'FT-11',
         type: 'product',
         status: '3'
       }, {
         text: '调制解调器a',
-        code: 'XXC05a-11',
+        code: 'XXCsfsd05a-11',
         type: 'product',
         status: '3'
       },
       {
-        text: '频率放大器', // 节点名称
-        code: 'FT-11', // 节点代号
+        text: '频率放大器',
+        code: 'FT-11',
         type: 'product',
         status: '4'
       },
@@ -104,8 +113,8 @@ export default [
         status: '3'
       },
       {
-        text: '频率放大器', // 节点名称
-        code: 'FT-11', // 节点代号
+        text: '频率放大器',
+        code: 'FT-11',
         type: 'product',
         status: '2'
       },
@@ -116,8 +125,8 @@ export default [
         status: '5'
       },
       {
-        text: '频率放大器', // 节点名称
-        code: 'FT-11', // 节点代号
+        text: '频率放大器',
+        code: 'FT-11',
         type: 'product',
         status: '2'
       },

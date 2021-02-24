@@ -56,7 +56,12 @@
 
             <v-list-item v-for="(item2, i) in item.items" :key="i" class="my-0">
               <v-list-item-icon>
-                <v-icon size="16" :color="getStatusColor(item2)" v-text="item.icon"></v-icon>
+                <v-icon
+                  size="14"
+                  :color="getStatus(item2).color"
+                  :title="getStatus(item2).text"
+                  v-text="item.icon"
+                />
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -99,9 +104,9 @@ export default {
     }
   },
   methods: {
-    getStatusColor(item) {
+    getStatus(item) {
       if (item.status) {
-        return this.$configs.status[item.type][item.status].color
+        return this.$configs.status[item.type][item.status]
       } else {
         return ''
       }

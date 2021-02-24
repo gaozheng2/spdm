@@ -1,28 +1,42 @@
 export default {
+  project: {
+    1: {
+      text: '在研',
+      color: 'n_default'
+    },
+    2: {
+      text: '已发射',
+      color: 'n_green'
+    },
+    3: {
+      text: '已离轨',
+      color: 'n_red'
+    }
+  },
   product: {
     1: {
       text: '未交付',
-      color: 'grey'
+      color: 'n_grey'
     },
     2: {
       text: '验收中',
-      color: 'info'
+      color: 'n_blue'
     },
     3: {
       text: '验收通过',
-      color: 'success'
+      color: 'n_green'
     },
     4: {
       text: '拒收',
-      color: 'error'
+      color: 'n_red'
     },
     5: {
       text: '更改中',
-      color: 'orange'
+      color: 'n_orange'
     },
     6: {
       text: '紧急放行',
-      color: 'deep-purple'
+      color: 'n_purple'
     }
   }
 }

@@ -1,3 +1,16 @@
+const notion_color = {
+  n_default: '#37352f',
+  n_grey: '#9b9a97',
+  n_brown: '#64473a',
+  n_orange: '#d9730d',
+  n_yellow: '#dfab01',
+  n_green: '#0f7b6c',
+  n_blue: '#0b6d98',
+  n_purple: '#673fa2',
+  n_pink: '#ad1a72',
+  n_red: '#e03e3e'
+}
+
 export default {
   // global theme for the app
   globalTheme: 'light', // light | dark
@@ -13,7 +26,8 @@ export default {
     error: '#FF5252',
     info: '#2196F3',
     success: '#05c075',
-    warning: '#FFC107'
+    warning: '#FFC107',
+    ...notion_color
   },
 
   // light theme colors
@@ -27,6 +41,7 @@ export default {
     error: '#ef476f',
     info: '#2196F3',
     success: '#05c075',
-    warning: '#ffd166'
+    warning: '#ffd166',
+    ...notion_color
   }
 }

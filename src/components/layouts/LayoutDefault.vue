@@ -12,7 +12,7 @@
     <!-- 页面主体 选项卡 -->
     <v-main>
       <v-container fluid class="px-2 pt-0 pb-2" :class="{'mt-n1' : layout.panelUp && !fullScreen}">
-        <Tabs :node-type="nodeType"/>
+        <Tabs/>
       </v-container>
     </v-main>
   </v-app>
