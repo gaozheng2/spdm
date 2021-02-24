@@ -34,9 +34,11 @@
               <!--  删除按钮，鼠标悬浮出现  -->
               <v-list-item-icon v-if="hover">
                 <v-hover v-slot="{hover:hover2}">
-                  <v-btn icon small style="margin-top: -2px" @click.stop="delItem(item2)">
-                    <v-icon size="16" :color="hover2 ? 'n_red' : ''">mdi-trash-can-outline</v-icon>
-                  </v-btn>
+                  <div>
+                    <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(item2)">
+                      mdi-trash-can-outline
+                    </v-icon>
+                  </div>
                 </v-hover>
               </v-list-item-icon>
             </v-list-item>

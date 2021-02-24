@@ -18,14 +18,14 @@
 
       <!--  收藏按钮  -->
       <v-btn v-if="star" icon :title="`${isStar ? '取消' : ''}收藏`" @click="onStar">
-        <v-icon :color="isStar ? 'warning' : ''">
+        <v-icon :color="isStar ? 'warning' : ''" size="20">
           {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
         </v-icon>
       </v-btn>
 
       <!--  折叠按钮  -->
       <v-btn v-if="!noFolder" icon @click="$emit('update-fold', !isFold)">
-        <v-icon>{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
+        <v-icon size="20">{{ isFold ? 'mdi-chevron-down' : 'mdi-chevron-up' }}</v-icon>
       </v-btn>
     </div>
 

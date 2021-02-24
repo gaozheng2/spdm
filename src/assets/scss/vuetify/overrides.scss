@@ -108,5 +108,14 @@ body {
   @extend .fill-screen;
 }
 
+// 输入框高度和图标大小
+.v-text-field.v-text-field--solo .v-input__control {
+  min-height: 40px;
+}
+
+.v-icon.v-icon {
+  font-size: 20px;
+}
+
 
 
