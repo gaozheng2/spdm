@@ -1,5 +1,5 @@
 export default {
-  project: {
+  project: { // 型号发射状态
     1: {
       text: '在研',
       color: 'n_default'
@@ -13,7 +13,7 @@ export default {
       color: 'n_red'
     }
   },
-  product: {
+  sing: { // 单机交付状态
     1: {
       text: '未交付',
       color: 'n_grey'

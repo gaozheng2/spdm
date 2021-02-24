@@ -72,98 +72,98 @@ export default [
   },
   {
     text: '产品',
-    type: 'product',
-    eName: 'Products',
+    type: 'sing',
+    eName: 'sings',
     icon: 'mdi-radiobox-marked',
     items: [
       {
         id: '10',
         text: '频率放大器', // 节点名称
         code: 'FT-11', // 节点代号
-        type: 'product', // 节点类型
+        type: 'sing', // 节点类型
         status: '1'
       },
       {
         id: '11',
         text: '调制解调器a',
         code: 'XXC05a-11',
-        type: 'product',
+        type: 'sing',
         status: '6'
       },
       {
         id: '12',
         text: '频率放大器',
         code: 'FT-11',
-        type: 'product',
+        type: 'sing',
         status: '2'
       },
       {
         id: '13',
         text: '调制解调器a',
         code: 'XXC05a-11',
-        type: 'product',
+        type: 'sing',
         status: '2'
       },
       {
         id: '14',
         text: '频率放大器',
         code: 'FT-11',
-        type: 'product',
+        type: 'sing',
         status: '3'
       }, {
         id: '15',
         text: '调制解调器a',
         code: 'XXCsfsd05a-11',
-        type: 'product',
+        type: 'sing',
         status: '3'
       },
       {
         id: '16',
         text: '频率放大器',
         code: 'FT-11',
-        type: 'product',
+        type: 'sing',
         status: '4'
       },
       {
         id: '17',
         text: '调制解调器a',
         code: 'XXC05a-11',
-        type: 'product',
+        type: 'sing',
         status: '3'
       },
       {
         id: '18',
         text: '频率放大器',
         code: 'FT-11',
-        type: 'product',
+        type: 'sing',
         status: '2'
       },
       {
         id: '19',
         text: '调制解调器a',
         code: 'XXC05a-11',
-        type: 'product',
+        type: 'sing',
         status: '5'
       },
       {
         id: '20',
         text: '频率放大器',
         code: 'FT-11',
-        type: 'product',
+        type: 'sing',
         status: '2'
       },
       {
         id: '21',
         text: '调制解调器a',
         code: 'XXC05a-11',
-        type: 'product',
+        type: 'sing',
         status: '3'
       },
       {
         id: '22',
         text: '结构机构',
         code: 'ZN-4B',
-        type: 'product',
+        type: 'sing',
         status: '4'
       }
     ]

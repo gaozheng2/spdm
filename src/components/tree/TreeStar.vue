@@ -65,10 +65,12 @@ export default {
         return ''
       }
     },
+
     clickItem(item) {
-      console.log(item)
-      this.currentId = item.id
+      this.currentId = item.id // 记录点击的 item
+      this.$store.commit('app/setNodeType', item.type) // 设置全局的节点类型，右侧 Tabs 自动切换
     },
+
     delItem(item) {
       const data = this.starData
 
