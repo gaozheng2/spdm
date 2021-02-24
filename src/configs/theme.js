@@ -17,6 +17,7 @@ export default {
 
   // dark theme colors
   dark: {
+    ...notion_color,
     textbase: '#edf0f2',
     background: '#05090c',
     surface: '#111b27',
@@ -27,11 +28,13 @@ export default {
     info: '#2196F3',
     success: '#05c075',
     warning: '#FFC107',
-    ...notion_color
+    c_title: '#edf0f2', // panel 标题默认颜色
+    c_title_fold: '#9E9E9E' // panel 标题折叠后颜色
   },
 
   // light theme colors
   light: {
+    ...notion_color,
     textbase: '#222222',
     background: '#ffffff',
     surface: '#f2f5f8',
@@ -42,6 +45,7 @@ export default {
     info: '#2196F3',
     success: '#05c075',
     warning: '#ffd166',
-    ...notion_color
+    c_title: '#0096c7',
+    c_title_fold: '#616161'
   }
 }

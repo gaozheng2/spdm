@@ -9,10 +9,10 @@
     <div v-if="title!==''" class="d-flex align-center">
       <!--  标题图标和文字  -->
       <div class="d-flex align-center" :role="noFolder ? '' : 'button'" @click="$emit('update-fold', !isFold)">
-        <v-icon :color="titleColor" class="mx-1" size="22">{{ icon }}</v-icon>
-        <h1 :class="`subtitle-1 text--${titleColor}--text`">
+        <v-icon :color="'c_title' + (isFold?'_fold':'')" class="mx-1" size="18">{{ icon }}</v-icon>
+        <span :class="'subtitle-1 c_title' + (isFold?'_fold':'') + '--text'">
           {{ title }}
-        </h1>
+        </span>
       </div>
       <v-spacer/>
 
@@ -72,15 +72,6 @@ export default {
     isStar: false // 是否收藏
   }),
   computed: {
-    titleColor() { // 根据主题，更换标题图标和文字颜色
-      if (this.noFolder) {
-        return this.$vuetify.theme.dark ? '' : ' primary'
-      } else if (this.isFold) {
-        return this.$vuetify.theme.dark ? ' grey' : 'darken-2 grey'
-      } else {
-        return this.$vuetify.theme.dark ? '' : ' primary'
-      }
-    },
     layout() {
       return this.$configs.layout[this.$store.state.app.layout]
     }
