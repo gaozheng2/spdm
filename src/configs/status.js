@@ -6,7 +6,7 @@ export default {
     },
     2: {
       text: '已发射',
-      color: 'n_green'
+      color: 'n_blue'
     },
     3: {
       text: '已离轨',
@@ -24,7 +24,7 @@ export default {
     },
     3: {
       text: '验收通过',
-      color: 'n_green'
+      color: 'green lighten-1'
     },
     4: {
       text: '拒收',
