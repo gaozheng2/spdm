@@ -24,6 +24,7 @@
         :color="_getStatus(item).color"
         :title="_getStatus(item).text"
         :size="$configs.nodeTypes[item.type].icon_size || 14"
+        :style="$configs.nodeTypes[item.type].icon_size === 16 ? 'margin-top: -1px;' : ''"
         @click.stop="openNode(item)"
       >
         {{
@@ -40,6 +41,18 @@
     <template v-slot:label="{ item }">
       <div :title="item.code" style="margin-top: 2px">
         {{ item.name + (item.type === 'projectStage' ? ' [ ' + item.stage + ' ]' : '') }}
+      </div>
+    </template>
+
+    <!--  末尾图标-添加收藏-已收藏或激活时显示  -->
+    <template v-slot:append="{ item, active}">
+      <div
+        v-if="(active && $configs.nodeTypes[item.type].hasStar )|| item.isStar"
+        :title="(item.isStar ? '取消' : '') + '收藏'"
+      >
+        <v-icon small :color="item.isStar ? 'warning' : ''" @click.stop="star(item)">
+          {{ item.isStar ? 'mdi-star' : 'mdi-star-outline' }}
+        </v-icon>
       </div>
     </template>
   </v-treeview>
@@ -105,6 +118,10 @@ export default {
       }
     },
 
+    star(item) { // 点击收藏按钮
+      item.isStar = !item.isStar
+    },
+
     // 根据状态码，返回状态对应的图标颜色和文字
     _getStatus(item) {
       return getStatus(item)
@@ -112,3 +129,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.itemHover {
+
+}
+</style>

@@ -23,13 +23,15 @@ export default [
             type: 'projectStage',
             status: '2',
             code: 'XY-1',
-            stage: 'C'
+            stage: 'C',
+            isStar: true
           }, {
             id: '3111',
             name: '型号一号02星',
             code: 'XXX-2(F3)',
             type: 'project',
             status: '1',
+            isStar: true,
             children: [{
               id: '31111',
               name: '电性星',
@@ -80,6 +82,7 @@ export default [
             code: 'XXX-2(F3)',
             type: 'project',
             status: '1',
+            isStar: false,
             children: [{
               id: '41111',
               name: '电性星',
@@ -130,6 +133,7 @@ export default [
             code: 'XXX-2(F3)',
             type: 'project',
             status: '1',
+            isStar: false,
             children: [{
               id: '51111',
               name: '电性星',
@@ -180,6 +184,7 @@ export default [
             code: 'XXX-2(F3)',
             type: 'project',
             status: '1',
+            isStar: false,
             children: [{
               id: '61111',
               name: '电性星',
@@ -230,6 +235,7 @@ export default [
             code: 'XXX-2(F3)',
             type: 'project',
             status: '1',
+            isStar: false,
             children: [{
               id: '71111',
               name: '电性星',

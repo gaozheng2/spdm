@@ -2,7 +2,7 @@
 <template>
   <div v-if="showSingTree">
     <v-divider/>
-    <div style="min-height: 34px" class="text-h2 mx-2 d-flex align-center">
+    <div style="min-height: 34px;" class="text-h2 mx-2 d-flex align-center">
       产品列表
       <v-spacer/>
       <v-btn icon small @click="foldSingTree = !foldSingTree">

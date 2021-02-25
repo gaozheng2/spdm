@@ -8,61 +8,71 @@ export default [
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '1'
+      status: '1',
+      isStar: false
     }, {
       id: '11',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '6'
+      status: '6',
+      isStar: true
     }, {
       id: '12',
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '2'
+      status: '2',
+      isStar: false
     }, {
       id: '13',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '2'
+      status: '2',
+      isStar: false
     }, {
       id: '14',
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '3'
+      status: '3',
+      isStar: true
     }, {
       id: '15',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '3'
+      status: '3',
+      isStar: false
     }, {
       id: '16',
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '4'
+      status: '4',
+      isStar: false
     }, {
       id: '17',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '3'
+      status: '3',
+      isStar: false
     }, {
       id: '18',
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '2'
+      status: '2',
+      isStar: false
     }, {
       id: '19',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '5'
+      status: '5',
+      isStar: false
     }]
   }, {
     id: '2',
@@ -73,19 +83,22 @@ export default [
       name: '频率放大器',
       code: 'FT-11',
       type: 'sing',
-      status: '2'
+      status: '2',
+      isStar: false
     }, {
       id: '21',
       name: '调制解调器a',
       code: 'XXC05a-11',
       type: 'sing',
-      status: '3'
+      status: '3',
+      isStar: false
     }, {
       id: '22',
       name: '结构机构',
       code: 'ZN-4B',
       type: 'sing',
-      status: '4'
+      status: '4',
+      isStar: true
     }]
   }
 ]
