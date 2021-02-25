@@ -73,7 +73,7 @@ export default [
   {
     name: '产品',
     type: 'sing',
-    eName: 'sings',
+    eName: 'Products',
     icon: 'mdi-radiobox-marked',
     items: [
       {

@@ -6,21 +6,32 @@
     transition
     activatable
     color="primary"
-    class="flex-grow-1 scroller menuTree"
+    class="scroller menuTree"
     style="font-size: 14px;cursor: pointer;"
+    :class="{'flex-grow-1' : fixHeight}"
+    :style="`min-height: ${fixHeight}`"
     item-key="name"
     :active.sync="tree"
     :open.sync="open"
     :items="items"
     @update:active="selectItem()"
   >
+    <!--  标签前的图标  -->
     <template v-slot:prepend="{ item, open }">
       <v-icon v-if="!item.file" size="14">
         {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
       </v-icon>
-      <v-icon v-else size="14">
+      <v-icon v-else-if="item.file!=='none'" size="14" :class="{'mr-n8' : item.file === 'none'}">
         {{ files[item.file] }}
       </v-icon>
+      <span v-else class="ml-n1">[ {{ item.code }} ]</span>
+    </template>
+
+    <!--    标签内容-->
+    <template v-slot:label="{ item }">
+      <span :title="item.code">
+        {{ item.name }}
+      </span>
     </template>
   </v-treeview>
 </template>
@@ -29,6 +40,12 @@
 import items from '@/mocks/projects'
 
 export default {
+  props: {
+    fixHeight: { // 树的固定高度
+      type: String,
+      default: null
+    }
+  },
   data: () => ({
     tree: [],
     open: ['public'],
@@ -59,29 +76,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.menuTree {
-  .v-treeview-node__root {
-    min-height: 34px;
-  }
-
-  .v-treeview-node__toggle {
-    width: 16px;
-    height: 16px;
-    margin-right: 0;
-  }
-
-  .v-treeview-node__level {
-    width: 16px;
-  }
-
-  .v-treeview-node__content {
-    margin-left: 6px;
-  }
-
-  .v-treeview-node__label {
-    margin-left: -8px;
-  }
-}
-</style>

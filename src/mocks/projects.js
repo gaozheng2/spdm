@@ -8,21 +8,35 @@ export default [
   },
   {
     name: '总体单位',
+    type: 'unit',
     children: [
       {
         name: '领域',
+        type: 'domain',
         children: [{
           name: '型号集',
           file: 'png',
-          type: 'root',
+          type: 'set',
           children: [{
-            name: '型号',
+            name: '型号一号02星',
+            code: 'XXX-2(F3)',
             file: 'png',
-            type: 'root',
+            type: 'project',
             children: [{
-              name: 'Z',
-              file: 'pnfg',
-              type: 'root'
+              name: '电性星',
+              code: 'C',
+              file: 'none',
+              type: 'stage'
+            }, {
+              name: '结构热控星',
+              code: 'C',
+              file: 'none',
+              type: 'stage'
+            }, {
+              name: '正样星',
+              code: 'Z',
+              file: 'none',
+              type: 'stage'
             }]
           }]
         }]

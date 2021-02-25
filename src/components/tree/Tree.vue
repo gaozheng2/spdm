@@ -22,11 +22,16 @@
 
       <!-- 型号树 -->
       <TreeProjects v-if="!isStar"/>
-      <!--      <div v-if="!isStar" class="flex-grow-1" style="border: 1px solid red"></div>-->
 
       <!-- 产品树 -->
+      <template v-if="showSingTree && !isStar">
+        <v-divider/>
+        <div style="min-height: 30px" class="text-h2 ml-2 d-flex align-center">产品列表</div>
+        <v-divider/>
+        <!--        <div v-if="showSingTree" style="min-height: 50vh;border: 1px solid red"></div>-->
 
-      <!--      <div v-if="!isStar" style="height: 400px;border: 1px solid blue"/>-->
+        <TreeProjects fix-height="50vh"/>
+      </template>
 
     </v-navigation-drawer>
   </transition>
@@ -60,6 +65,12 @@ export default {
   computed: {
     layout() {
       return this.$configs.layout[this.$store.state.app.layout]
+    },
+    showSingTree() { // 是否显示产品树
+      const type = this.$store.state.app.nodeType
+      const typeArr = ['stage', 'projectStage', 'part', 'sing']
+
+      return typeArr.indexOf(type) > -1
     }
   }
 }

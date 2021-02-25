@@ -11,7 +11,7 @@
         {{ isStar ? 'mdi-star' : 'mdi-star-outline' }}
       </v-icon>
     </v-btn>
-    <div class="text-subtitle-2 ml-1">{{ isStar ? '收藏夹' : '' }}</div>
+    <div class="text-h2 ml-1">{{ isStar ? '收藏夹' : '' }}</div>
     <!--  关闭收藏夹按钮  -->
     <template v-if="isStar">
       <v-spacer/>
@@ -24,7 +24,7 @@
     <v-text-field
       v-if="!isStar"
       ref="search"
-      class="ml-n2 search"
+      class="ml-n2 text-body-2"
       placeholder="Search"
       prepend-inner-icon="mdi-magnify"
       hide-details
