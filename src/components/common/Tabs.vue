@@ -1,13 +1,12 @@
 <template>
   <div class="fill-screen">
-    <v-tabs v-if="true" v-model="tabValue" background-color="transparent" class="fill-screen pl-1 ">
+    <v-tabs v-if="true" v-model="tabValue" background-color="transparent" class="fill-screen ml-1">
       <v-tab v-for="(tab,index) in items[nodeType].tabs" :key="index" class="text-subtitle-2">
         {{ tab.text }}
       </v-tab>
-      <v-spacer></v-spacer>
 
       <!--  动态读取 Pages 组件  -->
-      <v-tabs-items v-model="tabValue" class="fill-screen ml-n1">
+      <v-tabs-items v-model="tabValue" class="fill-screen ml-n1 pr-1">
         <v-tab-item v-for="(tab,index) in items[nodeType].tabs" :key="index" class="fill-screen">
           <keep-alive>
             <component :is="tab.component"></component>
