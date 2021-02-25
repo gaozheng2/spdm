@@ -9,7 +9,7 @@
     color="primary"
     class="scroller menuTree flex-grow-1"
     style="font-size: 14px; cursor: pointer;"
-    item-key="name"
+    item-key="id"
     :active.sync="tree"
     :open.sync="open"
     :items="items"

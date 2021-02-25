@@ -21,17 +21,10 @@
       <TreeStar v-if="isStar"/>
 
       <!-- 型号树 -->
-      <TreeProjects v-if="!isStar"/>
+      <TreeProjects v-show="!isStar"/>
 
       <!-- 产品树 -->
-      <template v-if="showSingTree && !isStar">
-        <v-divider/>
-        <div style="min-height: 34px" class="text-h2 ml-1 d-flex align-center">产品列表</div>
-        <v-divider/>
-        <div style="height: 50vh;min-height: 50vh;" class="scroller">
-          <TreeProjects/>
-        </div>
-      </template>
+      <TreeSings v-show="!isStar"/>
 
     </v-navigation-drawer>
   </transition>
@@ -42,13 +35,15 @@ import TreeLogo from '@/components/tree/TreeLogo'
 import TreeStar from '@/components/tree/TreeStar'
 import TreeSearch from '@/components/tree/TreeSearch'
 import TreeProjects from '@/components/tree/TreeProjects'
+import TreeSings from '@/components/tree/TreeSings'
 
 export default {
   components: {
     TreeLogo,
     TreeSearch,
     TreeStar,
-    TreeProjects
+    TreeProjects,
+    TreeSings
   },
   props: {
     drawer: {
@@ -65,12 +60,6 @@ export default {
   computed: {
     layout() {
       return this.$configs.layout[this.$store.state.app.layout]
-    },
-    showSingTree() { // 是否显示产品树
-      const type = this.$store.state.app.nodeType
-      const typeArr = ['stage', 'projectStage', 'part', 'sing']
-
-      return typeArr.indexOf(type) > -1
     }
   }
 }

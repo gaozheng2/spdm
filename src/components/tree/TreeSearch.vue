@@ -17,7 +17,7 @@
     <template v-if="isStar">
       <v-spacer/>
       <v-btn icon title="关闭收藏夹" @click="$emit('update:is-star', !isStar)">
-        <v-icon size="20">mdi-close</v-icon>
+        <v-icon size="18">mdi-close</v-icon>
       </v-btn>
     </template>
 
