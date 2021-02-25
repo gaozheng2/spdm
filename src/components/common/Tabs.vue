@@ -1,16 +1,16 @@
 <template>
   <div class="fill-screen">
-    <v-tabs v-if="true" v-model="tab" background-color="transparent" class="fill-screen pl-1 ">
-      <v-tab v-for="(item,index) in items[nodeType].items" :key="index" class="text-subtitle-2">
-        {{ item.text }}
+    <v-tabs v-if="true" v-model="tabValue" background-color="transparent" class="fill-screen pl-1 ">
+      <v-tab v-for="(tab,index) in items[nodeType].tabs" :key="index" class="text-subtitle-2">
+        {{ tab.text }}
       </v-tab>
       <v-spacer></v-spacer>
 
       <!--  动态读取 Pages 组件  -->
-      <v-tabs-items v-model="tab" class="fill-screen ml-n1">
-        <v-tab-item v-for="(item,index) in items[nodeType].items" :key="index" class="fill-screen">
+      <v-tabs-items v-model="tabValue" class="fill-screen ml-n1">
+        <v-tab-item v-for="(tab,index) in items[nodeType].tabs" :key="index" class="fill-screen">
           <keep-alive>
-            <component :is="item.component"></component>
+            <component :is="tab.component"></component>
           </keep-alive>
         </v-tab-item>
       </v-tabs-items>
@@ -40,8 +40,8 @@ export default {
   },
   data() {
     return {
-      tab: 0, // 选项卡选择第几项
-      items: this.$configs.nodeTabs // 选项卡数据
+      tabValue: 0, // 选项卡选择第几项
+      items: this.$configs.nodeTypes // 选项卡数据
     }
   },
   computed: {
@@ -52,7 +52,7 @@ export default {
   watch: {
     // 当切换树节点时，选项卡选择第 1 项
     nodeType() {
-      this.tab = 0
+      this.tabValue = 0
     }
   }
 }

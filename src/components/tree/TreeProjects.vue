@@ -20,17 +20,17 @@
     <template v-slot:prepend="{ item, open }">
       <!--  根据树节点是否展开选择图标  -->
       <v-icon
-        v-if="$configs.nodeTabs[item.type].icon"
+        v-if="$configs.nodeTypes[item.type].icon"
         :color="_getStatus(item).color"
         :title="_getStatus(item).text"
-        :size="$configs.nodeTabs[item.type].icon_size || 14"
+        :size="$configs.nodeTypes[item.type].icon_size || 14"
         style="margin-top: -1px"
         @click.stop="openNode(item)"
       >
         {{
-          ($configs.nodeTabs[item.type].icon_open && open)
-            ? $configs.nodeTabs[item.type].icon_open
-            : $configs.nodeTabs[item.type].icon
+          ($configs.nodeTypes[item.type].icon_open && open)
+            ? $configs.nodeTypes[item.type].icon_open
+            : $configs.nodeTypes[item.type].icon
         }}
       </v-icon>
       <!--  没有图标的显示 [代号]，如阶段节点  -->
@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import items from '@/mocks/projects'
 import getStatus from '@/libs/getStatus'
 
 export default {

@@ -1,7 +1,7 @@
 import theme from './theme'
 import layout from './layout'
 import menu from './menu'
-import nodeTabs from './nodeTabs'
+import nodeTypes from './nodeTypes'
 import btns from './btns'
 import status from './status'
 
@@ -15,7 +15,7 @@ export default {
   theme,
   layout, // 布局方案的参数
   menu,
-  nodeTabs, // 树节点类型对应的 Tabs 和 Components
+  nodeTypes, // 树节点类型对应的 Tabs 和 Components
   btns,
   status // 状态码对应的图标颜色
 }

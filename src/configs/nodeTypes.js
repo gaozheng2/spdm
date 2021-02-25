@@ -4,7 +4,7 @@ export default {
     icon: 'mdi-home-outline',
     icon_open: 'mdi-folder-open',
     icon_size: 16,
-    items: [
+    tabs: [
       {
         text: '驾驶舱',
         component: 'PageDashboard'
@@ -20,7 +20,7 @@ export default {
     icon: 'mdi-home',
     icon_open: 'mdi-home-minus-outline',
     icon_size: 16,
-    items: [
+    tabs: [
       {
         text: '驾驶舱',
         component: 'PageDashboard'
@@ -34,7 +34,7 @@ export default {
   domain: {
     text: '领域',
     icon: 'mdi-satellite-variant',
-    items: [
+    tabs: [
       {
         text: '领域信息',
         component: 'PageDomainInfo'
@@ -45,7 +45,7 @@ export default {
     text: '型号集',
     icon: 'mdi-plus-box-outline',
     icon_open: 'mdi-minus-box-outline',
-    items: [
+    tabs: [
       {
         text: '型号集信息',
         component: 'PageSetInfo'
@@ -55,7 +55,7 @@ export default {
   project: {
     text: '型号',
     icon: 'mdi-android-auto',
-    items: [
+    tabs: [
       {
         text: '型号信息',
         component: 'PageProjectInfo'
@@ -69,7 +69,7 @@ export default {
   stage: {
     text: '阶段',
     icon: '',
-    items: [
+    tabs: [
       {
         text: '阶段信息',
         component: 'PageStageInfo'
@@ -87,7 +87,7 @@ export default {
   projectStage: {
     text: '型号+阶段',
     icon: 'mdi-android-auto',
-    items: [
+    tabs: [
       {
         text: '型号阶段信息',
         component: 'PageProjectStageInfo'
@@ -110,7 +110,7 @@ export default {
     text: '分系统',
     icon: 'mdi-plus-box-outline',
     icon_open: 'mdi-minus-box-outline',
-    items: [
+    tabs: [
       {
         text: '分系统信息',
         component: 'PagePartInfo'
@@ -128,7 +128,7 @@ export default {
   sing: {
     text: '单机',
     icon: 'mdi-radiobox-marked',
-    items: [
+    tabs: [
       {
         text: '单机信息',
         component: 'PageSingInfo'
