@@ -6,7 +6,7 @@
       </v-tab>
 
       <!--  动态读取 Pages 组件  -->
-      <v-tabs-items v-model="tabValue" class="fill-screen" style="margin-top: 1px;">
+      <v-tabs-items v-model="tabValue" class="fill-screen">
         <v-tab-item v-for="(tab,index) in items[nodeType].tabs" :key="index" class="fill-screen">
           <keep-alive>
             <component :is="tab.component"></component>
