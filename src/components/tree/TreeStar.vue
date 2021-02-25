@@ -24,8 +24,8 @@
                 <v-icon
                   size="14"
                   class="mt-1"
-                  :color="getStatus(item2).color"
-                  :title="getStatus(item2).name"
+                  :color="_getStatus(item2).color"
+                  :title="_getStatus(item2).text"
                   v-text="item.icon"
                 />
               </v-list-item-icon>
@@ -40,7 +40,7 @@
               <!--  删除按钮，鼠标悬浮出现  -->
               <v-list-item-icon v-if="hover">
                 <v-hover v-slot="{hover:hover2}">
-                  <div style="margin-top: 5px">
+                  <div style="margin-top: 5px" title="删除收藏项">
                     <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(item2)">
                       mdi-trash-can-outline
                     </v-icon>
@@ -57,6 +57,7 @@
 
 <script>
 import starData from '@/mocks/star'
+import getStatus from '@/libs/getStatus'
 
 export default {
   data: () => ({
@@ -77,14 +78,9 @@ export default {
   },
   methods: {
     // 根据状态码，返回状态对应的图标颜色和文字
-    getStatus(item) {
-      if (item.status) {
-        return this.$configs.status[item.type][item.status]
-      } else {
-        return ''
-      }
+    _getStatus(item) {
+      return getStatus(item)
     },
-
     clickItem(item) {
       this.currentId = item.id // 记录点击的 item
       this.$store.commit('app/setNodeType', item.type) // 设置全局的节点类型，右侧 Tabs 自动切换

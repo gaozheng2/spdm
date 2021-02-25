@@ -17,12 +17,20 @@
   >
     <!--  标签前的图标  -->
     <template v-slot:prepend="{ item, open }">
-      <v-icon v-if="!item.file" size="14">
-        {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
+      <!--  根据树节点是否展开选择图标  -->
+      <v-icon
+        v-if="$configs.nodeTabs[item.type].icon"
+        :color="_getStatus(item).color"
+        :title="_getStatus(item).text"
+        size="14"
+      >
+        {{
+          ($configs.nodeTabs[item.type].icon_open && open)
+            ? $configs.nodeTabs[item.type].icon_open
+            : $configs.nodeTabs[item.type].icon
+        }}
       </v-icon>
-      <v-icon v-else-if="item.file!=='none'" size="14" :class="{'mr-n8' : item.file === 'none'}">
-        {{ $configs.nodeTabs[item.type].icon }}
-      </v-icon>
+      <!--  没有图标的显示 [代号]，如阶段节点  -->
       <span v-else class="ml-n1">[ {{ item.code }} ]</span>
     </template>
 
@@ -37,6 +45,7 @@
 
 <script>
 import items from '@/mocks/projects'
+import getStatus from '@/libs/getStatus'
 
 export default {
   props: {
@@ -78,6 +87,12 @@ export default {
 
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
+    },
+    // 根据状态码，返回状态对应的图标颜色和文字
+    _getStatus(item) {
+      console.log(item)
+
+      return getStatus(item)
     }
   }
 }

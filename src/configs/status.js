@@ -13,6 +13,20 @@ export default {
       color: 'n_red'
     }
   },
+  projectStage: { // 型号+阶段发射状态
+    1: {
+      text: '在研',
+      color: 'n_default'
+    },
+    2: {
+      text: '已发射',
+      color: 'n_blue'
+    },
+    3: {
+      text: '已离轨',
+      color: 'n_red'
+    }
+  },
   sing: { // 单机交付状态
     1: {
       text: '未交付',
