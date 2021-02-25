@@ -1,6 +1,6 @@
 <!--  收藏夹按钮和搜索框组件  -->
 <template>
-  <div class="d-flex align-center px-1" style="min-height: 41px">
+  <div class="d-flex align-center px-1" style="min-height: 41px; height: 41px;">
     <!--  收藏夹按钮  -->
     <v-btn
       icon

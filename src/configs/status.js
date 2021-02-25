@@ -2,7 +2,7 @@ export default {
   project: { // 型号发射状态
     1: {
       text: '在研',
-      color: 'n_default'
+      color: ''
     },
     2: {
       text: '已发射',
@@ -16,7 +16,7 @@ export default {
   projectStage: { // 型号+阶段发射状态
     1: {
       text: '在研',
-      color: 'n_default'
+      color: ''
     },
     2: {
       text: '已发射',

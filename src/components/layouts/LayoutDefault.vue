@@ -73,3 +73,68 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+// 高度填充屏幕
+.fill-screen {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.v-navigation-drawer__content,
+.v-main__wrap,
+.v-window__container {
+  @extend .fill-screen;
+}
+
+// 输入框高度和图标大小
+.v-text-field.v-text-field--solo .v-input__control {
+  min-height: 40px;
+}
+
+.v-text-field input {
+  margin-bottom: -1px;
+}
+
+.v-icon.v-icon {
+  font-size: 20px;
+}
+
+// 列表项目高度
+.v-list-item--dense, .v-list--dense .v-list-item {
+  min-height: 34px;
+}
+
+.v-list-item--dense .v-list-item__icon, .v-list--dense .v-list-item .v-list-item__icon {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// 树项目高度
+.menuTree {
+  .v-treeview-node__root {
+    min-height: 34px;
+  }
+
+  .v-treeview-node__toggle {
+    width: 16px;
+    height: 16px;
+    margin-right: 0;
+  }
+
+  .v-treeview-node__level {
+    width: 16px;
+  }
+
+  .v-treeview-node__content {
+    margin-left: 6px;
+
+  }
+
+  .v-treeview-node__label {
+    margin-left: -8px;
+  }
+}
+</style>

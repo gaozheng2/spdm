@@ -24,7 +24,6 @@
         :color="_getStatus(item).color"
         :title="_getStatus(item).text"
         :size="$configs.nodeTypes[item.type].icon_size || 14"
-        style="margin-top: -1px"
         @click.stop="openNode(item)"
       >
         {{
@@ -39,9 +38,9 @@
 
     <!--  标签内容  -->
     <template v-slot:label="{ item }">
-      <span :title="item.code">
+      <div :title="item.code" style="margin-top: 2px">
         {{ item.name + (item.type === 'projectStage' ? ' [ ' + item.stage + ' ]' : '') }}
-      </span>
+      </div>
     </template>
   </v-treeview>
 </template>
