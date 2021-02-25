@@ -7,12 +7,13 @@
     transition
     activatable
     color="primary"
-    class="scroller menuTree flex-grow-1"
+    class="scroller menuTree flex-grow-1 ml-n2"
     style="font-size: 14px; cursor: pointer;"
     item-key="id"
     :active.sync="tree"
     :open.sync="open"
     :items="treeData"
+    expand-icon=""
     @update:active="selectItem()"
   >
     <!--  标签前的图标  -->
@@ -23,6 +24,7 @@
         :color="_getStatus(item).color"
         :title="_getStatus(item).text"
         :size="$configs.nodeTabs[item.type].icon_size || 14"
+        style="margin-top: -1px"
       >
         {{
           ($configs.nodeTabs[item.type].icon_open && open)
@@ -67,9 +69,14 @@ export default {
     selectItem() {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
+      const index = this.open.indexOf(item)
 
-      // 点击则展开节点
-      this.open.push(item)
+      // 点击展开/折叠节点
+      if (index > -1) {
+        if (this.lastNode === item) this.open.splice(index, 1)
+      } else {
+        this.open.push(item)
+      }
 
       // 如果没有激活节点，则激活上一节点
       if (!item) {

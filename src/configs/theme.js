@@ -8,7 +8,10 @@ const notion_color = {
   n_blue: '#0b6d98',
   n_purple: '#673fa2',
   n_pink: '#ad1a72',
-  n_red: '#e03e3e'
+  n_red: '#e03e3e',
+  s_blue: '#2196F3', // 原 SPDM 图标颜色
+  s_green: '#32B16C',
+  s_purple: '#AE7CDB'
 }
 
 export default {

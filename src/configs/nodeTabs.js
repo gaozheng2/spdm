@@ -43,8 +43,8 @@ export default {
   },
   set: {
     text: '型号集',
-    icon: 'mdi-folder',
-    icon_open: 'mdi-folder-open',
+    icon: 'mdi-plus-box-outline',
+    icon_open: 'mdi-minus-box-outline',
     items: [
       {
         text: '型号集信息',
@@ -108,8 +108,8 @@ export default {
   },
   part: {
     text: '分系统',
-    icon: 'mdi-folder-outline',
-    icon_open: 'mdi-folder-open-outline',
+    icon: 'mdi-plus-box-outline',
+    icon_open: 'mdi-minus-box-outline',
     items: [
       {
         text: '分系统信息',

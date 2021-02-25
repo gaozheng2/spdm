@@ -31,7 +31,7 @@
               </v-list-item-icon>
 
               <!--  列表文字  -->
-              <v-list-item-content>
+              <v-list-item-content class="ml-n1">
                 <v-list-item-title :title="child.code" class="text-body-2">
                   {{ child.name + `（${child.code}）` }}
                 </v-list-item-title>

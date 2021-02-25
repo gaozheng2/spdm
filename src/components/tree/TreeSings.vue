@@ -13,7 +13,7 @@
     </div>
     <v-divider/>
     <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
-      <TreeProjects :tree-data="singsData"/>
+      <TreeProjects :tree-data="singsData" type="sings"/>
     </div>
   </div>
 </template>

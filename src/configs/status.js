@@ -34,11 +34,11 @@ export default {
     },
     2: {
       text: '验收中',
-      color: 'n_blue'
+      color: 's_blue'
     },
     3: {
       text: '验收通过',
-      color: 'green lighten-1'
+      color: 's_green'
     },
     4: {
       text: '拒收',
