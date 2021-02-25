@@ -25,6 +25,7 @@
         :title="_getStatus(item).text"
         :size="$configs.nodeTabs[item.type].icon_size || 14"
         style="margin-top: -1px"
+        @click.stop="openNode(item)"
       >
         {{
           ($configs.nodeTabs[item.type].icon_open && open)
@@ -87,6 +88,17 @@ export default {
 
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
+    },
+
+    // 展开/折叠节点
+    openNode(item) {
+      const index = this.open.indexOf(item)
+
+      if (index > -1) {
+        this.open.splice(index, 1)
+      } else {
+        this.open.push(item)
+      }
     },
 
     // 根据状态码，返回状态对应的图标颜色和文字
