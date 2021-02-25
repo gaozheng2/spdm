@@ -66,6 +66,12 @@ export default {
     open: [], // 展开的节点
     lastNode: null // 上次激活的节点
   }),
+  mounted() {
+    // 默认选中第一条 root 记录
+    if (this.treeData[0].type === 'root') {
+      this.tree.push(this.treeData[0])
+    }
+  },
   methods: {
     selectItem() {
       // eslint-disable-next-line prefer-destructuring

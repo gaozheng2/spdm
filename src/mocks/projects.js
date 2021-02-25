@@ -1,6 +1,6 @@
 export default [
   {
-    id: '1',
+    id: '0',
     name: '五院',
     type: 'root'
   },
