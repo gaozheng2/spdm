@@ -4,7 +4,7 @@ export default [
     type: 'project',
     eName: 'Satellites',
     icon: 'mdi-android-auto',
-    items: [
+    children: [
       {
         id: '1',
         name: '飞天一号',
@@ -75,7 +75,7 @@ export default [
     type: 'sing',
     eName: 'Products',
     icon: 'mdi-radiobox-marked',
-    items: [
+    children: [
       {
         id: '10',
         name: '频率放大器', // 节点名称

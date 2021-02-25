@@ -21,7 +21,7 @@
       <TreeStar v-if="isStar"/>
 
       <!-- 型号树 -->
-      <TreeProjects v-show="!isStar"/>
+      <TreeProjects v-show="!isStar" :tree-data="projectsData"/>
 
       <!-- 产品树 -->
       <TreeSings v-show="!isStar"/>
@@ -36,6 +36,7 @@ import TreeStar from '@/components/tree/TreeStar'
 import TreeSearch from '@/components/tree/TreeSearch'
 import TreeProjects from '@/components/tree/TreeProjects'
 import TreeSings from '@/components/tree/TreeSings'
+import projectsData from '@/mocks/projects'
 
 export default {
   components: {
@@ -54,7 +55,8 @@ export default {
   data() {
     return {
       isStar: false, // 是否打开收藏夹
-      searchValue: '' // 搜索内容
+      searchValue: '', // 搜索内容
+      projectsData
     }
   },
   computed: {

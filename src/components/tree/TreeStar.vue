@@ -16,24 +16,24 @@
         </div>
 
         <!--  收藏夹内容列表  -->
-        <template v-for="(item2, i) in item.items">
+        <template v-for="(child, i) in item.children">
           <v-hover v-slot="{hover}" :key="i">
-            <v-list-item @click="clickItem(item2)">
+            <v-list-item @click="clickItem(child)">
               <!--  列表图标  -->
               <v-list-item-icon>
                 <v-icon
                   size="14"
                   class="mt-1"
-                  :color="_getStatus(item2).color"
-                  :title="_getStatus(item2).text"
+                  :color="_getStatus(child).color"
+                  :title="_getStatus(child).text"
                   v-text="item.icon"
                 />
               </v-list-item-icon>
 
               <!--  列表文字  -->
               <v-list-item-content>
-                <v-list-item-title :title="item2.code" class="text-body-2">
-                  {{ item2.name + `（${item2.code}）` }}
+                <v-list-item-title :title="child.code" class="text-body-2">
+                  {{ child.name + `（${child.code}）` }}
                 </v-list-item-title>
               </v-list-item-content>
 
@@ -41,7 +41,7 @@
               <v-list-item-icon v-if="hover">
                 <v-hover v-slot="{hover:hover2}">
                   <div style="margin-top: 5px" title="删除收藏项">
-                    <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(item2)">
+                    <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(child)">
                       mdi-trash-can-outline
                     </v-icon>
                   </div>
@@ -70,7 +70,7 @@ export default {
       let num = 0
 
       this.starData.forEach((item) => {
-        num += item.items.length
+        num += item.children.length
       })
 
       return !num
@@ -90,9 +90,9 @@ export default {
       const data = this.starData
 
       for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data[i].items.length; j++) {
-          if (data[i].items[j].id === item.id.toString()) {
-            data[i].items.splice(j, 1)
+        for (let j = 0; j < data[i].children.length; j++) {
+          if (data[i].children[j].id === item.id.toString()) {
+            data[i].children.splice(j, 1)
           }
         }
       }

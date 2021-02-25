@@ -1,8 +1,9 @@
 export default {
   root: {
     text: '五院',
-    icon: 'mdi-pan',
+    icon: 'mdi-home-outline',
     icon_open: 'mdi-folder-open',
+    icon_size: 16,
     items: [
       {
         text: '驾驶舱',
@@ -16,8 +17,9 @@ export default {
   },
   unit: {
     text: '总体单位',
-    icon: 'mdi-pan',
-    icon_open: 'mdi-folder-open',
+    icon: 'mdi-home',
+    icon_open: 'mdi-home-minus-outline',
+    icon_size: 16,
     items: [
       {
         text: '驾驶舱',
@@ -31,8 +33,7 @@ export default {
   },
   domain: {
     text: '领域',
-    icon: 'mdi-folder',
-    icon_open: 'mdi-folder-open',
+    icon: 'mdi-satellite-variant',
     items: [
       {
         text: '领域信息',
@@ -107,8 +108,8 @@ export default {
   },
   part: {
     text: '分系统',
-    icon: 'mdi-folder',
-    icon_open: 'mdi-folder-open',
+    icon: 'mdi-folder-outline',
+    icon_open: 'mdi-folder-open-outline',
     items: [
       {
         text: '分系统信息',

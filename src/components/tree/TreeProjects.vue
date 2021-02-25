@@ -12,7 +12,7 @@
     item-key="id"
     :active.sync="tree"
     :open.sync="open"
-    :items="items"
+    :items="treeData"
     @update:active="selectItem()"
   >
     <!--  标签前的图标  -->
@@ -22,7 +22,7 @@
         v-if="$configs.nodeTabs[item.type].icon"
         :color="_getStatus(item).color"
         :title="_getStatus(item).text"
-        size="14"
+        :size="$configs.nodeTabs[item.type].icon_size || 14"
       >
         {{
           ($configs.nodeTabs[item.type].icon_open && open)
@@ -52,23 +52,16 @@ export default {
     fixHeight: { // 树的固定高度
       type: String,
       default: null
+    },
+    treeData: {
+      type: Array,
+      default: () => []
     }
   },
   data: () => ({
     tree: [], // 激活的节点
     open: [], // 展开的节点
-    lastNode: null, // 上次激活的节点
-    files: {
-      html: 'mdi-language-html5',
-      js: 'mdi-nodejs',
-      json: 'mdi-code-json',
-      md: 'mdi-language-markdown',
-      pdf: 'mdi-file-pdf',
-      png: 'mdi-file-image',
-      txt: 'mdi-file-document-outline',
-      xls: 'mdi-file-excel'
-    },
-    items
+    lastNode: null // 上次激活的节点
   }),
   methods: {
     selectItem() {
@@ -88,10 +81,9 @@ export default {
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
     },
+
     // 根据状态码，返回状态对应的图标颜色和文字
     _getStatus(item) {
-      console.log(item)
-
       return getStatus(item)
     }
   }
