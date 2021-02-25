@@ -21,9 +21,8 @@
 <script>
 export default {
   components: {
-    // PageDashboard: () => import('@/pages/dashboard/PageDashboard'),
-    PageDashboard: () => import('@/pages/PageDefault'),
-    PageRootConfig: () => import('@/pages/root/PageRootConfig'),
+    PageDashboard: () => import('@/pages/dashboard/PageDashboard'),
+    PageRootConfig: () => import('@/pages/PageDefault'),
     PageUnitConfig: () => import('@/pages/unit/PageUnitConfig'),
     PageDomainInfo: () => import('@/pages/domain/PageDomainInfo'),
     PageSetInfo: () => import('@/pages/set/PageSetInfo'),

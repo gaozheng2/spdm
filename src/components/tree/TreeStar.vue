@@ -3,7 +3,7 @@
     <v-list-item-group v-model="selectedItem" color="primary" :mandatory="selectedItem!==-1">
       <div v-for="(item, index) in starData" :key="index">
         <!--  分类标题（型号、产品）  -->
-        <v-divider v-if="index!==0" class="mb-1"/>
+        <v-divider v-if="index!==0" class="my-1"/>
         <div class="pa-1 text-body-2 align-end">
           {{ item.name }}
           <span class="text-caption grey--text" style="margin-left: 4px">{{ item.eName }}</span>
@@ -12,12 +12,12 @@
         <!--  收藏夹内容列表  -->
         <template v-for="(item2, i) in item.items">
           <v-hover v-slot="{hover}" :key="i">
-            <v-list-item class="my-0" @click="clickItem(item2)">
+            <v-list-item @click="clickItem(item2)">
               <!--  列表图标  -->
               <v-list-item-icon>
                 <v-icon
                   size="14"
-                  style="margin-top: -1px"
+                  class="mt-1"
                   :color="getStatus(item2).color"
                   :title="getStatus(item2).name"
                   v-text="item.icon"
@@ -34,7 +34,7 @@
               <!--  删除按钮，鼠标悬浮出现  -->
               <v-list-item-icon v-if="hover">
                 <v-hover v-slot="{hover:hover2}">
-                  <div>
+                  <div style="margin-top: 5px">
                     <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(item2)">
                       mdi-trash-can-outline
                     </v-icon>

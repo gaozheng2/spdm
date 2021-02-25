@@ -6,9 +6,8 @@
     transition
     activatable
     color="primary"
-    class="scroller menuTree"
+    class="scroller flex-grow-1 menuTree "
     style="font-size: 14px;cursor: pointer;"
-    :class="{'flex-grow-1' : fixHeight}"
     :style="`min-height: ${fixHeight}`"
     item-key="name"
     :active.sync="tree"
