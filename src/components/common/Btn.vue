@@ -9,11 +9,11 @@
       :title="typeData.iconBtn && typeData.title"
       @click="$emit('click')"
     >
-      <v-icon size="18" :class="{textBtn:!typeData.iconBtn}">
+      <v-icon size="20" :style="typeData.iconBtn ? '' : 'margin-right: 3px;'">
         {{ typeData.icon }}
       </v-icon>
-      <span class="text-h2">
-        <slot>{{ typeData.iconBtn ? '' : typeData.title }}</slot>
+      <span v-if="!typeData.iconBtn" class="text-h2">
+        <slot>{{ typeData.title }}</slot>
       </span>
     </v-btn>
   </v-hover>
@@ -34,9 +34,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.textBtn {
-  margin-right: 3px;
-}
-</style>
