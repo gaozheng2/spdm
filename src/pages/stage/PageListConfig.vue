@@ -4,15 +4,17 @@
     icon="mdi-account-circle"
     no-folder
   >
-    <div>ddd</div>
+    <PanelConstruction/>
   </Panel>
 </template>
 
 <script>
 import Panel from '@/components/common/Panel'
+import PanelConstruction from '@/components/Panels/PanelConstruction'
 
 export default {
   components: {
+    PanelConstruction,
     Panel
   }
 }

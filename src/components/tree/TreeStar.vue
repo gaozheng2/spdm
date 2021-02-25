@@ -1,6 +1,11 @@
 <template>
   <v-list nav dense class="scroller flex-grow-1">
-    <v-list-item-group v-model="selectedItem" color="primary" :mandatory="selectedItem!==-1">
+    <!--  收藏夹无内容的图片  -->
+    <div v-if="isEmpty" class="mt-4 d-flex flex-column align-center justify-center grey--text">
+      <v-img :src="require(`@/assets/images/star${$vuetify.theme.dark?'2':''}.png`)" max-height="100" contain/>
+      <div class="mt-4 text-body-1">收藏夹暂无内容</div>
+    </div>
+    <v-list-item-group v-if="!isEmpty" v-model="selectedItem" color="primary" :mandatory="selectedItem!==-1">
       <div v-for="(item, index) in starData" :key="index">
         <!--  分类标题（型号、产品）  -->
         <v-divider v-if="index!==0" class="my-1"/>
@@ -58,6 +63,17 @@ export default {
     selectedItem: -1,
     currentId: -1 // 当前选中的列表项的 id
   }),
+  computed: {
+    isEmpty() { // 收藏夹内容是否为空
+      let num = 0
+
+      this.starData.forEach((item) => {
+        num += item.items.length
+      })
+
+      return !num
+    }
+  },
   methods: {
     // 根据状态码，返回状态对应的图标颜色和文字
     getStatus(item) {

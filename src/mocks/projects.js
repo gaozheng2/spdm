@@ -1,10 +1,11 @@
 export default [
   {
-    name: '.git',
-    type: 'projectStage'
+    name: '五院',
+    type: 'root'
   },
   {
-    name: 'node_modules'
+    name: 'node_modules',
+    type: 'projectStage'
   },
   {
     name: '总体单位',
