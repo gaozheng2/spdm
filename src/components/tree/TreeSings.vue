@@ -33,9 +33,8 @@ export default {
   computed: {
     showSingTree() { // 是否显示产品树
       const type = this.$store.state.app.nodeType
-      const typeArr = ['stage', 'projectStage', 'part', 'sing']
 
-      return typeArr.indexOf(type) > -1
+      return this.$configs.nodeTypes[type].showSing
     }
   }
 }

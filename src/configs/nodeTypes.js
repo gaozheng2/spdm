@@ -55,6 +55,7 @@ export default {
   project: {
     text: '型号',
     icon: 'mdi-android-auto',
+    hasStar: true, // 是否能够收藏
     tabs: [
       {
         text: '型号信息',
@@ -69,6 +70,7 @@ export default {
   stage: {
     text: '阶段',
     icon: '',
+    showSing: true, // 点击是否显示产品树
     tabs: [
       {
         text: '阶段信息',
@@ -87,6 +89,8 @@ export default {
   projectStage: {
     text: '型号+阶段',
     icon: 'mdi-android-auto',
+    hasStar: true, // 是否能够收藏
+    showSing: true, // 点击是否显示产品树
     tabs: [
       {
         text: '型号阶段信息',
@@ -110,6 +114,7 @@ export default {
     text: '分系统',
     icon: 'mdi-plus-box-outline',
     icon_open: 'mdi-minus-box-outline',
+    showSing: true, // 点击是否显示产品树
     tabs: [
       {
         text: '分系统信息',
@@ -128,6 +133,8 @@ export default {
   sing: {
     text: '单机',
     icon: 'mdi-radiobox-marked',
+    hasStar: true, // 是否能够收藏
+    showSing: true, // 点击是否显示产品树
     tabs: [
       {
         text: '单机信息',
