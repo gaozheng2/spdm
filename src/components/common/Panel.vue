@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pa-1 mb-2"
+    class="pa-1 mb-2 panel"
     :class="{'fill-screen' : !isFold && fixHeight==='' }"
     :outlined="!layout.panelElevation"
     :height="fixHeight ? fixHeight : ''"

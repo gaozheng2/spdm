@@ -139,4 +139,13 @@ export default {
     margin-left: -8px;
   }
 }
+
+// Tabs 标题左边距
+.v-slide-group__wrapper {
+  padding-left: 8px;
+}
+
+.panel .v-slide-group__wrapper {
+  padding-left: 0;
+}
 </style>
