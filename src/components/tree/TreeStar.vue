@@ -1,3 +1,4 @@
+<!--  收藏夹组件  -->
 <template>
   <v-list nav dense class="scroller flex-grow-1">
     <!--  收藏夹无内容的图片  -->

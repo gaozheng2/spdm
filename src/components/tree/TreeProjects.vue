@@ -1,3 +1,4 @@
+<!--  型号树组件  -->
 <template>
   <v-treeview
     dense
@@ -7,7 +8,7 @@
     activatable
     color="primary"
     class="scroller flex-grow-1 menuTree "
-    style="font-size: 14px;cursor: pointer;"
+    style="font-size: 14px; cursor: pointer;"
     :style="`min-height: ${fixHeight}`"
     item-key="name"
     :active.sync="tree"
@@ -26,10 +27,10 @@
       <span v-else class="ml-n1">[ {{ item.code }} ]</span>
     </template>
 
-    <!--    标签内容-->
+    <!--  标签内容  -->
     <template v-slot:label="{ item }">
       <span :title="item.code">
-        {{ item.name }}
+        {{ item.name + (item.type === 'projectStage' ? ' [ ' + item.stage + ' ]' : '') }}
       </span>
     </template>
   </v-treeview>
@@ -46,8 +47,9 @@ export default {
     }
   },
   data: () => ({
-    tree: [],
-    open: ['public'],
+    tree: [], // 激活的节点
+    open: [], // 展开的节点
+    lastNode: null, // 上次激活的节点
     files: {
       html: 'mdi-language-html5',
       js: 'mdi-nodejs',
@@ -64,10 +66,16 @@ export default {
     selectItem() {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
-      const index = this.open.indexOf(item)
 
-      // 点击元素则展开
+      // 点击则展开节点
       this.open.push(item)
+
+      // 如果没有激活节点，则激活上一节点
+      if (!item) {
+        this.tree.push(this.lastNode)
+      } else {
+        this.lastNode = item
+      }
 
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)

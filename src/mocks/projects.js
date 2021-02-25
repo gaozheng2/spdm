@@ -4,8 +4,10 @@ export default [
     type: 'root'
   },
   {
-    name: 'node_modules',
-    type: 'projectStage'
+    name: '星云一号',
+    type: 'projectStage',
+    code: 'XY-1',
+    stage: 'C'
   },
   {
     name: '总体单位',
