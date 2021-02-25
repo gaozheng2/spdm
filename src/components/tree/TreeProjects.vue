@@ -7,9 +7,8 @@
     transition
     activatable
     color="primary"
-    class="scroller flex-grow-1 menuTree "
+    class="scroller menuTree flex-grow-1"
     style="font-size: 14px; cursor: pointer;"
-    :style="`min-height: ${fixHeight}`"
     item-key="name"
     :active.sync="tree"
     :open.sync="open"
@@ -22,7 +21,7 @@
         {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
       </v-icon>
       <v-icon v-else-if="item.file!=='none'" size="14" :class="{'mr-n8' : item.file === 'none'}">
-        {{ files[item.file] }}
+        {{ $configs.nodeTabs[item.type].icon }}
       </v-icon>
       <span v-else class="ml-n1">[ {{ item.code }} ]</span>
     </template>

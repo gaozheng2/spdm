@@ -26,11 +26,11 @@
       <!-- 产品树 -->
       <template v-if="showSingTree && !isStar">
         <v-divider/>
-        <div style="min-height: 30px" class="text-h2 ml-1 d-flex align-center">产品列表</div>
+        <div style="min-height: 34px" class="text-h2 ml-1 d-flex align-center">产品列表</div>
         <v-divider/>
-        <!--        <div v-if="showSingTree" style="min-height: 50vh;border: 1px solid red"></div>-->
-
-        <TreeProjects fix-height="50vh"/>
+        <div style="height: 50vh;min-height: 50vh;" class="scroller">
+          <TreeProjects/>
+        </div>
       </template>
 
     </v-navigation-drawer>

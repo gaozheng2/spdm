@@ -2,6 +2,7 @@ export default {
   root: {
     text: '五院',
     icon: 'mdi-pan',
+    icon_open: 'mdi-folder-open',
     items: [
       {
         text: '驾驶舱',
@@ -16,6 +17,7 @@ export default {
   unit: {
     text: '总体单位',
     icon: 'mdi-pan',
+    icon_open: 'mdi-folder-open',
     items: [
       {
         text: '驾驶舱',
@@ -29,7 +31,8 @@ export default {
   },
   domain: {
     text: '领域',
-    icon: 'mdi-pan',
+    icon: 'mdi-folder',
+    icon_open: 'mdi-folder-open',
     items: [
       {
         text: '领域信息',
@@ -39,7 +42,8 @@ export default {
   },
   set: {
     text: '型号集',
-    icon: 'mdi-pan',
+    icon: 'mdi-folder',
+    icon_open: 'mdi-folder-open',
     items: [
       {
         text: '型号集信息',
@@ -103,7 +107,8 @@ export default {
   },
   part: {
     text: '分系统',
-    icon: 'mdi-pan',
+    icon: 'mdi-folder',
+    icon_open: 'mdi-folder-open',
     items: [
       {
         text: '分系统信息',

@@ -83,6 +83,7 @@ export default [
   },
   {
     name: 'yarn.lock',
-    file: 'txt'
+    file: 'txt',
+    type: 'sing'
   }
 ]
