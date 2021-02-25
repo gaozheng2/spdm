@@ -12,9 +12,14 @@
       </v-btn>
     </div>
     <v-divider/>
-    <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
-      <TreeProjects :tree-data="singsData" type="sings"/>
-    </div>
+    <transition
+      enter-active-class="animate__animated animate__tada"
+      leave-active-class="animate__animated animate__bounceOutRight"
+    >
+      <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
+        <TreeProjects :tree-data="singsData" type="sings"/>
+      </div>
+    </transition>
   </div>
 </template>
 

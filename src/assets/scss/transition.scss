@@ -1,0 +1,38 @@
+// 左滑
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: left 0.3s;
+}
+
+.slide-left-enter, .slide-left-leave-to {
+  left: -300px;
+}
+
+// 上滑
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: all 0.3s;
+}
+
+.slide-up-enter, .slide-up-leave-to {
+  //top: -100px;
+  transform: translateX(100px);
+  //opacity: 0;
+}
+
+// 下滑
+.slide-down-enter-active, .slide-down-leave-active {
+  transition: all 2s;
+}
+
+.slide-down-enter, .slide-down-leave-to {
+  //bottom: -500px;
+  transform: translateY(500px);
+}
+
+// 渐隐
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

@@ -1,5 +1,8 @@
 <template>
-  <transition name="fade" mode="out-in">
+  <transition
+    enter-active-class="animate__animated animate__tada"
+    leave-active-class="animate__animated animate__bounceOutRight"
+  >
     <v-navigation-drawer
       v-if="drawer && !$store.state.app.fullScreen"
       app
@@ -8,6 +11,7 @@
       class="menuTree"
       :class="{'elevation-1' : layout.treeElevation}"
       :clipped="layout.treeClip"
+      style="overflow-y:hidden;"
     >
       <!-- 系统 Logo -->
       <TreeLogo v-if="!layout.treeClip"/>
@@ -66,13 +70,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: all 0.3s;
-}
-
-.fade-enter, .fade-leave-to {
-  left: -300px;
-}
-</style>

@@ -1,5 +1,8 @@
 <template>
-  <transition name="fade">
+  <transition
+    enter-active-class="animate__animated animate__tada"
+    leave-active-class="animate__animated animate__bounceOutRight"
+  >
     <v-app-bar
       v-if="!$store.state.app.fullScreen"
       app
@@ -127,14 +130,6 @@ export default {
 </script>
 
 <style lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 2s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
 .app-bar-full {
   .v-toolbar__content,
   .v-toolbar__extension {

@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import configs from './configs'
 import './assets/scss/theme.scss'
+import 'animate.css'
 
 Vue.config.productionTip = false
 
