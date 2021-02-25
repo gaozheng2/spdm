@@ -5,7 +5,7 @@
       app
       mobile-breakpoint="800"
       width="260"
-      class="panel"
+      class="menuTree"
       :class="{'elevation-1' : layout.treeElevation}"
       :clipped="layout.treeClip"
     >

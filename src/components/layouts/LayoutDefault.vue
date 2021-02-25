@@ -7,7 +7,7 @@
     <ToolbarDot v-if="fullScreen" fab/>
 
     <!-- 左侧导航树 -->
-    <MenuTree :drawer="drawer"/>
+    <Tree :drawer="drawer"/>
 
     <!-- 页面主体 选项卡 -->
     <v-main>
@@ -21,14 +21,14 @@
 <script>
 import Toolbar from '@/components/toolbar/Toolbar'
 import ToolbarDot from '@/components/toolbar/ToolbarDot'
-import MenuTree from '@/components/tree/Tree'
+import Tree from '@/components/tree/Tree'
 import Tabs from '@/components/common/Tabs'
 
 export default {
   components: {
     Toolbar,
     ToolbarDot,
-    MenuTree,
+    Tree,
     Tabs
   },
   data() {
@@ -103,13 +103,15 @@ export default {
 }
 
 // 列表项目高度
-.v-list-item--dense, .v-list--dense .v-list-item {
-  min-height: 34px;
-}
+.menuTree {
+  .v-list-item--dense, .v-list--dense .v-list-item {
+    min-height: 34px !important;
+  }
 
-.v-list-item--dense .v-list-item__icon, .v-list--dense .v-list-item .v-list-item__icon {
-  margin-top: 0;
-  margin-bottom: 0;
+  .v-list-item--dense .v-list-item__icon, .v-list--dense .v-list-item .v-list-item__icon {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 // 树项目高度

@@ -7,7 +7,7 @@
     transition
     activatable
     color="primary"
-    class="scroller menuTree flex-grow-1 ml-n2"
+    class="scroller flex-grow-1 ml-n2"
     style="font-size: 14px; cursor: pointer;"
     item-key="id"
     :active.sync="tree"
