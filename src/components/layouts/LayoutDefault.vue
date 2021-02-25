@@ -109,7 +109,7 @@ export default {
   }
 
   .v-list-item--dense .v-list-item__icon, .v-list--dense .v-list-item .v-list-item__icon {
-    margin-top: 0;
+    margin-top: 5px;
     margin-bottom: 0;
   }
 }

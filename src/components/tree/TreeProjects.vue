@@ -37,7 +37,7 @@
       <span v-else class="ml-n1">[ {{ item.code }} ]</span>
     </template>
 
-    <!--  标签内容  -->
+    <!--  标签内容，如果是型号+阶段节点，则添加[阶段]  -->
     <template v-slot:label="{ item }">
       <div :title="item.code" style="margin-top: 2px">
         {{ item.name + (item.type === 'projectStage' ? ' [ ' + item.stage + ' ]' : '') }}

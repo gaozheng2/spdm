@@ -16,7 +16,8 @@ export default [
         id: '2',
         name: '天宫二号',
         code: 'TG-2',
-        type: 'project',
+        type: 'projectStage',
+        stage: 'C',
         status: '1'
       },
       {
@@ -30,7 +31,8 @@ export default [
         id: '4',
         name: '天宫二号',
         code: 'TG-2',
-        type: 'project',
+        type: 'projectStage',
+        stage: 'Z',
         status: '2'
       },
       {

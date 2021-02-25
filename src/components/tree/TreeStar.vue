@@ -1,6 +1,6 @@
 <!--  收藏夹组件  -->
 <template>
-  <v-list nav dense class="scroller flex-grow-1">
+  <v-list dense class="scroller flex-grow-1">
     <!--  收藏夹无内容的图片  -->
     <div v-if="isEmpty" class="mt-4 d-flex flex-column align-center justify-center grey--text">
       <v-img :src="require(`@/assets/images/star${$vuetify.theme.dark?'2':''}.png`)" max-height="100" contain/>
@@ -10,7 +10,7 @@
       <div v-for="(item, index) in starData" :key="index">
         <!--  分类标题（型号、产品）  -->
         <v-divider v-if="index!==0" class="my-1"/>
-        <div class="pa-1 text-body-2 align-end">
+        <div class="ml-1 pa-1 text-body-2 align-end">
           {{ item.name }}
           <span class="text-caption grey--text" style="margin-left: 4px">{{ item.eName }}</span>
         </div>
@@ -23,25 +23,26 @@
               <v-list-item-icon>
                 <v-icon
                   size="14"
-                  class="mt-1"
                   :color="_getStatus(child).color"
                   :title="_getStatus(child).text"
                   v-text="item.icon"
                 />
               </v-list-item-icon>
 
-              <!--  列表文字  -->
-              <v-list-item-content class="ml-n1">
+              <!--  列表文字：型号名称+（代号）+[阶段]  -->
+              <v-list-item-content class="ml-n1" style="margin-top: 1px;">
                 <v-list-item-title :title="child.code" class="text-body-2">
-                  {{ child.name + `（${child.code}）` }}
+                  {{
+                    child.name + `（${child.code}）` + (child.type === 'projectStage' ? ' [ ' + child.stage + ' ]' : '')
+                  }}
                 </v-list-item-title>
               </v-list-item-content>
 
               <!--  删除按钮，鼠标悬浮出现  -->
               <v-list-item-icon v-if="hover">
                 <v-hover v-slot="{hover:hover2}">
-                  <div style="margin-top: 5px" title="删除收藏项">
-                    <v-icon size="16" :color="hover2 ? 'n_red' : ''" @click.stop="delItem(child)">
+                  <div style="margin-top: -1px;" title="取消收藏">
+                    <v-icon small :color="hover2 ? 'n_red' : ''" @click.stop="delItem(child)">
                       mdi-trash-can-outline
                     </v-icon>
                   </div>
