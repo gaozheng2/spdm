@@ -20,6 +20,7 @@ export default {
     icon: 'mdi-home',
     icon_open: 'mdi-home-minus-outline',
     icon_size: 16,
+    singleFold: true, // 是否展开本节点时关闭其他节点
     tabs: [
       {
         text: '驾驶舱',
@@ -115,6 +116,7 @@ export default {
     icon: 'mdi-plus-box-outline',
     icon_open: 'mdi-minus-box-outline',
     showSing: true, // 点击是否显示产品树
+    singleFold: true, // 是否展开本节点时关闭其他节点
     tabs: [
       {
         text: '分系统信息',

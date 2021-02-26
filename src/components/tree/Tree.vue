@@ -1,7 +1,7 @@
 <template>
   <transition
-    enter-active-class="animate__animated animate__tada"
-    leave-active-class="animate__animated animate__bounceOutRight"
+    enter-active-class="animate__animated animate__fadeInLeft"
+    leave-active-class="animate__animated animate__fadeOutLeft"
   >
     <v-navigation-drawer
       v-if="drawer && !$store.state.app.fullScreen"
