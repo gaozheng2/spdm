@@ -4,8 +4,8 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import configs from './configs'
-import './assets/scss/theme.scss'
-import 'animate.css'
+import './assets/scss/theme.scss' // 全局 css
+import 'animate.css' // 动画效果
 
 document.documentElement.style.setProperty('--animate-duration', '.3s') // 设置动画时间
 

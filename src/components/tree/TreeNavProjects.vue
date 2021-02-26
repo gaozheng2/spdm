@@ -92,6 +92,8 @@ export default {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
 
+      console.log(this.tree)
+
       // 如果没有激活节点，则激活上一节点
       if (!item) {
         this.tree.push(this.lastNode)
