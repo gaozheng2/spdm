@@ -23,21 +23,21 @@
 
       <!-- 收藏夹 -->
       <transition
-        enter-active-class=" animate__animated animate__fadeInRight"
+        enter-active-class="animate__animated animate__fadeInRight"
         leave-active-class="animate__animated animate__fadeOutRight"
       >
         <TreeStar v-if="isStar"/>
-        <!--      </transition>-->
+      </transition>
 
-        <!-- 型号树和产品树 -->
-        <!--      <transition-->
-        <!--        enter-active-class=" animate__animated animate__slideInLeft"-->
-        <!--        leave-active-class="animate__animated animate__slideOutLeft"-->
-        <!--      >-->
-        <div v-show="!isStar" class="full-screen">
-          <TreeProjects :tree-data="projectsData"/>
-          <TreeSings/>
-        </div>
+      <!-- 型号树 -->
+      <TreeProjects v-show="!isStar" :tree-data="projectsData"/>
+
+      <!-- 产品树 -->
+      <transition
+        enter-active-class=" animate__animated animate__slideInLeft"
+        leave-active-class="animate__animated animate__slideOutLeft"
+      >
+        <TreeSings v-show="!isStar"/>
       </transition>
     </v-navigation-drawer>
   </transition>

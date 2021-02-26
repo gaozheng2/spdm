@@ -62,3 +62,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.animate__animated.animate__fadeIn,
+.animate__animated.animate__fadeOut {
+  --animate-duration: 0.2s;
+}
+</style>

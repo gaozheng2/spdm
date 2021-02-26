@@ -92,25 +92,21 @@ export default {
       if (!item) {
         this.tree.push(this.lastNode)
       } else {
+        this.openNode(item, this.lastNode !== item) // 点击展开/折叠节点，如果不是当前激活节点则只展开
         this.lastNode = item
-        this.openNode(item, true) // 点击展开/折叠节点
       }
 
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
     },
 
-    // 展开/折叠节点，如果点击图标则直接折叠展开，如果点击内容则判断是否已激活再折叠展开
-    openNode(item, lastMode) { // lastMode: 是否判断本节点为已激活状态
+    // 展开/折叠节点，如果点击图标则直接折叠展开，如果点击内容则只展开不关闭
+    openNode(item, onlyOpen) { // onlyOpen: 是否只展开不关闭
       const index = this.open.indexOf(item)
 
-      if (index > -1) {
-        if (lastMode) {
-          if (this.lastNode === item) this.open.splice(index, 1)
-        } else {
-          this.open.splice(index, 1)
-        }
-      } else {
+      if (index > -1) { // 已展开则关闭
+        if (!onlyOpen) this.open.splice(index, 1)
+      } else { // 已关闭则展开
         if (item && this.$configs.nodeTypes[item.type].singleFold) { // 关闭其他节点，只展开本节点
           this.open = [item]
         } else {
