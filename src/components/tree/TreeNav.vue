@@ -5,29 +5,35 @@
     <TreeProjects :tree-data="projectsData"/>
 
     <!--  产品树标题  -->
-    <div v-if="showSingTree">
-      <v-divider/>
-      <div style="min-height: 34px;" class="text-h2 mx-2 d-flex align-center">
-        产品列表
-        <v-spacer/>
-        <v-btn icon small @click="foldSingTree = !foldSingTree">
-          <v-icon size="18">
-            {{ foldSingTree ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
-          </v-icon>
-        </v-btn>
-      </div>
-      <v-divider/>
-
-      <!--  产品树  -->
-      <transition
-        enter-active-class="animate__animated animate__tada"
-        leave-active-class="animate__animated animate__bounceOutRight"
-      >
-        <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
-          <TreeProjects :tree-data="singsData" type="sings"/>
+    <transition
+      enter-active-class="animate__animated animate__fadeInUp"
+      leave-active-class="animate__animated animate__fadeOutDown"
+    >
+      <div v-if="showSingTree">
+        <v-divider/>
+        <div style="min-height: 34px;" class="text-h2 mx-2 d-flex align-center">
+          产品列表
+          <v-spacer/>
+          <v-btn icon small @click="foldSingTree = !foldSingTree">
+            <v-icon size="18">
+              {{ foldSingTree ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
+            </v-icon>
+          </v-btn>
         </div>
-      </transition>
-    </div>
+        <v-divider/>
+
+        <!--  产品树  -->
+        <transition
+          enter-active-class="animate__animated animate__fadeInUp"
+          leave-active-class="animate__animated animate__slideOutDown"
+        >
+          <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
+            <TreeProjects :tree-data="singsData" type="sings"/>
+          </div>
+        </transition>
+      </div>
+    </transition>
+
   </div>
 </template>
 

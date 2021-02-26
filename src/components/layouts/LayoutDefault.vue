@@ -103,6 +103,7 @@ body {
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
+  overflow-y: hidden;
 }
 
 .v-navigation-drawer__content,
