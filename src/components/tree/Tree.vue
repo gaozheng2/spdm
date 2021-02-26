@@ -3,35 +3,38 @@
     enter-active-class="animate__animated animate__fadeInLeft"
     leave-active-class="animate__animated animate__fadeOutLeft"
   >
-    <v-navigation-drawer
-      v-if="drawer && !$store.state.app.fullScreen"
-      app
-      mobile-breakpoint="800"
-      width="260"
-      class="menuTree"
-      :class="{'elevation-1' : layout.treeElevation}"
-      :clipped="layout.treeClip"
-      style="overflow-y:hidden;"
-    >
-      <!-- 系统 Logo -->
-      <TreeLogo v-if="!layout.treeClip"/>
-      <v-divider v-if="!layout.treeClip"/>
-
-      <!-- 收藏夹按钮和搜索框 -->
-      <TreeSearch :is-star.sync="isStar" :search-value.sync="searchValue"/>
-      <v-divider/>
-
-      <!-- 收藏夹 | 型号树和产品树 -->
-      <transition
-        :enter-active-class="`animate__animated animate__slideIn${isStar ? 'Right' : 'Left'}`"
-        :leave-active-class="`animate__animated animate__slideOut${isStar ? 'Left' : 'Right'}`"
-        mode="out-in"
+    <keep-alive>
+      <v-navigation-drawer
+        v-if="drawer && !$store.state.app.fullScreen"
+        app
+        mobile-breakpoint="800"
+        width="260"
+        class="menuTree"
+        :class="{'elevation-1' : layout.treeElevation}"
+        :clipped="layout.treeClip"
+        style="overflow-y:hidden;"
       >
-        <keep-alive>
-          <component :is="isStar ? 'TreeStar' : 'TreeNav'"></component>
-        </keep-alive>
-      </transition>
-    </v-navigation-drawer>
+        <!-- 系统 Logo -->
+        <TreeLogo v-if="!layout.treeClip"/>
+        <v-divider v-if="!layout.treeClip"/>
+
+        <!-- 收藏夹按钮和搜索框 -->
+        <TreeSearch :is-star.sync="isStar" :search-value.sync="searchValue"/>
+        <v-divider/>
+
+        <!-- 收藏夹 | 型号树和产品树 -->
+        <transition
+          :enter-active-class="`animate__animated animate__slideIn${isStar ? 'Right' : 'Left'}`"
+          :leave-active-class="`animate__animated animate__slideOut${isStar ? 'Left' : 'Right'}`"
+          mode="out-in"
+        >
+          <keep-alive>
+            <component :is="isStar ? 'TreeStar' : 'TreeNav'"></component>
+          </keep-alive>
+        </transition>
+
+      </v-navigation-drawer>
+    </keep-alive>
   </transition>
 </template>
 
