@@ -70,6 +70,10 @@ export default {
     treeData: {
       type: Array,
       default: () => []
+    },
+    foldSingTree: { // 是否折叠产品树
+      type: Boolean,
+      default: true
     }
   },
   data: () => ({
@@ -98,6 +102,9 @@ export default {
 
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
+
+      // 如果是产品树相关节点，则展开产品树
+      if (this.$configs.nodeTypes[item.type].showSing) this.$emit('update:foldSingTree', false)
     },
 
     // 展开/折叠节点，如果点击图标则直接折叠展开，如果点击内容则只展开不关闭

@@ -2,7 +2,7 @@
 <template>
   <div class="fill-screen">
     <!--  型号树  -->
-    <TreeProjects :tree-data="projectsData"/>
+    <TreeProjects :tree-data="projectsData" :fold-sing-tree.sync="foldSingTree"/>
 
     <!--  产品树标题  -->
     <transition
