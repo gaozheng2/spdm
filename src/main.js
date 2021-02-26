@@ -7,6 +7,8 @@ import configs from './configs'
 import './assets/scss/theme.scss'
 import 'animate.css'
 
+document.documentElement.style.setProperty('--animate-duration', '.3s') // 设置动画时间
+
 Vue.config.productionTip = false
 
 Vue.prototype.$configs = configs

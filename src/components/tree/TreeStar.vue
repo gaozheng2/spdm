@@ -1,6 +1,6 @@
 <!--  收藏夹组件  -->
 <template>
-  <v-list dense class="scroller flex-grow-1">
+  <v-list dense class="scroller full-screen">
     <!--  收藏夹无内容的图片  -->
     <div v-if="isEmpty" class="mt-4 d-flex flex-column align-center justify-center grey--text">
       <v-img :src="require(`@/assets/images/star${$vuetify.theme.dark?'2':''}.png`)" max-height="100" contain/>

@@ -9,7 +9,13 @@
       <v-tabs-items v-model="tabValue" class="fill-screen">
         <v-tab-item v-for="(tab,index) in items[nodeType].tabs" :key="index" class="fill-screen">
           <keep-alive>
-            <component :is="tab.component"></component>
+            <transition
+              enter-active-class=" animate__animated animate__fadeIn"
+              leave-active-class="animate__animated animate__fadeOut"
+              mode="out-in"
+            >
+              <component :is="tab.component"></component>
+            </transition>
           </keep-alive>
         </v-tab-item>
       </v-tabs-items>

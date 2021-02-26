@@ -22,14 +22,23 @@
       <v-divider/>
 
       <!-- 收藏夹 -->
-      <TreeStar v-if="isStar"/>
+      <transition
+        enter-active-class=" animate__animated animate__fadeInRight"
+        leave-active-class="animate__animated animate__fadeOutRight"
+      >
+        <TreeStar v-if="isStar"/>
+        <!--      </transition>-->
 
-      <!-- 型号树 -->
-      <TreeProjects v-show="!isStar" :tree-data="projectsData"/>
-
-      <!-- 产品树 -->
-      <TreeSings v-show="!isStar"/>
-
+        <!-- 型号树和产品树 -->
+        <!--      <transition-->
+        <!--        enter-active-class=" animate__animated animate__slideInLeft"-->
+        <!--        leave-active-class="animate__animated animate__slideOutLeft"-->
+        <!--      >-->
+        <div v-show="!isStar" class="full-screen">
+          <TreeProjects :tree-data="projectsData"/>
+          <TreeSings/>
+        </div>
+      </transition>
     </v-navigation-drawer>
   </transition>
 </template>
