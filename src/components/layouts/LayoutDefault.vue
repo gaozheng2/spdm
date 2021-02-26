@@ -75,6 +75,28 @@ export default {
 </script>
 
 <style lang="scss">
+// 滚动条样式
+body {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.scroller {
+  overflow-x: auto;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+  }
+}
+
 // 高度填充屏幕
 .fill-screen {
   display: flex;

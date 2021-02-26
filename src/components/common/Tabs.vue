@@ -8,15 +8,13 @@
       <!--  动态读取 Pages 组件  -->
       <v-tabs-items v-model="tabValue" class="fill-screen">
         <v-tab-item v-for="(tab,index) in items[nodeType].tabs" :key="index" class="fill-screen">
-          <keep-alive>
-            <transition
-              enter-active-class=" animate__animated animate__fadeIn"
-              leave-active-class="animate__animated animate__fadeOut"
-              mode="out-in"
-            >
-              <component :is="tab.component"></component>
-            </transition>
-          </keep-alive>
+          <transition
+            enter-active-class=" animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+          >
+            <component :is="tab.component"></component>
+          </transition>
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>

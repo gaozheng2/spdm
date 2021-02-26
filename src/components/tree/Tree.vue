@@ -21,23 +21,15 @@
       <TreeSearch :is-star.sync="isStar" :search-value.sync="searchValue"/>
       <v-divider/>
 
-      <!-- 收藏夹 -->
+      <!-- 收藏夹 | 型号树和产品树 -->
       <transition
-        enter-active-class="animate__animated animate__fadeInRight"
-        leave-active-class="animate__animated animate__fadeOutRight"
+        :enter-active-class="`animate__animated animate__slideIn${isStar ? 'Right' : 'Left'}`"
+        :leave-active-class="`animate__animated animate__slideOut${isStar ? 'Left' : 'Right'}`"
+        mode="out-in"
       >
-        <TreeStar v-if="isStar"/>
-      </transition>
-
-      <!-- 型号树 -->
-      <TreeProjects v-show="!isStar" :tree-data="projectsData"/>
-
-      <!-- 产品树 -->
-      <transition
-        enter-active-class=" animate__animated animate__slideInLeft"
-        leave-active-class="animate__animated animate__slideOutLeft"
-      >
-        <TreeSings v-show="!isStar"/>
+        <keep-alive>
+          <component :is="isStar ? 'TreeStar' : 'TreeNav'"></component>
+        </keep-alive>
       </transition>
     </v-navigation-drawer>
   </transition>
@@ -45,19 +37,14 @@
 
 <script>
 import TreeLogo from '@/components/tree/TreeLogo'
-import TreeStar from '@/components/tree/TreeStar'
 import TreeSearch from '@/components/tree/TreeSearch'
-import TreeProjects from '@/components/tree/TreeProjects'
-import TreeSings from '@/components/tree/TreeSings'
-import projectsData from '@/mocks/projects'
 
 export default {
   components: {
     TreeLogo,
     TreeSearch,
-    TreeStar,
-    TreeProjects,
-    TreeSings
+    TreeStar: () => import('@/components/tree/TreeStar'),
+    TreeNav: () => import('@/components/tree/TreeNav')
   },
   props: {
     drawer: {
@@ -68,8 +55,7 @@ export default {
   data() {
     return {
       isStar: false, // 是否打开收藏夹
-      searchValue: '', // 搜索内容
-      projectsData
+      searchValue: '' // 搜索内容
     }
   },
   computed: {
@@ -79,3 +65,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.animate__animated.animate__slideInRight,
+.animate__animated.animate__slideInLeft,
+.animate__animated.animate__slideOutRight,
+.animate__animated.animate__slideOutLeft {
+  --animate-duration: 0.1s;
+}
+</style>
