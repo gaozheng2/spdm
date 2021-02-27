@@ -100,12 +100,12 @@ export default {
     }
   },
   watch: {
-    shouldScroll() { // 接收到应该滚动型号树后，滚动型号树到激活节点
-      // 由于 Vuetify 返回的上一个激活节点的 top，所以需要延迟获取
-      setTimeout(() => {
-        document.querySelector('.v-treeview-node--active button').focus()
-      }, 0)
-    },
+    // shouldScroll() { // 接收到应该滚动型号树后，滚动型号树到激活节点
+    //   // 由于 Vuetify 返回的上一个激活节点的 top，所以需要延迟获取
+    //   setTimeout(() => {
+    //     document.querySelector('.v-treeview-node--active button').focus()
+    //   }, 0)
+    // },
     unselectTree() { // 点击型号树节点时，取消选中产品树的节点
       console.log(this.tree)
 
@@ -124,6 +124,9 @@ export default {
         }
       } else {
         // 型号树滚动到激活节点
+        setTimeout(() => {
+          document.querySelector('.v-treeview-node--active button').focus()
+        }, 0)
       }
     }
 
