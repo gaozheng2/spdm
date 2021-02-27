@@ -1,6 +1,7 @@
 <!--  型号树组件  -->
 <template>
   <v-treeview
+    id="tree"
     dense
     hoverable
     return-object
@@ -45,7 +46,9 @@
     </template>
 
     <!--  末尾图标-添加收藏-已收藏或激活时显示  -->
-    <template v-slot:append="{ item, active}">
+    <template v-slot:append="{ item, active }">
+      <!--  用于滚动定位的隐藏 button -->
+      <button style="opacity: 0;position: absolute;">if</button>
       <div
         v-if="(active && $configs.nodeTypes[item.type].hasStar )|| item.isStar"
         :title="(item.isStar ? '取消' : '') + '收藏'"
@@ -55,6 +58,7 @@
         </v-icon>
       </div>
     </template>
+
   </v-treeview>
 </template>
 
@@ -81,6 +85,21 @@ export default {
     open: [], // 展开的节点
     lastNode: null // 上次激活的节点
   }),
+  computed: {
+    shouldScroll() { // 是否应该滚动型号树
+      const type = this.$store.state.app.nodeType
+
+      return this.$configs.nodeTypes[type].showSing && !this.foldSingTree
+    }
+  },
+  watch: {
+    shouldScroll() { // 接收到应该滚动型号树后，滚动型号树到激活节点
+      // 由于 Vuetify 返回的上一个激活节点的 top，所以需要延迟获取
+      setTimeout(() => {
+        document.querySelector('.v-treeview-node--active button').focus()
+      }, 0)
+    }
+  },
   mounted() {
     // 默认选中第一条 root 记录
     if (this.treeData[0].type === 'root') {
@@ -91,8 +110,6 @@ export default {
     selectItem() {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
-
-      console.log(this.tree)
 
       // 如果没有激活节点，则激活上一节点
       if (!item) {
@@ -106,7 +123,7 @@ export default {
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
 
       // 如果是产品树相关节点，则展开产品树
-      if (this.$configs.nodeTypes[item.type].showSing) this.$emit('update:foldSingTree', false)
+      if (item && item.type && this.$configs.nodeTypes[item.type].showSing) this.$emit('update:foldSingTree', false)
     },
 
     // 展开/折叠节点，如果点击图标则直接折叠展开，如果点击内容则只展开不关闭
@@ -116,7 +133,7 @@ export default {
       if (index > -1) { // 已展开则关闭
         if (!onlyOpen) this.open.splice(index, 1)
       } else { // 已关闭则展开
-        if (item && this.$configs.nodeTypes[item.type].singleFold) { // 关闭其他节点，只展开本节点
+        if (item && item.type && this.$configs.nodeTypes[item.type].singleFold) { // 关闭其他节点，只展开本节点
           this.open = [item]
         } else {
           this.open.push(item)
@@ -124,7 +141,8 @@ export default {
       }
     },
 
-    star(item) { // 点击收藏按钮
+    // 点击收藏按钮
+    star(item) {
       item.isStar = !item.isStar
     },
 

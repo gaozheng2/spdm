@@ -139,23 +139,23 @@ body {
 
 // 树项目高度
 .menuTree {
-  .v-treeview-node__root {
+  .v-treeview-node__root { // 列表项高度
     min-height: 34px;
   }
 
-  .v-treeview-node__toggle {
+  .v-treeview-node__toggle { // 展开/折叠按钮不可点击
     width: 16px;
     height: 16px;
     margin-right: 0;
+    pointer-events: none;
   }
 
-  .v-treeview-node__level {
+  .v-treeview-node__level { // 每个层级递进宽度
     width: 16px;
   }
 
   .v-treeview-node__content {
     margin-left: 6px;
-
   }
 
   .v-treeview-node__label {

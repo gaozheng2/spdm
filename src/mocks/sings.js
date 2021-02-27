@@ -73,6 +73,34 @@ export default [
       type: 'sing',
       status: '5',
       isStar: false
+    }, {
+      id: '110',
+      name: '频率放大器',
+      code: 'FT-11',
+      type: 'sing',
+      status: '4',
+      isStar: false
+    }, {
+      id: '111',
+      name: '调制解调器a',
+      code: 'XXC05a-11',
+      type: 'sing',
+      status: '3',
+      isStar: false
+    }, {
+      id: '112',
+      name: '频率放大器',
+      code: 'FT-11',
+      type: 'sing',
+      status: '2',
+      isStar: false
+    }, {
+      id: '113',
+      name: '调制解调器a',
+      code: 'XXC05a-11',
+      type: 'sing',
+      status: '5',
+      isStar: false
     }]
   }, {
     id: '2',

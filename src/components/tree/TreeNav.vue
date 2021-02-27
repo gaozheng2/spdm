@@ -27,7 +27,7 @@
           enter-active-class="animate__animated animate__fadeInUp"
           leave-active-class="animate__animated animate__slideOutDown"
         >
-          <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="scroller">
+          <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="fill-screen">
             <TreeProjects :tree-data="singsData" type="sings"/>
           </div>
         </transition>
