@@ -88,7 +88,7 @@ export default {
     tree: [], // 激活的节点
     open: [], // 展开的节点
     lastNode: null, // 上次激活的节点
-    clear: false // 是否清空
+    isClear: false // 是否清空
   }),
   computed: {
     nodeType() { // 当前节点类型
@@ -97,18 +97,11 @@ export default {
   },
   watch: {
     // 当节点类型变换时，树节点执行对应操作
-
-    nodeType: function (val, val2) {
-      console.log(val, val2)
-
+    nodeType: function (val) {
       if (this.treeType === 'sings') {
-        // 产品树对应节点：产品树展开
-
         // 型号 | 型号阶段 节点：产品树取消选中
         if (val === 'stage' || val === 'projectStage') {
-          console.log('清空')
-          console.log(val, val2)
-          this.clear = true
+          this.isClear = true
           this.tree = []
         }
       } else {
@@ -131,16 +124,14 @@ export default {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
 
-      console.log(this.clear)
-
       // 如果没有激活节点，则激活上一节点
       if (!item) {
-        if (!this.clear) { // 但节点清空时不激活上一节点
+        if (!this.isClear) { // 但节点清空时不激活上一节点
           this.tree.push(this.lastNode)
 
           return
         } else { // 清空只执行一次
-          this.clear = false
+          this.isClear = false
         }
       } else {
         this.openNode(item, this.lastNode !== item) // 点击展开/折叠节点，如果不是当前激活节点则只展开

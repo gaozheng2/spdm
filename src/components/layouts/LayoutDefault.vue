@@ -147,7 +147,7 @@ body {
     width: 16px;
     height: 16px;
     margin-right: 0;
-    pointer-events: none;
+    visibility: hidden;
   }
 
   .v-treeview-node__level { // 每个层级递进宽度
