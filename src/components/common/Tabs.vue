@@ -1,6 +1,6 @@
 <template>
   <div class="fill-screen">
-    <v-tabs v-if="true" v-model="tabValue" background-color="transparent" class="fill-screen">
+    <v-tabs v-model="tabValue" background-color="transparent" class="fill-screen">
       <v-tab v-for="(tab,index) in items[nodeType].tabs" :key="index" class="text-subtitle-2">
         {{ tab.text }}
       </v-tab>

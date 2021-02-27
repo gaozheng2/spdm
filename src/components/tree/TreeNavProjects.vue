@@ -87,39 +87,28 @@ export default {
   data: () => ({
     tree: [], // 激活的节点
     open: [], // 展开的节点
-    lastNode: null // 上次激活的节点
+    lastNode: null, // 上次激活的节点
+    clear: false // 是否清空
   }),
   computed: {
-    shouldScroll() { // 是否应该滚动型号树
-      const type = this.$store.state.app.nodeType
-
-      return this.$configs.nodeTypes[type].showSing && !this.foldSingTree
-    },
     nodeType() { // 当前节点类型
       return this.$store.state.app.nodeType
     }
   },
   watch: {
-    // shouldScroll() { // 接收到应该滚动型号树后，滚动型号树到激活节点
-    //   // 由于 Vuetify 返回的上一个激活节点的 top，所以需要延迟获取
-    //   setTimeout(() => {
-    //     document.querySelector('.v-treeview-node--active button').focus()
-    //   }, 0)
-    // },
-    unselectTree() { // 点击型号树节点时，取消选中产品树的节点
-      console.log(this.tree)
-
-      if (this.treeType === 'sings') this.tree = []
-    },
     // 当节点类型变换时，树节点执行对应操作
-    nodeType(val) {
+
+    nodeType: function (val, val2) {
+      console.log(val, val2)
+
       if (this.treeType === 'sings') {
         // 产品树对应节点：产品树展开
-        console.log(val)
 
         // 型号 | 型号阶段 节点：产品树取消选中
-        // eslint-disable-next-line no-constant-condition
-        if (val === 'stage' || 'projectStage') {
+        if (val === 'stage' || val === 'projectStage') {
+          console.log('清空')
+          console.log(val, val2)
+          this.clear = true
           this.tree = []
         }
       } else {
@@ -142,9 +131,17 @@ export default {
       // eslint-disable-next-line prefer-destructuring
       const item = this.tree[0]
 
+      console.log(this.clear)
+
       // 如果没有激活节点，则激活上一节点
       if (!item) {
-        this.tree.push(this.lastNode)
+        if (!this.clear) { // 但节点清空时不激活上一节点
+          this.tree.push(this.lastNode)
+
+          return
+        } else { // 清空只执行一次
+          this.clear = false
+        }
       } else {
         this.openNode(item, this.lastNode !== item) // 点击展开/折叠节点，如果不是当前激活节点则只展开
         this.lastNode = item
@@ -156,7 +153,6 @@ export default {
       // 如果点击的是产品树相关节点，则展开产品树，且取消产品树的激活节点
       if (item && item.type && this.$configs.nodeTypes[item.type].showSing) {
         this.$emit('update:foldSingTree', false)
-        this.$emit('update:unselectTree', true)
       }
     },
 

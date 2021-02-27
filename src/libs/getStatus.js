@@ -5,7 +5,7 @@ function getStatus(item) {
   if (item.status) {
     return status[item.type][item.status]
   } else {
-    return ''
+    return {}
   }
 }
 

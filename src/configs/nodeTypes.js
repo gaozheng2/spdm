@@ -115,7 +115,7 @@ export default {
     text: '分系统',
     icon: 'mdi-plus-box-outline',
     icon_open: 'mdi-minus-box-outline',
-    showSing: true, // 点击是否显示产品树
+    isSing: true, // 是否属于产品树
     singleFold: true, // 是否展开本节点时关闭其他节点
     tabs: [
       {
@@ -136,7 +136,7 @@ export default {
     text: '单机',
     icon: 'mdi-radiobox-marked',
     hasStar: true, // 是否能够收藏
-    showSing: true, // 点击是否显示产品树
+    isSing: true, // 是否属于产品树
     tabs: [
       {
         text: '单机信息',
