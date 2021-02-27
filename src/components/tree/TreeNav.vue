@@ -2,7 +2,7 @@
 <template>
   <div class="fill-screen">
     <!--  型号树  -->
-    <TreeProjects :tree-data="projectsData" :fold-sing-tree.sync="foldSingTree"/>
+    <TreeProjects :tree-data="projectsData" :fold-sing-tree.sync="foldSingTree" :unselect-tree.sync="unSelectTree"/>
 
     <!--  产品树标题  -->
     <transition
@@ -23,14 +23,14 @@
         <v-divider/>
 
         <!--  产品树  -->
-        <transition
-          enter-active-class="animate__animated animate__fadeInUp"
-          leave-active-class="animate__animated animate__slideOutDown"
-        >
-          <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="fill-screen">
-            <TreeProjects :tree-data="singsData" type="sings"/>
-          </div>
-        </transition>
+        <!--        <transition
+                  enter-active-class="animate__animated animate__fadeInUp"
+                  leave-active-class="animate__animated animate__slideOutDown"
+                >-->
+        <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="fill-screen">
+          <TreeProjects tree-type="sings" :tree-data="singsData" :unselect-tree="unSelectTree"/>
+        </div>
+        <!--        </transition>-->
       </div>
     </transition>
 
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       foldSingTree: false, // 是否折叠产品树
+      unSelectTree: false, // 是否取消选择产品树节点
       projectsData,
       singsData
     }

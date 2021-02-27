@@ -48,7 +48,7 @@
     <!--  末尾图标-添加收藏-已收藏或激活时显示  -->
     <template v-slot:append="{ item, active }">
       <!--  用于滚动定位的隐藏 button -->
-      <button style="opacity: 0;position: absolute;">if</button>
+      <button style="opacity: 0;position: absolute;"></button>
       <div
         v-if="(active && $configs.nodeTypes[item.type].hasStar )|| item.isStar"
         :title="(item.isStar ? '取消' : '') + '收藏'"
@@ -67,9 +67,9 @@ import getStatus from '@/libs/getStatus'
 
 export default {
   props: {
-    fixHeight: { // 树的固定高度
+    treeType: { // 树类型：projects | sings
       type: String,
-      default: null
+      default: 'projects'
     },
     treeData: {
       type: Array,
@@ -77,7 +77,11 @@ export default {
     },
     foldSingTree: { // 是否折叠产品树
       type: Boolean,
-      default: true
+      default: false
+    },
+    unselectTree: { // 取消选择产品树节点
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -90,6 +94,9 @@ export default {
       const type = this.$store.state.app.nodeType
 
       return this.$configs.nodeTypes[type].showSing && !this.foldSingTree
+    },
+    nodeType() { // 当前节点类型
+      return this.$store.state.app.nodeType
     }
   },
   watch: {
@@ -98,7 +105,28 @@ export default {
       setTimeout(() => {
         document.querySelector('.v-treeview-node--active button').focus()
       }, 0)
+    },
+    unselectTree() { // 点击型号树节点时，取消选中产品树的节点
+      console.log(this.tree)
+
+      if (this.treeType === 'sings') this.tree = []
+    },
+    // 当节点类型变换时，树节点执行对应操作
+    nodeType(val) {
+      if (this.treeType === 'sings') {
+        // 产品树对应节点：产品树展开
+        console.log(val)
+
+        // 型号 | 型号阶段 节点：产品树取消选中
+        // eslint-disable-next-line no-constant-condition
+        if (val === 'stage' || 'projectStage') {
+          this.tree = []
+        }
+      } else {
+        // 型号树滚动到激活节点
+      }
     }
+
   },
   mounted() {
     // 默认选中第一条 root 记录
@@ -122,8 +150,11 @@ export default {
       // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
       if (item && item.type) this.$store.commit('app/setNodeType', item.type)
 
-      // 如果是产品树相关节点，则展开产品树
-      if (item && item.type && this.$configs.nodeTypes[item.type].showSing) this.$emit('update:foldSingTree', false)
+      // 如果点击的是产品树相关节点，则展开产品树，且取消产品树的激活节点
+      if (item && item.type && this.$configs.nodeTypes[item.type].showSing) {
+        this.$emit('update:foldSingTree', false)
+        this.$emit('update:unselectTree', true)
+      }
     },
 
     // 展开/折叠节点，如果点击图标则直接折叠展开，如果点击内容则只展开不关闭
