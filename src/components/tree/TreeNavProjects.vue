@@ -107,7 +107,9 @@ export default {
       } else {
         // 型号树滚动到激活节点
         setTimeout(() => {
-          document.querySelector('.v-treeview-node--active button').focus()
+          const el = document.querySelector('.v-treeview-node--active button')
+
+          if (el) el.focus()
         }, 0)
       }
     }

@@ -78,7 +78,7 @@ export default {
   },
   created() {
     // 获取收藏夹数据
-    this.$api.mainApi.getStars().then((res) => {
+    this.$api.projects.getStars().then((res) => {
       this.starData = res.data
     })
   },

@@ -1,3 +1,5 @@
-import mainApi from './mainApi'
+import projects from './projects'
 
-export default { mainApi }
+export default {
+  projects
+}

@@ -9,7 +9,8 @@ const state = {
 
   path: ['根节点1', '父节点2', '子节点3'], // 面包屑路径
 
-  nodeType: 'root' // 树点击的节点类型
+  nodeType: 'root', // 导航树点击的节点类型
+  nodeId: '' // 导航树点击的节点 ID
 }
 
 export default {

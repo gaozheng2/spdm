@@ -7,5 +7,8 @@ export default {
   },
   setNodeType: (state, nodeType) => {
     state.nodeType = nodeType
+  },
+  setNodeId: (state, nodeId) => {
+    state.nodeId = nodeId
   }
 }
