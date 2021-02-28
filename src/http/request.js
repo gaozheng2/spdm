@@ -1,13 +1,14 @@
 import axios from 'axios'
 import store from '@/store'
 
-export default function request({ url }) {
-  axios.defaults.baseURL = 'http://127.0.0.1:4523/mock/376175/'
-  axios.defaults.baseURL = 'http://127.0.0.1:3000/'
-
-  axios({
-    url
-  }).then((res) => {
-    console.log(res)
+export default function request(options) {
+  const instance = axios.create({
+    baseURL: 'http://127.0.0.1:3000/',
+    timeout: 10000,
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
   })
+
+  return instance((options))
 }

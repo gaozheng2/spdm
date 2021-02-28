@@ -57,12 +57,11 @@
 </template>
 
 <script>
-import starData from '@/mocks/star'
 import getStatus from '@/libs/getStatus'
 
 export default {
   data: () => ({
-    starData,
+    starData: [],
     selectedItem: -1,
     currentId: -1 // 当前选中的列表项的 id
   }),
@@ -76,6 +75,12 @@ export default {
 
       return !num
     }
+  },
+  created() {
+    // 获取收藏夹数据
+    this.$api.mainApi.getStars().then((res) => {
+      this.starData = res.data
+    })
   },
   methods: {
     // 根据状态码，返回状态对应的图标颜色和文字
