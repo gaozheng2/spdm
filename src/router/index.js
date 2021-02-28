@@ -26,7 +26,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = '宇航产品数据中心' + to.meta.title
+  document.title = '宇航产品数据中心' + (to.meta.title || '')
 
   return next()
 })

@@ -7,6 +7,12 @@ import configs from './configs'
 import './assets/scss/theme.scss' // 全局 css
 import 'animate.css' // 动画效果
 
+import request from '@/http/request'
+
+request({
+  url: 'companies/1/users'
+})
+
 document.documentElement.style.setProperty('--animate-duration', '.3s') // 设置动画时间
 
 Vue.config.productionTip = false

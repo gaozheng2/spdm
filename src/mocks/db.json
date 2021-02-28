@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Joe",
+      "age": 18,
+      "phone": "010-24329234",
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Mick",
+      "age": 23,
+      "phone": "010-2341242",
+      "companyId": 3
+    },
+    {
+      "id": 3,
+      "name": "米斯特李",
+      "age": "29",
+      "phone": "010-5432323",
+      "companyId": 2
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "description": "苹果公司"
+    },
+    {
+      "id": 2,
+      "name": "Microsoft",
+      "description": "微软"
+    },
+    {
+      "id": 3,
+      "name": "Huawei",
+      "description": "华为"
+    }
+  ]
+}
