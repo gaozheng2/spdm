@@ -47,7 +47,7 @@ export default {
   // 监听导航树展开按键
   mounted() {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const _this = this
+    const vm = this
     let method = ''
 
     document.onkeydown = function (e) {
@@ -64,10 +64,10 @@ export default {
       }
       if (method === 'drawer') {
         e.preventDefault() // 屏蔽浏览器快捷键
-        _this.drawer = !_this.drawer
+        vm.drawer = !vm.drawer
       } else if (method === 'fullScreen') {
         e.preventDefault()
-        _this.$store.commit('app/setFullScreen')
+        vm.$store.commit('app/setFullScreen')
       }
     }
   }
