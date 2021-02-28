@@ -2,7 +2,7 @@
 <template>
   <div class="fill-screen">
     <!--  型号树  -->
-    <TreeProjects :tree-data="projectsData" :fold-sing-tree.sync="foldSingTree"/>
+    <TreeProjects :fold-sing-tree.sync="foldSingTree"/>
 
     <!--  产品树标题  -->
     <transition
@@ -28,7 +28,7 @@
           leave-active-class="animate__animated animate__slideOutDown"
         >
           <div v-show="!foldSingTree" style="height: 50vh;min-height: 50vh;" class="fill-screen">
-            <TreeProjects tree-type="sings" :tree-data="singsData"/>
+            <TreeProjects tree-type="sings"/>
           </div>
         </transition>
       </div>
@@ -39,16 +39,12 @@
 
 <script>
 import TreeProjects from '@/components/tree/TreeNavProjects'
-import projectsData from '@/mocks/projects'
-import singsData from '@/mocks/sings'
 
 export default {
   components: { TreeProjects },
   data() {
     return {
-      foldSingTree: false, // 是否折叠产品树
-      projectsData,
-      singsData
+      foldSingTree: false // 是否折叠产品树
     }
   },
   computed: {
@@ -56,9 +52,6 @@ export default {
       const typeData = this.$configs.nodeTypes[this.$store.state.app.nodeType]
 
       return typeData.showSing || typeData.isSing
-    },
-    nodeType() { // 当前节点类型
-      return this.$store.state.app.nodeType
     }
   }
 }

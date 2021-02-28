@@ -71,20 +71,13 @@ export default {
       type: String,
       default: 'projects'
     },
-    treeData: {
-      type: Array,
-      default: () => []
-    },
     foldSingTree: { // 是否折叠产品树
-      type: Boolean,
-      default: false
-    },
-    unselectTree: { // 取消选择产品树节点
       type: Boolean,
       default: false
     }
   },
   data: () => ({
+    treeData: [],
     tree: [], // 激活的节点
     open: [], // 展开的节点
     lastNode: null, // 上次激活的节点
@@ -93,19 +86,23 @@ export default {
   computed: {
     nodeType() { // 当前节点类型
       return this.$store.state.app.nodeType
+    },
+    nodeId() { // 当前节点 ID
+      return this.$store.state.app.nodeId
     }
   },
   watch: {
-    // 当节点类型变换时，树节点执行对应操作
-    nodeType: function (val) {
-      if (this.treeType === 'sings') {
-        // 型号 | 型号阶段 节点：产品树取消选中
-        if (val === 'stage' || val === 'projectStage') {
-          this.isClear = true
-          this.tree = []
+    nodeId() { // 当前节点 ID 变化时，执行对应操作
+      if (this.treeType === 'sings') { // 产品树获取数据
+        if (this.$configs.nodeTypes[this.nodeType].showSing) {
+          this.$api.projects.getSings().then((res) => {
+            this.treeData = res.data
+            this.isClear = true // 产品树清空激活节点和展开节点
+            this.tree = []
+            this.open = []
+          })
         }
-      } else {
-        // 型号树滚动到激活节点
+      } else { // 型号树滚动到激活节点
         setTimeout(() => {
           const el = document.querySelector('.v-treeview-node--active button')
 
@@ -113,18 +110,22 @@ export default {
         }, 0)
       }
     }
-
   },
-  mounted() {
-    // 默认选中第一条 root 记录
-    if (this.treeData[0].type === 'root') {
-      this.tree.push(this.treeData[0])
+  created() { // 初始化数据
+    if (this.treeType === 'projects') {
+      this.$api.projects.getProjects().then((res) => {
+        this.treeData = res.data
+        this.tree.push(this.treeData[0]) // 默认选中第一条记录
+      })
+    } else {
+      this.$api.projects.getSings().then((res) => {
+        this.treeData = res.data
+      })
     }
   },
   methods: {
-    selectItem() {
-      // eslint-disable-next-line prefer-destructuring
-      const item = this.tree[0]
+    selectItem() { // 点击节点后的操作
+      const [item] = this.tree
 
       // 如果没有激活节点，则激活上一节点
       if (!item) {
@@ -140,8 +141,11 @@ export default {
         this.lastNode = item
       }
 
-      // 设置全局数据 NodeType，右侧 Tabs 自动切换页面
-      if (item && item.type) this.$store.commit('app/setNodeType', item.type)
+      // 设置全局数据 nodeType 和 nodeId，右侧 Tabs 自动切换页面
+      if (item) {
+        if (item.type) this.$store.commit('app/setNodeType', item.type)
+        if (item.id) this.$store.commit('app/setNodeId', item.id)
+      }
 
       // 如果点击的是产品树相关节点，则展开产品树，且取消产品树的激活节点
       if (item && item.type && this.$configs.nodeTypes[item.type].showSing) {
