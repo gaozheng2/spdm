@@ -101,7 +101,7 @@ export default {
           })
         }
       } else { // 型号树滚动到激活节点
-        this.scrollNode()
+        if (this.$configs.nodeTypes[this.nodeType].showSing) this.scrollNode()
       }
     }
   },
@@ -118,7 +118,7 @@ export default {
     }
   },
   activated() { // 如果关闭收藏夹，显示树，则树滚动到激活节点
-    this.scrollNode()
+    this.scrollNode(true)
   },
   methods: {
     selectItem() { // 点击节点后的操作
@@ -166,14 +166,13 @@ export default {
     },
 
     // 树滚动到激活节点
-    scrollNode() {
-      setTimeout(() => {
+    scrollNode(isAll) { // isAll：是否滚动产品树
+      setTimeout(() => { // 滚动型号树和产品树
         const el = document.querySelectorAll('.v-treeview-node--active')
 
-        if (el) el.forEach((el) => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
-        })
-      }, 0)
+        if (el && el[0]) el[0].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+        if (el && el[1] && isAll) el[1].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+      })
     },
 
     // 点击收藏按钮
