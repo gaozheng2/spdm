@@ -106,7 +106,7 @@ export default {
         setTimeout(() => {
           const el = document.querySelector('.v-treeview-node--active button')
 
-          if (el) el.focus()
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
         }, 0)
       }
     }
