@@ -170,8 +170,13 @@ export default {
       setTimeout(() => { // 滚动型号树和产品树
         const el = document.querySelectorAll('.v-treeview-node--active')
 
-        if (el && el[0]) el[0].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
-        if (el && el[1] && isAll) el[1].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+        if (el && el[0] && !isAll) el[0].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+
+        if (el && isAll) el.forEach((item) => {
+          console.log(item)
+
+          item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+        })
       })
     },
 
