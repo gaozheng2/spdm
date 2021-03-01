@@ -42,6 +42,12 @@ import TreeProjects from '@/components/tree/TreeNavProjects'
 
 export default {
   components: { TreeProjects },
+  props: {
+    isStar: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       foldSingTree: false // 是否折叠产品树

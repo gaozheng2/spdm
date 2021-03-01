@@ -101,11 +101,7 @@ export default {
           })
         }
       } else { // 型号树滚动到激活节点
-        setTimeout(() => {
-          const el = document.querySelector('.v-treeview-node--active')
-
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
-        }, 0)
+        this.scrollNode()
       }
     }
   },
@@ -120,6 +116,9 @@ export default {
         this.treeData = res.data
       })
     }
+  },
+  activated() { // 如果关闭收藏夹，显示树，则树滚动到激活节点
+    this.scrollNode()
   },
   methods: {
     selectItem() { // 点击节点后的操作
@@ -164,6 +163,17 @@ export default {
           this.open.push(item)
         }
       }
+    },
+
+    // 树滚动到激活节点
+    scrollNode() {
+      setTimeout(() => {
+        const el = document.querySelectorAll('.v-treeview-node--active')
+
+        if (el) el.forEach((el) => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+        })
+      }, 0)
     },
 
     // 点击收藏按钮
