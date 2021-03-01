@@ -47,8 +47,6 @@
 
     <!--  末尾图标-添加收藏-已收藏或激活时显示  -->
     <template v-slot:append="{ item, active }">
-      <!--  用于滚动定位的隐藏 button -->
-      <button style="opacity: 0;position: absolute;"></button>
       <div
         v-if="(active && $configs.nodeTypes[item.type].hasStar )|| item.isStar"
         :title="(item.isStar ? '取消' : '') + '收藏'"
@@ -104,7 +102,7 @@ export default {
         }
       } else { // 型号树滚动到激活节点
         setTimeout(() => {
-          const el = document.querySelector('.v-treeview-node--active button')
+          const el = document.querySelector('.v-treeview-node--active')
 
           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
         }, 0)
